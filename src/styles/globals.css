@@ -1,0 +1,113 @@
+/* John W. Comeau's CSS Reset */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* 5. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 6. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 7. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /* 8. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+  /* ----------------------- */
+
+  :root {
+    --font-roboto: 'Roboto', 'sans-serif';
+    --font-roboto-serif: 'Roboto Serif', 'sans-serif';
+    --font-numans: 'Numans', 'sans-serif';
+    --font-nunito-sans: 'Nunito Sans', 'sans-serif';
+    --font-montserrat: 'Montserrat', 'sans-serif';
+    --font-playball: 'Playball', 'sans-serif';
+
+    --red-0: #ED8E96;
+    --red-100: #E06A73;
+    --red-200: #B82935;
+    --red-300: #A31621;
+    --red-400: #74010B;
+    --red-500: #3E0005;
+    --blue-0: #97C3D8;
+    --blue-100: #72A8C1;
+    --blue-200: #4E8098;
+    --blue-300: #3E677A;
+    --blue-400: #274553;
+    --blue-400-gray: #868686;
+    --gray-0: #F5F8FF;
+    --gray-100: #CED3DC;
+    --gray-200: #A4A8B0;
+    --gray-300: #87888B;
+    --gray-400: #5F6165;
+    --black: #171717;
+    --white: #FCF7F8;
+    
+    --width-main-padding: 3.5vw;
+    --height-main-padding: 2vw;
+  }
+
+  html, body {
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    color: var(--blue-400-gray);
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+  }
+
+input {
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

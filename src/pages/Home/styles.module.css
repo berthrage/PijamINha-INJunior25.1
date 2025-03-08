@@ -1,0 +1,4 @@
+.homeSection {
+    display: flex;
+    flex-direction: column;
+}
