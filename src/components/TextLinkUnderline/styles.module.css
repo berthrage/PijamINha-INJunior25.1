@@ -1,0 +1,25 @@
+.textLink {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .text {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  
+  .underline {
+    position: absolute;
+    height: 6px;
+    background-color: var(--white);
+    border-radius: 3px;
+    transition: transform 0.5s ease, width 0.5s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  
+  .textLink:hover .underline {
+    transform: scaleX(1);
+  }
