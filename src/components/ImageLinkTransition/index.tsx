@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
-interface ImageTransitionProps {
+interface ImageLinkTransitionProps {
     firstImg: string;
     secondImg: string;
     linkTo?: string;
@@ -12,7 +12,7 @@ interface ImageTransitionProps {
     id?: string;
 }
 
-export default function ImageTransition(props: ImageTransitionProps) {
+export default function ImageLinkTransition(props: ImageLinkTransitionProps) {
     const dynamicStyle = {
         width: props.width ? `${props.width}px` : undefined,
         height: props.height ? `${props.height}px` : undefined
