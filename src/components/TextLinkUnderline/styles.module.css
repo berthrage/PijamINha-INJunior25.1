@@ -19,7 +19,8 @@
     transform: scaleX(0);
     transform-origin: left;
   }
-  
-  .textLink:hover .underline {
-    transform: scaleX(1);
-  }
+  @media (hover: hover) {
+    .textLink:hover .underline {
+        transform: scaleX(1);
+    }
+}
