@@ -12,6 +12,7 @@
   
   .underline {
     position: absolute;
+    bottom: 0;
     height: 6px;
     background-color: var(--white);
     border-radius: 3px;
