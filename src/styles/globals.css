@@ -47,6 +47,7 @@
   #root, #__next {
     isolation: isolate;
   }
+
   /* ----------------------- */
 
   :root {
@@ -110,4 +111,8 @@ ul {
 
 a {
   text-decoration: none;
+  color: var(--blue-400-gray);
+}
+a:active {
+   color: var(--blue-400-gray);
 }

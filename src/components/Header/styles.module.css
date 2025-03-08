@@ -1,3 +1,38 @@
 .headerSection {
     display: flex;
+    flex-direction: row;
+    background-color: var(--red-400);
+    height: 178px;
+    width: 100%;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--width-main-padding);
+}
+
+.centerSection ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* #textLink {
+    color: black;
+}
+
+#textLinkDiv {
+    background-color: black;
+} */
+
+.iconsSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.cartHeartBox {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
