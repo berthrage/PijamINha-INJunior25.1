@@ -1,0 +1,38 @@
+.imgBox {
+    display: flex;
+    position: relative;
+    user-select: none;
+}
+.imgBox img {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+}
+.imgStatic {
+    opacity: 1; /* Initially visible */
+}
+.imgHovered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Initially hidden */
+    z-index: 1;
+}
+@media (hover: hover) {
+    .imgBox:hover .imgHovered {
+        opacity: 1; /* Show hovered image */
+    }
+
+    .imgBox:hover .imgStatic {
+        opacity: 0; /* Hide static image */
+    }
+}
+@media (hover: none) {
+    .imgBox:active .imgHovered {
+        opacity: 1; 
+    }
+
+    .imgBox:active .imgStatic {
+        opacity: 0; 
+    }
+}
