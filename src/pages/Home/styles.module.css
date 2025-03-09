@@ -1,4 +1,53 @@
+
+main {
+    padding: 0;
+}
+
 .homeSection {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.titleBox {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-0);
+    width: 100%;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    gap: 40px;
+}
+
+.titleBox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/images/pattern-bg-white.png');
+    background-position: center;
+    background-repeat: repeat;
+    opacity: 0.3; 
+    z-index: 0; 
+}
+
+.sloganBox {
+    max-width: 763px;
+    width: 100%;
+    z-index: 1;
+}
+
+.sloganBox h1 {
+    font-family: var(--font-nunito-sans);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 2.7rem;
+    letter-spacing: 0%;
+    text-align: center;
+    color: var(--blue-400);
 }
