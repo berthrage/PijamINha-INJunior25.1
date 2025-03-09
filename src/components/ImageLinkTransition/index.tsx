@@ -10,6 +10,8 @@ interface ImageLinkTransitionProps {
     width?: number;
     height?: number;
     id?: string;
+    firstImgId?: string;
+    secondImgId?: string;
 }
 
 export default function ImageLinkTransition(props: ImageLinkTransitionProps) {
@@ -18,19 +20,22 @@ export default function ImageLinkTransition(props: ImageLinkTransitionProps) {
         height: props.height ? `${props.height}px` : undefined
     };
 
+    const ImagesContent = () => (
+        <>
+            <img id={props.firstImgId} src={props.firstImg} alt={props.firstAlt} className={styles.imgStatic}></img>
+            <img id={props.secondImgId} src={props.secondImg} alt={props.secondAlt} className={styles.imgHovered}></img>
+        </>
+    );
+
     return(
         <> 
-            
-                
                 <div className={styles.imgBox} style={dynamicStyle} id={props.id}>
                     {props.linkTo ? (
                         <Link to={props.linkTo}>
-                            <img src={props.firstImg} alt={props.firstAlt} className={styles.imgStatic}></img>
-                            <img src={props.secondImg} alt={props.secondAlt} className={styles.imgHovered}></img>
+                            <ImagesContent></ImagesContent>
                         </Link>
                     ) : (<>
-                            <img src={props.firstImg} alt={props.firstAlt} className={styles.imgStatic}></img>
-                            <img src={props.secondImg} alt={props.secondAlt} className={styles.imgHovered}></img>
+                            <ImagesContent></ImagesContent>
                         </>
                     )}
                 </div>
