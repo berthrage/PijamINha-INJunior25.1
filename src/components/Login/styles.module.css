@@ -1,0 +1,231 @@
+.containerForm {
+    width: 30.5rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--red-400);
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    border-radius: 0.125rem;
+    gap: 2rem;
+}
+
+.titleLogin {
+    color: var(--white);
+    font-family: var(--font-numans);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.92px;
+}
+
+.paragraphLogin {
+    padding-inline: 2rem;
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-roboto-serif);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.8px;
+}
+
+.paragraphLogin strong {
+    font-style: italic;
+    font-weight: 900;
+}
+
+.useroremailorpasswordLogin {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.useroremailorpasswordLogin input {
+    width: 390px;
+    height: 44px;
+    border-radius: 2px;
+    background: var(--white);
+    color: rgba(0, 0, 0, 0.47);
+    padding: 10px 20px;
+
+    &:hover {
+        cursor: text;
+    }
+}
+
+.useroremailorpasswordLogin input::placeholder {
+    color: rgba(0, 0, 0, 0.47);
+    font-family: var(--font-roboto);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1px;
+}
+
+
+.usernameoremailorpasswordError {
+    color: var(--white);
+    font-family: var(--font-roboto-serif);
+    font-size: 0.7rem;
+}
+
+.containerPassword {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 55px;
+}
+
+.buttonForm hr {
+    width: 390px;
+    height: 2px;
+}
+
+.backendError {
+    color: #ff4d4d; 
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    background-color: #ffe6e6;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ff4d4d;
+}
+
+.containerPassword a {
+    cursor: auto;
+}
+
+.passwordWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.passwordWrapper input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.togglePasswordButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.passwordIcon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.passwordVisible .passwordIcon {
+    opacity: 1;
+    filter: brightness(1.5);
+}
+
+
+.togglePasswordButton:hover .passwordIcon {
+    opacity: 1;
+    filter: brightness(1.8);
+}
+
+
+
+.forgotpassButton {
+    display: flex;
+    color: var(--red-0);
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+    font-family: var(--font-roboto);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.6px;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.03);
+        opacity: 0.8;
+    }
+
+    &:active {
+        color: lightblue;
+        transform: scale(0.98);
+    }
+}
+
+
+.containerSubmit {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.submitButton {
+    border-radius: 0.625rem;
+    background: var(--red-300);
+    box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    width: 390px;
+    height: 44px;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-family: var(--font-montserrat);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    &:hover{
+        cursor: pointer;}
+}
+
+.registerButton {
+    display: inline-flex;
+    padding: 7px 17px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--red-300);
+    box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.25);
+    color: var(--white);
+    font-family: var(--font-montserrat);
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    &:hover{
+        cursor: pointer;}
+}
