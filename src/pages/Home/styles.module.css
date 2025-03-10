@@ -7,6 +7,21 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
+}
+
+.homeSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/images/pattern-bg-blue0.png');
+    background-position: center;
+    background-repeat: repeat;
+    opacity: 0.3; 
+    z-index: 0; 
 }
 
 .titleBox {
@@ -50,4 +65,37 @@ main {
     letter-spacing: 0%;
     text-align: center;
     color: var(--blue-400);
+}
+
+.featuresSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vw var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    z-index: 1;
+}
+
+.featuresList {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.featuresList li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.featuresList li p {
+    max-width: 315px;
+    font-family: var(--font-nunito-sans);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    letter-spacing: 0%;
+    text-align: center;
+    color: var(--black);
 }
