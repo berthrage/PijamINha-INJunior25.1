@@ -21,7 +21,7 @@ const loginSchema = z.object({
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
-export default function LoginForm() {
+export default function Login() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [backendError, setBackendError] = useState<string | null>(null);
     const [showPassword, setShowPassword] = useState(false);

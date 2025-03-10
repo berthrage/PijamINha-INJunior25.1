@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import RootLayout from "./RootLayout";
 import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter(
     [
@@ -10,8 +11,13 @@ const router = createBrowserRouter(
             element: <RootLayout></RootLayout>,
             children: [
                 {
-                    index: true,
+                    path: '/home',
                     element: <Home></Home>
+                },
+                {
+                    path: "/",
+                    element: <Login></Login>,
+                    index: true,
                 },
                 // {
                 //     path: "/genero/:genero",
