@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import passwordEyeIcon from "../../assets/icons/password-eye.png";
 
 const loginSchema = z.object({
-    usernameOrEmail: z
+    identifier: z
         .string()
         .min(1, "Usuário ou e-mail é obrigatório.")
         .refine((value) => {
@@ -40,8 +40,8 @@ export default function LoginForm() {
         setBackendError(null);
 
         try {
-            const response = await axios.post("/api/login", data);
-            if (response.status === 200) {
+            const response = await axios.post("http://localhost:3333/authenticate", data);
+            if (response.status === 201 || response.status === 200) {
                 navigate("/homepage");
             }
         } catch (error) {
@@ -64,19 +64,19 @@ export default function LoginForm() {
             </div>
             <div className={styles.paragraphLogin}>
                 <p>
-                    Faça login para ter acesso aos pijamas dos seus{" "}
-                    <strong>sonhos!</strong>
+                    Faça login para ter acesso aos pijamas dos seus
+                    <strong> sonhos!</strong>
                 </p>
             </div>
             <div className={styles.useroremailorpasswordLogin}>
                 <div className={styles.containerUseroremail}>
                     <input
-                        {...register("usernameOrEmail")}
+                        {...register("identifier")}
                         placeholder="Usuário ou E-mail"
                     />
-                    {errors.usernameOrEmail && (
+                    {errors.identifier && (
                         <p className={styles.usernameoremailorpasswordError}>
-                            {errors.usernameOrEmail.message}
+                            {errors.identifier.message}
                         </p>
                     )}
                 </div>
@@ -120,15 +120,14 @@ export default function LoginForm() {
             <div className={styles.buttonForm}>
                 <div className={styles.containerSubmit}>
                     {backendError && <span className={styles.backendError}>{backendError}</span>}
-                    <Link to="/homepage">
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className={styles.submitButton}
-                        >
-                            {isSubmitting ? "Entrando..." : "Entrar"}
-                        </button>
-                    </Link>
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={styles.submitButton}
+                    >
+                        {isSubmitting ? "Entrando..." : "Entrar"}
+                    </button>
+
                     <hr />
                 </div>
                 <Link to="/register">
