@@ -58,88 +58,94 @@ export default function Login() {
     };
 
     return (
-        <form className={styles.containerForm} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.titleLogin}>
-                <h1>Login</h1>
-            </div>
-            <div className={styles.paragraphLogin}>
-                <p>
-                    Faça login para ter acesso aos pijamas dos seus
-                    <strong> sonhos!</strong>
-                </p>
-            </div>
-            <div className={styles.useroremailorpasswordLogin}>
-                <div className={styles.containerUseroremail}>
-                    <input
-                        {...register("identifier")}
-                        placeholder="Usuário ou E-mail"
-                    />
-                    {errors.identifier && (
-                        <p className={styles.usernameoremailorpasswordError}>
-                            {errors.identifier.message}
-                        </p>
-                    )}
-                </div>
-                <div className={styles.containerPassword}>
-                    <div className={styles.passwordWrapper}>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            {...register("password")}
-                            placeholder="Senha"
-                        />
-                        <button
-                            type="button"
-                            className={`${styles.togglePasswordButton} ${showPassword ? styles.passwordVisible : ""
-                                }`}
-                            onClick={() => setShowPassword((prev) => !prev)}
-                            aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-                        >
-                            <img
-                                src={passwordEyeIcon}
-                                alt="Ícone de exibição de senha"
-                                className={styles.passwordIcon}
-                            />
-                        </button>
+        <>
+            <div className={styles.loginSection}>
+                <form className={styles.containerForm} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles.titleLogin}>
+                        <h1>Login</h1>
                     </div>
-                    {errors.password && (
-                        <p className={styles.usernameoremailorpasswordError}>
-                            {errors.password.message}
+                    <div className={styles.paragraphLogin}>
+                        <p>
+                            Faça login para ter acesso aos pijamas dos seus
+                            <strong> sonhos!</strong>
                         </p>
-                    )}
-                    <Link to="/forgot-password">
-                        <button
-                            type="button"
-                            disabled={isSubmitting}
-                            className={styles.forgotpassButton}
-                        >
-                            Esqueci minha senha
-                        </button>
-                    </Link>
-                </div>
+                    </div>
+                    <div className={styles.useroremailorpasswordLogin}>
+                        <div className={styles.containerUseroremail}>
+                            <input
+                                {...register("identifier")}
+                                placeholder="Usuário ou E-mail"
+                                className={styles.inputLogin}
+                                id={errors.identifier ? styles.inputError : ""}
+                            />
+                            {errors.identifier && (
+                                <p className={styles.usernameoremailorpasswordError}>
+                                    {errors.identifier.message}
+                                </p>
+                            )}
+                        </div>
+                        <div className={styles.containerPassword}>
+                            <div className={styles.passwordWrapper}>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    {...register("password")}
+                                    placeholder="Senha"
+                                    className={styles.inputLogin}
+                                    id={errors.password ? styles.inputError : ''}
+                                />
+                                <button
+                                    type="button"
+                                    className={`${styles.togglePasswordButton} ${showPassword ? styles.passwordVisible : ""
+                                        }`}
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                    aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                                >
+                                    <img
+                                        src={passwordEyeIcon}
+                                        alt="Ícone de exibição de senha"
+                                        className={styles.passwordIcon}
+                                    />
+                                </button>
+                            </div>
+                            {errors.password && (
+                                <p className={styles.usernameoremailorpasswordError}>
+                                    {errors.password.message}
+                                </p>
+                            )}
+                            <button
+                                type="button"
+                                disabled={isSubmitting}
+                                className={styles.forgotpassButton}
+                            >
+                                Esqueci minha senha
+                            </button>
+                            
+                        </div>
+                    </div>
+                    <div className={styles.buttonForm}>
+                        <div className={styles.containerSubmit}>
+                            {backendError && <span className={styles.backendError}>{backendError}</span>}
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className={styles.submitButton}
+                            >
+                                {isSubmitting ? "Entrando..." : "Entrar"}
+                            </button>
+                            <hr />
+                        </div>
+                        <Link to="/register">
+                            <button
+                                type="button"
+                                disabled={isSubmitting}
+                                className={styles.registerButton}
+                            >
+                                Cadastre-se
+                            </button>
+                        </Link>
+                    </div>
+                </form>
             </div>
-            <div className={styles.buttonForm}>
-                <div className={styles.containerSubmit}>
-                    {backendError && <span className={styles.backendError}>{backendError}</span>}
-                    <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className={styles.submitButton}
-                    >
-                        {isSubmitting ? "Entrando..." : "Entrar"}
-                    </button>
-
-                    <hr />
-                </div>
-                <Link to="/register">
-                    <button
-                        type="button"
-                        disabled={isSubmitting}
-                        className={styles.registerButton}
-                    >
-                        Cadastre-se
-                    </button>
-                </Link>
-            </div>
-        </form>
+        </>
     );
 }
