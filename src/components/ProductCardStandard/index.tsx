@@ -79,7 +79,7 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
                 </div>
                 
 
-                <div className={styles.productInfo}>
+                <div className={styles.productInfo} style={pajama.sale_percent ?  {gap:`15px`} : {gap:`31px`}}>
                     <div className={styles.productInfoHeader}>
                         <h1>{pajama.name}</h1>
                     </div>
