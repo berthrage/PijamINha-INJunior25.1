@@ -6,6 +6,22 @@ import featurePajama from '../../assets/images/feature-pajama.png';
 import featurePeople from '../../assets/images/feature-people.png';
 import featureDelivery from '../../assets/images/feature-delivery.png';
 import ImageLink from '../../components/ImageLink';
+import Pajama from '../../types/Pajama';
+import examplePajamaImg from '../../assets/pajamas/example.jpg';
+
+const examplePajama: Pajama = {
+    name: 'Pijama feminino longo - estampa poá',
+    description: '',
+    image: examplePajamaImg,
+    price: 78.90,
+    season: 'Inverno',
+    type: 'Longo',
+    gender: 'Feminino',
+    favorite: false,
+    on_sale: true,
+    sale_percent: 15,
+    sales: [],
+}
 
 export default function Home() {
     return(
@@ -25,7 +41,6 @@ export default function Home() {
                 </div>
 
                 <div className={styles.featuresSection}>
-
                     <ul className={styles.featuresList}>
                         <li>
                             <ImageLink 
@@ -54,6 +69,10 @@ export default function Home() {
                             <p>Frete grátis em todo o Brasil e exterior</p>
                         </li>
                     </ul>
+                </div>
+
+                <div className={styles.salesSection}>
+                    <h1>Nossas últimas promoções!</h1>
 
                 </div>
 
