@@ -74,7 +74,11 @@ export default function Home() {
 
                 <div className={styles.salesSection}>
                     <h1>Nossas últimas promoções!</h1>
-                    <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                    <div className={styles.productCardsSection}>
+                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                    </div>
                 </div>
 
 

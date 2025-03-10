@@ -119,3 +119,11 @@ main {
     letter-spacing: 0%;
     color: var(--red-400);
 }
+
+.productCardsSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
