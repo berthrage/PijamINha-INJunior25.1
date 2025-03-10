@@ -8,6 +8,7 @@ import featureDelivery from '../../assets/images/feature-delivery.png';
 import ImageLink from '../../components/ImageLink';
 import Pajama from '../../types/Pajama';
 import examplePajamaImg from '../../assets/pajamas/example.jpg';
+import ProductCardStandard from '../../components/ProductCardStandard';
 
 const examplePajama: Pajama = {
     name: 'Pijama feminino longo - estampa poá',
@@ -73,7 +74,7 @@ export default function Home() {
 
                 <div className={styles.salesSection}>
                     <h1>Nossas últimas promoções!</h1>
-
+                    <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
                 </div>
 
 
