@@ -13,7 +13,7 @@ export default function Header() {
             <header className={styles.headerSection}>
 
                 <ImageLinkTransition
-                    linkTo='/'
+                    linkTo='/home'
                     firstImg={logo}
                     secondImg={logoHovered}
                     width={144}
