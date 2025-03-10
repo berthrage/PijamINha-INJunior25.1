@@ -1,0 +1,9 @@
+.imgBox {
+    display: flex;
+    position: relative;
+    user-select: none;
+}
+.imgBox img {
+    width: 100%;
+    height: 100%;
+}
