@@ -35,8 +35,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px;
-    gap: 15px;
+    padding: 19px;
+    gap: 12px;
+}
+
+.productInfoHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .productInfoHeader h1 {
@@ -47,12 +55,13 @@
     letter-spacing: 5%;
     text-transform: uppercase;
     color: var(--blue-300);
+    text-align: center;
 }
 
 .priceSection {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     text-align: center;
 }
 
@@ -72,7 +81,7 @@
     text-decoration: line-through;
 }
 
-.discountPrice {
+.discountPrice, .price {
     font-family: var(--font-nunito-sans);
     font-weight: 700;
     font-size: 2.3rem;
