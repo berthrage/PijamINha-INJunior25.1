@@ -7,6 +7,7 @@ import axios from "axios";
 import styles from "./styles.module.css";
 import passwordEyeIcon from "../../assets/icons/password-eye.png";
 import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 const loginSchema = z.object({
     identifier: z
@@ -72,10 +73,9 @@ export default function Login() {
                 </div>
                 <div className={styles.useroremailorpasswordLogin}>
                     <div className={styles.containerUseroremail}>
-                        <input
+                        <Input
                             {...register("identifier")}
                             placeholder="Usuário ou E-mail"
-                            className={styles.inputLogin}
                             id={errors.identifier ? styles.inputError : ""}
                         />
                         {errors.identifier && (
@@ -86,11 +86,10 @@ export default function Login() {
                     </div>
                     <div className={styles.containerPassword}>
                         <div className={styles.passwordWrapper}>
-                            <input
+                            <Input
                                 type={showPassword ? "text" : "password"}
                                 {...register("password")}
                                 placeholder="Senha"
-                                className={styles.inputLogin}
                                 id={errors.password ? styles.inputError : ''}
                             />
                             <button
