@@ -1,0 +1,51 @@
+.FormContainer {
+  width: 30.5rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--red-400);
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  border-radius: 0.125rem;
+  gap: 2rem;
+  z-index: 1;
+}
+.titleFormContainer {
+  color: var(--white);
+  font-family: var(--font-numans);
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.92px;
+}
+.descriptionFormContainer {
+  padding-inline: 2rem;
+  color: var(--white);
+  text-align: center;
+  font-family: var(--font-roboto-serif);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.8px;
+}
+.descriptionFormContainer strong{
+    font-style: italic;
+    font-weight: 900;
+}
+.internalContainer1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 31px;
+}
+.internalContainer2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

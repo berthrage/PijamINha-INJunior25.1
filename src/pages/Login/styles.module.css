@@ -192,6 +192,7 @@ main {
 
 
 .forgotpassButton {
+    max-width: 130px;
     display: flex;
     color: var(--red-0);
     border: none;
@@ -203,6 +204,7 @@ main {
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.6px;
+    cursor: pointer;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
     
     &:active {
@@ -212,7 +214,6 @@ main {
 }
 @media (hover: hover) {
     .forgotpassButton :hover {
-        cursor: pointer;
         transform: scale(1.03);
         opacity: 0.8;
     }
