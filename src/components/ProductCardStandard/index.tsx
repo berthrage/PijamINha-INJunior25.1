@@ -5,37 +5,45 @@ import PriceRealFormatted from '../PriceRealFormatted';
 import heartActive from '../../assets/icons/heart-active.png';
 import heartInactive from '../../assets/icons/heart-inactive.png';
 import discountIcon from '../../assets/icons/discount.png';
+import { useState } from 'react';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
 }
 
 export default function ProductCardStandard({pajama}: ProductCardStandardProps) {
+    const [ favorite, setFavorite ] = useState(pajama.favorite);
 
     const PricePart = () => (
         pajama.sale_percent ? (
             <>
-                <PriceRealFormatted 
-                    className={styles.realPrice} 
-                    price={pajama.price}>
-                </PriceRealFormatted>
-                <PriceRealFormatted 
-                    className={styles.discountPrice} 
-                    price={pajama.price - (pajama.price * (pajama.sale_percent / 100))}>
-                </PriceRealFormatted>
+                <div className={styles.pricePartBox}>
+                    <PriceRealFormatted
+                        className={styles.realPrice}
+                        price={pajama.price}>
+                    </PriceRealFormatted>
+                    <PriceRealFormatted
+                        className={styles.discountPrice}
+                        price={pajama.price - (pajama.price * (pajama.sale_percent / 100))}>
+                    </PriceRealFormatted>
+                </div>
             </>
         ) : (
             <>
-                <PriceRealFormatted 
-                    className={styles.price} 
-                    price={pajama.price}>
-                </PriceRealFormatted>
+                <div className={styles.pricePartBox}>
+                    <PriceRealFormatted 
+                        className={styles.price} 
+                        price={pajama.price}>
+                    </PriceRealFormatted>
+                </div>
             </>
         )
     );
 
     const toggleFavorite = () => {
-        pajama.favorite = !pajama.favorite;
+       setFavorite(!favorite);
+       pajama.favorite = !pajama.favorite;
+       console.log(pajama);
     }
 
     return (
@@ -44,19 +52,18 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
                 <div className={styles.imgSection}>
                     <ImageLink
                         img={pajama.image}
-                        linkTo={`/`}
                         alt={pajama.name}
                         id={styles.productImg}
                         width={408}
                         height={642.13}>
                     </ImageLink>
                     <ImageLink
-                        img={pajama.favorite ? heartActive : heartInactive}
+                        img={favorite ? heartActive : heartInactive}
                         alt="Favoritar"
                         id={styles.favoriteIcon}
-                        width={64}
-                        height={67.25}
-                        onClick={() => toggleFavorite}>
+                        width={51}
+                        height={55}
+                        onClick={toggleFavorite}>
                     </ImageLink>
                     {pajama.sale_percent ? (
                         <>

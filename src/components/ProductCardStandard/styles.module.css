@@ -10,6 +10,7 @@
 
 .imgSection {
     position: relative;
+    z-index: 0;
 }
 
 #productImg img {
@@ -19,12 +20,76 @@
 #favoriteIcon {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 24px;
     cursor: pointer;
+    z-index: 2;
 }
 
 #discountIcon {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 24px;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 15px;
+}
+
+.productInfoHeader h1 {
+    font-family: var(--font-numans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    color: var(--blue-300);
+}
+
+.priceSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.pricePartBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.realPrice {
+    font-family: var(--font-nunito-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--red-200);
+    text-decoration: line-through;
+}
+
+.discountPrice {
+    font-family: var(--font-nunito-sans);
+    font-weight: 700;
+    font-size: 2.3rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--blue-400);
+}
+
+.installments {
+    font-family: var(--font-nunito-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--blue-400);
+}
+
+.installmentPrice {
+    font-weight: 800;
 }
