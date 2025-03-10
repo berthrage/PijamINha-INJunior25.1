@@ -20,6 +20,7 @@ main {
     right: 0;
     background-image: url('../../assets/images/pattern-bg-blue0.png');
     background-position: center;
+    background-size: cover;
     background-repeat: repeat;
     opacity: 0.3; 
     z-index: 0; 
@@ -46,6 +47,7 @@ main {
     right: 0;
     background-image: url('../../assets/images/pattern-bg-white.png');
     background-position: center;
+    background-size: cover;
     background-repeat: repeat;
     opacity: 0.3; 
     z-index: 0; 
