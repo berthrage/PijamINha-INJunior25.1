@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
-interface ImageLinkProps {
+interface ImageLinkProps extends React.HTMLAttributes<HTMLDivElement>{
     img: string;
     linkTo?: string;
     alt?: string;
@@ -25,7 +25,7 @@ export default function ImageLink(props: ImageLinkProps) {
 
     return(
         <> 
-                <div className={styles.imgBox} style={dynamicStyle} id={props.id}>
+                <div {...props} className={styles.imgBox} style={dynamicStyle} id={props.id}>
                     {props.linkTo ? (
                         <Link to={props.linkTo}>
                             <ImagesContent></ImagesContent>

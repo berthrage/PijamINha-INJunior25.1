@@ -106,6 +106,7 @@ main {
     flex-direction: column;
     padding: 4vw var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
     z-index: 1;
+    gap: 20px;
 }
 
 .salesSection h1 {
