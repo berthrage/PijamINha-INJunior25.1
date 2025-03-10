@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 interface FormContainerProps extends React.HTMLAttributes<HTMLFormElement> {
     children: React.ReactNode;
     title: string;
-    description?: any;
+    description?: React.ReactNode;
 }
 
 const FormContainer: React.FC<FormContainerProps> = ({ children, title, description, ...rest}) => {

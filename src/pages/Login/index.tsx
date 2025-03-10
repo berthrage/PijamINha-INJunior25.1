@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import passwordEyeIcon from "../../assets/icons/password-eye.png";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import Form from "../../components/FormContainer"
+import FormContainer from "../../components/FormContainer"
 
 const loginSchema = z.object({
     identifier: z
@@ -62,10 +62,10 @@ export default function Login() {
 
     return (
         <div className={styles.loginSection}>
-            <Form onSubmit={handleSubmit(onSubmit)}
-            title="Login"
-            description={<span>Faça login para ter acesso aos pijamas dos seus <strong>sonhos!</strong></span>}
-            >
+            <FormContainer onSubmit={handleSubmit(onSubmit)}
+                title="Login"
+                description={<span>Faça login para ter acesso aos pijamas dos seus <strong>sonhos!</strong></span>}>
+
                 <div className={styles.useroremailorpasswordLogin}>
                     <div className={styles.containerUseroremail}>
                         <Input
@@ -126,7 +126,7 @@ export default function Login() {
                             Cadastre-se</Button>
                     </Link>
                 </div>
-            </Form>
+            </FormContainer>
         </div>
     );
 }
