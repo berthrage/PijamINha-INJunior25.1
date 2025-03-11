@@ -34,7 +34,8 @@ export default function Footer() {
                                     firstAlt="logoInstagram"
                                     secondAlt="logoInstagram"
                                     width={27}
-                                    height={27}>
+                                    height={27}
+                                    target="_blank">
                                 </ImageLinkTransition>
                                 <ImageLinkTransition
                                     linkTo={"https://www.facebook.com/injunioruff?_rdc=1&_rdr#"}
@@ -43,7 +44,8 @@ export default function Footer() {
                                     firstAlt="logoFacebook"
                                     secondAlt="logoFacebook"
                                     width={27}
-                                    height={27}>
+                                    height={27}
+                                    target="_blank">
                                 </ImageLinkTransition>
                                 <ImageLinkTransition
                                     linkTo={"https://www.linkedin.com/company/in-junior/"}
@@ -52,7 +54,8 @@ export default function Footer() {
                                     firstAlt="logoLinkedIn"
                                     secondAlt="logoLinkedIn"
                                     width={27}
-                                    height={27}>
+                                    height={27}
+                                    target="_blank">
                                 </ImageLinkTransition>
                             
                             </div>

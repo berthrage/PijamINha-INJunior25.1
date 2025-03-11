@@ -12,6 +12,7 @@ interface ImageLinkTransitionProps {
     id?: string;
     firstImgId?: string;
     secondImgId?: string;
+    target?: string;
 }
 
 export default function ImageLinkTransition(props: ImageLinkTransitionProps) {
@@ -31,7 +32,7 @@ export default function ImageLinkTransition(props: ImageLinkTransitionProps) {
         <> 
                 <div className={styles.imgBox} style={dynamicStyle} id={props.id}>
                     {props.linkTo ? (
-                        <Link to={props.linkTo}>
+                        <Link to={props.linkTo} target={props.target? props.target : "_self"}>
                             <ImagesContent></ImagesContent>
                         </Link>
                     ) : (<>
