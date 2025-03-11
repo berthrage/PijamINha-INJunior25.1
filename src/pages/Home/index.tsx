@@ -9,6 +9,8 @@ import ImageLink from '../../components/ImageLink';
 import Pajama from '../../types/Pajama';
 import examplePajamaImg from '../../assets/pajamas/example.jpg';
 import ProductCardStandard from '../../components/ProductCardStandard';
+import Feedback from '../../types/Feedback';
+import RatingCard from '../../components/RatingCard';
 
 const examplePajama: Pajama = {
     name: 'Pijama feminino longo - estampa poá',
@@ -23,6 +25,12 @@ const examplePajama: Pajama = {
     sale_percent: 15,
     sales: [],
 }
+
+const exampleFeedback: Feedback = {
+    name: 'Fulano da Silva',
+    rating: 4.5,
+    description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
+}	
 
 export default function Home() {
     return(
@@ -78,6 +86,13 @@ export default function Home() {
                         <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
                         <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
                         <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                    </div>
+                </div>
+
+                <div className={styles.feedbacksSection}>
+                    <h1>Feedbacks</h1>
+                    <div className={styles.ratingssSection}>
+                        <RatingCard feedback={exampleFeedback}></RatingCard>
                     </div>
                 </div>
 

@@ -1,0 +1,10 @@
+.ratingCard {
+    display: flex;
+    flex-direction: column;
+    width: 405px;
+    height: 409px;
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0px 4.01px 4.01px 0px #00000040;
+    padding: 
+}
