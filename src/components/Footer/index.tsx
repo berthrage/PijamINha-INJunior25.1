@@ -3,8 +3,6 @@ import logo from "../../assets/images/logo-variant1.png";
 import logoinstagram from "../../assets/icons/ico-insta.png";
 import logofacebook from "../../assets/icons/ico-facebook.png";
 import logolinkedin from "../../assets/icons/ico-linkedin.png";
-import { Link } from "react-router-dom";
-import ImageLink from "../ImageLink";
 import ImageLinkTransition from "../ImageLinkTransition";
 
 export default function Footer() {
