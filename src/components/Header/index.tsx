@@ -38,6 +38,7 @@ export default function Header() {
                             linkTo='/'
                             firstImg={cartIcon}
                             secondImg={cartIcon}
+                            transitionOnlyIn={true}
                             width={27}
                             height={27}
                             firstAlt='cartIcon'
@@ -47,6 +48,7 @@ export default function Header() {
                             linkTo='/'
                             firstImg={heartIcon}
                             secondImg={heartIcon}
+                            transitionOnlyIn={true}
                             width={27}
                             height={27}
                             firstAlt='heartIcon'
@@ -58,6 +60,7 @@ export default function Header() {
                         linkTo='/'
                         firstImg={userIcon}
                         secondImg={userIcon}
+                        transitionOnlyIn={true}
                         width={56}
                         height={56}
                         firstAlt='userIcon'

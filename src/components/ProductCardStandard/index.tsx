@@ -4,7 +4,6 @@ import ImageLink from '../ImageLink';
 import PriceRealFormatted from '../PriceRealFormatted';
 import heartActive from '../../assets/icons/heart-active.png';
 import heartActiveHovered from '../../assets/icons/heart-active-hovered.png';
-import heartInactiveHovered from '../../assets/icons/heart-inactive-hovered.png';
 import heartInactive from '../../assets/icons/heart-inactive.png';
 import discountIcon from '../../assets/icons/discount.png';
 import { useEffect, useRef, useState } from 'react';

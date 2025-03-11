@@ -31,6 +31,7 @@ export default function Footer() {
                                     linkTo={"https://www.instagram.com/injunioruff/"}
                                     firstImg={logoinstagram}
                                     secondImg={logoinstagram}
+                                    transitionOnlyIn={true}
                                     firstAlt="logoInstagram"
                                     secondAlt="logoInstagram"
                                     width={27}
@@ -41,6 +42,7 @@ export default function Footer() {
                                     linkTo={"https://www.facebook.com/injunioruff?_rdc=1&_rdr#"}
                                     firstImg={logofacebook}
                                     secondImg={logofacebook}
+                                    transitionOnlyIn={true}
                                     firstAlt="logoFacebook"
                                     secondAlt="logoFacebook"
                                     width={27}
@@ -51,6 +53,7 @@ export default function Footer() {
                                     linkTo={"https://www.linkedin.com/company/in-junior/"}
                                     firstImg={logolinkedin}
                                     secondImg={logolinkedin}
+                                    transitionOnlyIn={true}
                                     firstAlt="logoLinkedIn"
                                     secondAlt="logoLinkedIn"
                                     width={27}
