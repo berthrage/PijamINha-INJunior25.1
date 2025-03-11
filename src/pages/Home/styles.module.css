@@ -70,11 +70,15 @@ main {
     color: var(--blue-400);
 }
 
+.carouselSection {
+    width: 100%;
+}
+
 .featuresSection {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4vw var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    padding: 50px var(--width-main-padding) 5px var(--width-main-padding);
     z-index: 1;
 }
 
@@ -125,10 +129,6 @@ main {
     justify-content: center;
     align-items: center;
     gap: 80px;
-}
-
-.carouselSection {
-    width: 100%;
 }
 
 .feedbacksSection {
