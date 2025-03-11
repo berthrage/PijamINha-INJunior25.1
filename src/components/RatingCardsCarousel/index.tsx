@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules"; 
+import { EffectFade, Navigation } from "swiper/modules"; 
 import Feedback from "../../types/Feedback";
 import RatingCard from "../RatingCard";
 import styles from './styles.module.css';
@@ -33,9 +33,10 @@ export default function RatingCardsCarousel({ feedbacks }: RatingCardsCarouselPr
             </ImageLinkTransition>
 
             <Swiper
-                modules={[Navigation]} // Enable navigation
+                modules={[Navigation, EffectFade]} // Enable navigation
+                // effect="fade" fadeEffect={{ crossFade: true }} 
                 loop={true} 
-                spaceBetween={1} // Space between slides
+                spaceBetween={0} // Space between slides
                 slidesPerView={1} // Default slides per view
                 centerInsufficientSlides={true}
                 centeredSlidesBounds={true}
