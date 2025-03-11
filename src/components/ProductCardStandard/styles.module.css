@@ -23,6 +23,21 @@
     left: 24px;
     cursor: pointer;
     z-index: 2;
+    transition: transform 0.15s ease-in-out;
+}
+.animate {
+    animation: scaleUp 0.15s ease-in-out forwards;
+}
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #discountIcon {

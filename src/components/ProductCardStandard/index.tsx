@@ -3,9 +3,12 @@ import Pajama from '../../types/Pajama';
 import ImageLink from '../ImageLink';
 import PriceRealFormatted from '../PriceRealFormatted';
 import heartActive from '../../assets/icons/heart-active.png';
+import heartActiveHovered from '../../assets/icons/heart-active-hovered.png';
+import heartInactiveHovered from '../../assets/icons/heart-inactive-hovered.png';
 import heartInactive from '../../assets/icons/heart-inactive.png';
 import discountIcon from '../../assets/icons/discount.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ImageLinkTransition from '../ImageLinkTransition';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
@@ -13,6 +16,7 @@ interface ProductCardStandardProps {
 
 export default function ProductCardStandard({pajama}: ProductCardStandardProps) {
     const [ favorite, setFavorite ] = useState(pajama.favorite);
+    const favoriteIconRef = useRef<HTMLDivElement>(null);
 
     // Preload Hearts
     useEffect(() => {
@@ -55,6 +59,14 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
        setFavorite(!favorite);
        pajama.favorite = !pajama.favorite;
        console.log(pajama);
+
+       // Trigger animation
+       if (favoriteIconRef.current) {
+        favoriteIconRef.current.classList.add(styles.animate);
+        setTimeout(() => {
+            favoriteIconRef.current?.classList.remove(styles.animate);
+        }, 150); 
+    }
     }
 
     return (
@@ -68,14 +80,18 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
                         width={408}
                         height={642.13}>
                     </ImageLink>
-                    <ImageLink
-                        img={favorite ? heartActive : heartInactive}
-                        alt="Favoritar"
+                    <ImageLinkTransition
+                        firstImg={favorite ? heartActive : heartInactive}
+                        secondImg={favorite ? heartActive : heartActiveHovered}
+                        transitionOnlyIn={favorite}
+                        firstAlt="Favoritar"
+                        secondAlt='Desfavoritar'
                         id={styles.favoriteIcon}
                         width={51}
                         height={55}
-                        onClick={toggleFavorite}>
-                    </ImageLink>
+                        onClick={toggleFavorite}
+                        ref={favoriteIconRef}>
+                    </ImageLinkTransition>
                     {pajama.sale_percent ? (
                         <>
                             <ImageLink
