@@ -9,7 +9,9 @@
     padding: 31px;
     gap: 70px;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
+    align-self: center;
+    justify-self: center
 }
 
 .ratingCardHeader {

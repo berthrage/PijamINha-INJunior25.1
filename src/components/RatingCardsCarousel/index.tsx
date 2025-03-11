@@ -38,8 +38,7 @@ export default function RatingCardsCarousel({ feedbacks }: RatingCardsCarouselPr
                 loop={true} 
                 spaceBetween={0} // Space between slides
                 slidesPerView={1} // Default slides per view
-                centerInsufficientSlides={true}
-                centeredSlidesBounds={true}
+                initialSlide={0}
                 navigation={{
                     nextEl: `#${styles["swiperButtonNext"]}`,
                     prevEl: `#${styles["swiperButtonPrev"]}`,
