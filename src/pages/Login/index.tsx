@@ -11,15 +11,16 @@ import Input from "../../components/Input";
 import FormContainer from "../../components/FormContainer"
 
 const loginSchema = z.object({
-    identifier: z
-        .string()
+    identifier: z.string()
         .min(1, "Usuário ou e-mail é obrigatório.")
         .refine((value) => {
             const isEmail = z.string().email().safeParse(value).success;
-            const isUsername = !/\s/.test(value) && !/[À-ÿ]/.test(value);
+            const isUsername = /^[a-zA-Z0-9_]+$/.test(value);
             return isEmail || isUsername;
-        }, "Usuário ou E-mail errado."),
-    password: z.string().min(6, "A senha precisa ter no mínimo 6 dígitos."),
+        }, "Usuário ou E-mail inválido."),
+        password: z.string()
+        .min(6, "A senha precisa ter no mínimo 6 dígitos.")
+        .refine((value) => !/\s/.test(value), "A senha não pode conter espaços em branco."),
 });
 
 type LoginFormInputs = z.infer<typeof loginSchema>;

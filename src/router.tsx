@@ -4,6 +4,7 @@ import RootLayout from "./RootLayout";
 import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter(
     [
@@ -23,6 +24,10 @@ const router = createBrowserRouter(
                 {
                     path: '/feedback',
                     element: <Feedback></Feedback>
+                },
+                {
+                    path: "/register",
+                    element: <Register></Register>,
                 },
                 // {
                 //     path: "/genero/:genero",

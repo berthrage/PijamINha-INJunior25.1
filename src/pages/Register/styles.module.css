@@ -1,0 +1,50 @@
+main {
+    padding: 0;
+}
+
+.registerSection {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    z-index: 1;
+}
+
+.registerSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/images/pattern-bg-red300.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.3; 
+    z-index: 0; 
+}
+.containerRegister{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+.inputSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+.errorMessage{
+    color: var(--white);
+    font-family: var(--font-roboto);
+}
+#inputError {
+    outline: 3px solid var(--red-100);
+    outline-offset: 1px;
+    border-radius: 4px;
+}
