@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--white);
-    height: 340px;
+    height: 360px;
 }
 
 .containerfooterSection {
@@ -79,13 +79,13 @@
     justify-content: center;
     align-items: center;
     background: var(--blue-300);
-    height: 2.3125rem;
+    height: 60px;
 }
 
 .copyrightSection p {
     color: var(--blue-0);
     font-family: var(--font-roboto);
-    font-size: 16px;
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
