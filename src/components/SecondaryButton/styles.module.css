@@ -27,7 +27,7 @@
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 800px) {
     .buttonContainer {
         width: calc(100vw - var(--width-main-padding) * 2);
     }

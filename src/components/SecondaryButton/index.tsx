@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function SecondaryButton(props: ButtonProps) {
-    const isWideEnough = useMediaQuery('(min-width: 440px)');
+    const isWideEnough = useMediaQuery('(min-width: 800px)');
 
     const staticStyle = {
         width: props.width ? `${props.width}px` : `${772}px`,
