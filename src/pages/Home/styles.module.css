@@ -124,7 +124,7 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 80px;
 }
 
 .feedbacksSection {

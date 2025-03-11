@@ -71,8 +71,8 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
                                 img={discountIcon}
                                 alt="Desconto"
                                 id={styles.discountIcon}
-                                width={67}
-                                height={67}>
+                                width={80}
+                                height={80}>
                             </ImageLink>
                         </>
                     ) : ('')}
