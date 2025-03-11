@@ -12,6 +12,7 @@ import ProductCardStandard from '../../components/ProductCardStandard';
 import Feedback from '../../types/Feedback';
 import SecondaryButton from '../../components/SecondaryButton';
 import RatingCardsCarousel from '../../components/RatingCardsCarousel';
+import HomeCarousel from '../../components/HomeCarousel';
 
 const examplePajama: Pajama = {
     name: 'Pijama feminino longo - estampa poá',
@@ -65,6 +66,10 @@ export default function Home() {
                     <div className={styles.sloganBox}>
                         <h1>Se os lobos soubessem desse conforto, nem sopravam casas, iam dormir!</h1>
                     </div>
+                </div>
+
+                <div className={styles.carouselSection}>
+                    <HomeCarousel></HomeCarousel>
                 </div>
 
                 <div className={styles.featuresSection}>

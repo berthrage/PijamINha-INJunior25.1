@@ -127,6 +127,10 @@ main {
     gap: 80px;
 }
 
+.carouselSection {
+    width: 100%;
+}
+
 .feedbacksSection {
     display: flex;
     flex-direction: column;

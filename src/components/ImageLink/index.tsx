@@ -9,12 +9,13 @@ interface ImageLinkProps extends React.HTMLAttributes<HTMLDivElement>{
     height?: number;
     id?: string;
     imgId?: string;
+    occupyFullWidth?: boolean;
 }
 
 export default function ImageLink(props: ImageLinkProps) {
     const dynamicStyle = {
-        width: props.width ? `${props.width}px` : undefined,
-        height: props.height ? `${props.height}px` : undefined
+        width: props.width ? `${props.width}px` : props.occupyFullWidth ? '100%' : undefined,
+        height: props.height ? `${props.height}px` : props.occupyFullWidth ? '100%' : undefined,
     };
 
     const ImagesContent = () => (
