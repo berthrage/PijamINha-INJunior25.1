@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: column;
     background-color: var(--white);
+    height: 340px;
 }
 
 .containerfooterSection {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 15px var(--width-main-padding) 15px var(--width-main-padding);
 }
 
 .adressandcontactSection {
