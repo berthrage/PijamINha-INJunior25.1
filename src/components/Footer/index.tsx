@@ -4,6 +4,8 @@ import logoinstagram from "../../assets/icons/ico-insta.png";
 import logofacebook from "../../assets/icons/ico-facebook.png";
 import logolinkedin from "../../assets/icons/ico-linkedin.png";
 import { Link } from "react-router-dom";
+import ImageLink from "../ImageLink";
+import ImageLinkTransition from "../ImageLinkTransition";
 
 export default function Footer() {
     return (
@@ -26,27 +28,35 @@ export default function Footer() {
                                 <p>contato@injunior.com.br</p>
                             </div>
                             <div className={styles.socialSection}>
-                                <Link
-                                    to={"https://www.instagram.com/injunioruff/"}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img src={logoinstagram} alt="Logo Instagram" />
-                                </Link>
-                                <Link
-                                    to={"https://www.facebook.com/injunioruff?_rdc=1&_rdr#"}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img src={logofacebook} alt="Logo Facebook" />
-                                </Link>
-                                <Link
-                                    to={"https://www.linkedin.com/company/in-junior/"}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img src={logolinkedin} alt="Logo Linkedin" />
-                                </Link>
+                                
+                                <ImageLinkTransition
+                                    linkTo={"https://www.instagram.com/injunioruff/"}
+                                    firstImg={logoinstagram}
+                                    secondImg={logoinstagram}
+                                    firstAlt="logoInstagram"
+                                    secondAlt="logoInstagram"
+                                    width={27}
+                                    height={27}>
+                                </ImageLinkTransition>
+                                <ImageLinkTransition
+                                    linkTo={"https://www.facebook.com/injunioruff?_rdc=1&_rdr#"}
+                                    firstImg={logofacebook}
+                                    secondImg={logofacebook}
+                                    firstAlt="logoFacebook"
+                                    secondAlt="logoFacebook"
+                                    width={27}
+                                    height={27}>
+                                </ImageLinkTransition>
+                                <ImageLinkTransition
+                                    linkTo={"https://www.linkedin.com/company/in-junior/"}
+                                    firstImg={logolinkedin}
+                                    secondImg={logolinkedin}
+                                    firstAlt="logoLinkedIn"
+                                    secondAlt="logoLinkedIn"
+                                    width={27}
+                                    height={27}>
+                                </ImageLinkTransition>
+                            
                             </div>
                         </div>
                     </div>

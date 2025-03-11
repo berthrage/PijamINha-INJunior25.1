@@ -18,7 +18,7 @@
 
 .adressandcontactSection h2 {
     font-family: Roboto;
-    font-size: 24px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -28,12 +28,12 @@
 .adressandcontactSection p{
     width: 19rem;
     font-family: Roboto;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 1px;
-color: var(--blue-400);
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: var(--blue-400);
 }
 
 .adressSection{
@@ -55,9 +55,6 @@ color: var(--blue-400);
 .socialSection {
     display: flex;
     gap: 0.5rem;
-}
-.socialSection img{
-    height: 2rem;
 }
 
 .logoSection {
