@@ -92,7 +92,10 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
                             <span>6x de </span>
                             <PriceRealFormatted 
                                 className={styles.installmentPrice}
-                                price={pajama.price / 6}>
+                                price={
+                                    pajama.sale_percent ? 
+                                    (pajama.price - (pajama.price * (pajama.sale_percent / 100))) / 6 
+                                    : pajama.price / 6}>
                             </PriceRealFormatted>
                         </div>
 
