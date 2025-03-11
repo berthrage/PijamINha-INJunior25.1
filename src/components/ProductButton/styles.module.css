@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #565656;
+    background: var(--white);
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon {
+    font-size: 16px;
+    color: #007bff;
+  }
+  
+  .quantity {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+
+  @keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .bounce {
+    animation: bounce 0.3s ease;
+  }
