@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
+import React from 'react';
 
 interface ImageLinkProps extends React.HTMLAttributes<HTMLDivElement>{
     img: string;
@@ -12,7 +13,7 @@ interface ImageLinkProps extends React.HTMLAttributes<HTMLDivElement>{
     occupyFullWidth?: boolean;
 }
 
-export default function ImageLink(props: ImageLinkProps) {
+function ImageLink(props: ImageLinkProps, ref?: React.Ref<HTMLDivElement>) {
     const dynamicStyle = {
         width: props.width ? `${props.width}px` : props.occupyFullWidth ? '100%' : undefined,
         height: props.height ? `${props.height}px` : props.occupyFullWidth ? '100%' : undefined,
@@ -26,15 +27,20 @@ export default function ImageLink(props: ImageLinkProps) {
 
     return(
         <> 
-                <div {...props} className={styles.imgBox} style={dynamicStyle} id={props.id}>
-                    {props.linkTo ? (
-                        <Link to={props.linkTo}>
-                            <ImagesContent></ImagesContent>
-                        </Link>
-                    ) : (<>
-                            <ImagesContent></ImagesContent>
-                        </>
-                    )}
+                <div 
+                    {...props} 
+                    className={styles.imgBox} 
+                    style={dynamicStyle} 
+                    id={props.id} 
+                    ref={ref}>
+                        {props.linkTo ? (
+                            <Link to={props.linkTo}>
+                                <ImagesContent></ImagesContent>
+                            </Link>
+                        ) : (<>
+                                <ImagesContent></ImagesContent>
+                            </>
+                        )}
                 </div>
 
             
@@ -42,3 +48,5 @@ export default function ImageLink(props: ImageLinkProps) {
         </>
     )
 }
+
+export default React.forwardRef(ImageLink);
