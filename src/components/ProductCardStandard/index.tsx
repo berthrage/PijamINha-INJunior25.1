@@ -25,6 +25,7 @@ export default function ProductCardStandard({pajama}: ProductCardStandardProps) 
         };
 
         preloadImage(heartActive);
+        preloadImage(heartActiveHovered);
         preloadImage(heartInactive);
     }, []);
 
