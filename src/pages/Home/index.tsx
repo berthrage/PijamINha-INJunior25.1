@@ -106,9 +106,9 @@ export default function Home() {
                 <div className={styles.salesSection}>
                     <h1>Nossas últimas promoções!</h1>
                     <div className={styles.productCardsSection}>
-                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
-                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
-                        <ProductCardStandard pajama={examplePajama}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={0}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={150}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={300}></ProductCardStandard>
                     </div>
                 </div>
 
