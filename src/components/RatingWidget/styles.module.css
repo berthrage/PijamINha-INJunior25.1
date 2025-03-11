@@ -1,0 +1,14 @@
+.starratingSection {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.star img{
+    
+
+    transition: color 0.2s;
+}
+.inputStar{
+    border: none;
+}
