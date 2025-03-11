@@ -1,5 +1,5 @@
 .ratingCardsCarousel {
-    width: 80%;
+    width: 93%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,19 +9,38 @@
 .swiperContainer {
     width: 90%;
     height: 412px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.swiperButtonNext, .swiperButtonPrev {
+.swiperSlide {
+    display: flex;
+    align-self: center;
+}
+
+#swiperButtonNext, #swiperButtonPrev {
     position: absolute;
     z-index: 10;
     cursor: pointer;
 }
 
-.swiperButtonNext {
+#swiperButtonNext {
     right: 0px;
 }
 
-.swiperButtonPrev {
+#swiperButtonPrev {
     left: 0px;
+}
+
+@media (max-width: 1505px) {
+    .swiperContainer {
+        width: 95%;
+    }
+}
+
+@media (max-width: 1609px) {
+    .ratingCardsCarousel {
+        width: 100%;
+    }
 }
