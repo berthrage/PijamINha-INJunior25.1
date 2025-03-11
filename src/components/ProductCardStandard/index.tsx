@@ -5,7 +5,7 @@ import PriceRealFormatted from '../PriceRealFormatted';
 import heartActive from '../../assets/icons/heart-active.png';
 import heartInactive from '../../assets/icons/heart-inactive.png';
 import discountIcon from '../../assets/icons/discount.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
@@ -13,6 +13,17 @@ interface ProductCardStandardProps {
 
 export default function ProductCardStandard({pajama}: ProductCardStandardProps) {
     const [ favorite, setFavorite ] = useState(pajama.favorite);
+
+    // Preload Hearts
+    useEffect(() => {
+        const preloadImage = (src: string) => {
+            const img = new Image();
+            img.src = src;
+        };
+
+        preloadImage(heartActive);
+        preloadImage(heartInactive);
+    }, []);
 
     const PricePart = () => (
         pajama.sale_percent ? (
