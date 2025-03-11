@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .ratingCardHeader h1 {
@@ -27,6 +27,17 @@
     letter-spacing: 0%;
     text-align: center;
     color: var(--black);
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+}
+
+.star {
+    width: 40px;
+    height: 40px;
 }
 
 .ratingCardDescription p {
@@ -40,3 +51,4 @@
     vertical-align: bottom;
     color: var(--black);
 }
+
