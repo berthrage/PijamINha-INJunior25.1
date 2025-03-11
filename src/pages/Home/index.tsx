@@ -10,8 +10,8 @@ import Pajama from '../../types/Pajama';
 import examplePajamaImg from '../../assets/pajamas/example.jpg';
 import ProductCardStandard from '../../components/ProductCardStandard';
 import Feedback from '../../types/Feedback';
-import RatingCard from '../../components/RatingCard';
 import SecondaryButton from '../../components/SecondaryButton';
+import RatingCardsCarousel from '../../components/RatingCardsCarousel';
 
 const examplePajama: Pajama = {
     name: 'Pijama feminino longo - estampa poá',
@@ -27,11 +27,28 @@ const examplePajama: Pajama = {
     sales: [],
 }
 
-const exampleFeedback: Feedback = {
-    name: 'Fulano da Silva',
-    rating: 4.5,
-    description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
-}	
+const exampleFeedbacks: Feedback[] = [
+    { 
+        name: 'Fulano da Silva',
+        rating: 4.5,
+        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
+    },
+    {
+        name: "Beltrano Souza",
+        rating: 4.0,
+        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
+      },
+      {
+        name: "Ciclano Mendes",
+        rating: 5.0,
+        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
+      },
+      {
+        name: "Victória ",
+        rating: 5.0,
+        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
+      },
+];	
 
 export default function Home() {
     return(
@@ -93,7 +110,7 @@ export default function Home() {
                 <div className={styles.feedbacksSection}>
                     <h1>Feedbacks</h1>
                     <div className={styles.ratingsSection}>
-                        <RatingCard feedback={exampleFeedback}></RatingCard>
+                        <RatingCardsCarousel feedbacks={exampleFeedbacks}></RatingCardsCarousel>
                         
                         <SecondaryButton
                             linkTo='/feedback'

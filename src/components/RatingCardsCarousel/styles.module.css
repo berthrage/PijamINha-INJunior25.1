@@ -1,0 +1,27 @@
+.ratingCardsCarousel {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiperContainer {
+    width: 90%;
+    height: 412px;
+    
+}
+
+.swiperButtonNext, .swiperButtonPrev {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.swiperButtonNext {
+    right: 0px;
+}
+
+.swiperButtonPrev {
+    left: 0px;
+}
