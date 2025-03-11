@@ -11,6 +11,7 @@ import examplePajamaImg from '../../assets/pajamas/example.jpg';
 import ProductCardStandard from '../../components/ProductCardStandard';
 import Feedback from '../../types/Feedback';
 import RatingCard from '../../components/RatingCard';
+import SecondaryButton from '../../components/SecondaryButton';
 
 const examplePajama: Pajama = {
     name: 'Pijama feminino longo - estampa poá',
@@ -91,9 +92,17 @@ export default function Home() {
 
                 <div className={styles.feedbacksSection}>
                     <h1>Feedbacks</h1>
-                    <div className={styles.ratingssSection}>
+                    <div className={styles.ratingsSection}>
                         <RatingCard feedback={exampleFeedback}></RatingCard>
+                        
+                        <SecondaryButton
+                            linkTo='/feedback'
+                            className={styles.feedbackButton}>
+                                Também quero dar um feedback!
+                        </SecondaryButton>
+                        
                     </div>
+                    
                 </div>
 
 

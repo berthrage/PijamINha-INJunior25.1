@@ -142,3 +142,12 @@ main {
     letter-spacing: 0%;
     color: var(--red-400);
 }
+
+.ratingsSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+}
+
