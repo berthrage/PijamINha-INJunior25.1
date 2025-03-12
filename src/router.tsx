@@ -5,7 +5,7 @@ import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
-import ProductButton from "./components/ProductButton";
+// import ProductButton from "./components/ProductButton";
 import SecondHeader from "./components/SecondHeader";
 
 const router = createBrowserRouter(
@@ -29,8 +29,16 @@ const router = createBrowserRouter(
                 },
                 {
                     path: "/register",
-                    element: <><SecondHeader></SecondHeader><Register></Register></>,
+                    element: <><Register></Register></>,
                     
+                },
+                {
+                    path:"/carrinho",
+                    element: <><SecondHeader></SecondHeader></>
+                },
+                {
+                    path:"/favoritos",
+                    element: <><SecondHeader></SecondHeader></>
                 },
                 // {
                 //     path: "/genero/:genero",
@@ -43,10 +51,6 @@ const router = createBrowserRouter(
                 }
             ]
         },
-        // {
-        //     path: "/login",
-        //     element: <Login></Login>
-        // },
         
     ]
 );
