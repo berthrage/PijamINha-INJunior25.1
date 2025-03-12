@@ -35,7 +35,7 @@ export default function Header() {
 
                     <div className={styles.cartHeartBox}>
                         <ImageLinkTransition
-                            linkTo='/carrinho'
+                            linkTo='/cart'
                             firstImg={cartIcon}
                             secondImg={cartIcon}
                             transitionOnlyIn={true}
@@ -45,7 +45,7 @@ export default function Header() {
                             secondAlt='cartIconHovered'>
                         </ImageLinkTransition>
                         <ImageLinkTransition
-                            linkTo='/favoritos'
+                            linkTo='/wishlist'
                             firstImg={heartIcon}
                             secondImg={heartIcon}
                             transitionOnlyIn={true}

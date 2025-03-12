@@ -11,7 +11,7 @@ export default function SecondHeader() {
 
     return (
         <div className={styles.secondHeader}>
-            <Link to='/carrinho'>
+            <Link to='/cart'>
                 <div 
                     className={styles.iconContainer}
                     onMouseEnter={() => setIsCartHovered(true)}
@@ -19,16 +19,16 @@ export default function SecondHeader() {
                 >
                     <div className={isCartHovered ? styles.hovered : styles.unhovered}>
                         <MdOutlineShoppingCart
-                            className={location.pathname === '/carrinho' ? styles.active : ''} // Aplica a classe active
+                            className={location.pathname === '/cart' ? styles.active : ''} 
                             size={50}
                         />
-                        <span className={location.pathname === '/carrinho' ? styles.active : ''}> {/* Aplica a classe active */}
+                        <span className={location.pathname === '/cart' ? styles.active : ''}> 
                             Carrinho
                         </span>
                     </div>
                 </div>
             </Link>
-            <Link to='/favoritos'>
+            <Link to='/wishlist'>
                 <div 
                     className={styles.iconContainer}
                     onMouseEnter={() => setIsFavoritosHovered(true)}
@@ -36,10 +36,10 @@ export default function SecondHeader() {
                 >
                     <div className={isFavoritosHovered ? styles.hovered : styles.unhovered}>
                         <FaHeart
-                            className={location.pathname === '/favoritos' ? styles.active : ''} 
+                            className={location.pathname === '/wishlist' ? styles.active : ''} 
                             size={50}
                         />
-                        <span className={location.pathname === '/favoritos' ? styles.active : ''}>
+                        <span className={location.pathname === '/wishlist' ? styles.active : ''}>
                             Favoritos
                         </span>
                     </div>

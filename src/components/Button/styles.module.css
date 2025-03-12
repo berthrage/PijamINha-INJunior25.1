@@ -16,6 +16,7 @@
     line-height: normal;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    &:hover{
-        cursor: pointer;}
+}
+.primaryButton:hover{
+    cursor: pointer;
 }

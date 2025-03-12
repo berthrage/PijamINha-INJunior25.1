@@ -1,0 +1,155 @@
+.cartSection {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  padding: var(--height-main-padding) var(--width-main-padding)
+    var(--height-main-padding) var(--width-main-padding);
+  z-index: 1;
+}
+
+.cartSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: url("../../assets/images/pattern-bg-blue0.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  opacity: 0.3;
+  z-index: 0;
+}
+.containerCart {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 3rem;
+}
+.containerCart img {
+  width: 182px;
+  height: 273px;
+}
+.containerCart .icon {
+  color: black;
+}
+.interncontainerCart {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+.titleCart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+.titleCart h1 {
+  color: var(--blue-400);
+  font-family: var(--font-nunito-sans);
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.titleCart p {
+  color: var(--blue-300);
+  font-family: var(--font-numans);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.56px;
+}
+.sizeCart button {
+  border-radius: 1.473px;
+  background: var(--Azul-300, #3e677a);
+  border: none;
+  color: var(--white);
+  font-family: var(--font-numans);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 3.125rem;
+  height: 3.125rem;
+}
+.containerquantityCart {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  align-items: start;
+  justify-content: center;
+  font-family: var(--font-nunito-sans);
+  color: var(--black);
+}
+
+.containerquantityCart p {
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+}
+.containerquantityCart span {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.productpriceCart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 5%;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-family: var(--font-nunito-sans);
+  color: var(--black);
+}
+
+#buttonCart {
+  width: 308px;
+  height: 93px;
+  padding: 4px 16px;
+  box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.625rem;
+  background: var(--blue-100);
+  color: var(--white);
+  font-family: var(--font-montserrat);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  position: relative;
+  z-index: 1;
+}
+.totalCart {
+  display: flex;
+  flex-direction: row;
+  gap: 6.25rem;
+  font-family: var(--font-outfit);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.92px;
+  color: var(--black);
+}
+.buySection{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}

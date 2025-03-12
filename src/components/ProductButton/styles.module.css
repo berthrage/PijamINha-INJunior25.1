@@ -1,9 +1,12 @@
 .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     border: 2px solid #565656;
     background: var(--white);
+    width: 11rem;
+    height: 2.5rem;
   }
   
   .iconButton {

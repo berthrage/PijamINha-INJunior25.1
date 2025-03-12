@@ -7,6 +7,7 @@ import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
 // import ProductButton from "./components/ProductButton";
 import SecondHeader from "./components/SecondHeader";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter(
     [
@@ -33,11 +34,11 @@ const router = createBrowserRouter(
                     
                 },
                 {
-                    path:"/carrinho",
-                    element: <><SecondHeader></SecondHeader></>
+                    path:"/cart",
+                    element: <><SecondHeader></SecondHeader><Cart></Cart></>
                 },
                 {
-                    path:"/favoritos",
+                    path:"/wishlist",
                     element: <><SecondHeader></SecondHeader></>
                 },
                 // {
