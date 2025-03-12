@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import ImageLink from "../ImageLink";
+import useMediaQuery from "../../hooks/useMediaQueries";
 import starInactive from '../../assets/icons/star-inactive-white.png';
 import starActive from '../../assets/icons/star-active-white.png';
-import starActiveHovered from '../../assets/icons/star-active-white-hovered.png';
-import starHalfHovered from '../../assets/icons/star-active-half-white-hovered.png';
+// import starActiveHovered from '../../assets/icons/star-active-white-hovered.png';
+// import starHalfHovered from '../../assets/icons/star-active-half-white-hovered.png';
 import starHalf from '../../assets/icons/star-active-half-white.png';
 import styles from "./styles.module.css";
 
@@ -15,6 +15,7 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const starRefs = useRef<(HTMLSpanElement | null)[]>([]);
+    const canHover = useMediaQuery("(hover: hover)");
 
     const handleRating = (value: number) => {
         setRating(value);
@@ -23,6 +24,7 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
     };
 
     const handleMouseMove = (event: React.MouseEvent<HTMLSpanElement>, value: number) => {
+        if (!canHover) return;
         const { left, width } = event.currentTarget.getBoundingClientRect();
         const hoverX = event.clientX - left;
         const newHover = hoverX < width / 2 ? value - 0.5 : value;
@@ -30,6 +32,7 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
     };
 
     const handleMouseLeave = () => {
+        if (!canHover) return;
         setHover(0);
     };
 
@@ -38,6 +41,7 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
         const clickX = event.clientX - left;
         const newRating = clickX < width / 2 ? value - 0.5 : value;
         handleRating(newRating);
+        if (!canHover) setHover(newRating); setTimeout(() => {setHover(0)}, 150) ;
     };
 
     const animateStars = (value: number) => {
@@ -62,6 +66,10 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
                         className={styles.star}
                         style={{
                             cursor: "pointer",
+                            position: "relative",
+                            display: "inline-block",
+                            width: 44,
+                            height: 42,
                         }}
                         onMouseMove={(event) => handleMouseMove(event, ratingValue)}
                         onMouseLeave={handleMouseLeave}
@@ -70,21 +78,70 @@ const RatingWidget: React.FC<RatingWidgetProps> = ({ onRatingChange }) => {
                             starRefs.current[index] = element;
                         }}
                     >
-                        <ImageLink
-                            img={
-                                hover >= ratingValue
-                                    ? starActive
-                                    : hover >= ratingValue - 0.5
-                                    ? starHalf
-                                    : rating >= ratingValue && hover === 0
-                                    ? starActive
-                                    : rating >= ratingValue - 0.5 && hover === 0
-                                    ? starHalf
-                                    : starInactive
-                            }
-                            width={44}
-                            height={42}
+                        <img
+                            src={starInactive}
                             alt="star"
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                opacity: hover >= ratingValue || (rating >= ratingValue && hover === 0) ? 0 : 1,
+                                transition: "opacity 0.3s ease-in-out",
+                            }}
+                        />
+                        <img
+                            src={starActive}
+                            alt="star"
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                opacity: rating >= ratingValue && hover === 0 ? 1 : 0,
+                                transition: "opacity 0.3s ease-in-out",
+                            }}
+                        />
+                        <img
+                            src={starActive} //starActiveHovered
+                            alt="star"
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                opacity: hover >= ratingValue ? 1 : 0,
+                                transition: "opacity 0.3s ease-in-out",
+                            }}
+                        />
+                        <img
+                            src={starHalf}
+                            alt="star"
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                opacity: rating >= ratingValue - 0.5 && rating < ratingValue && hover === 0 ? 1 : 0,
+                                transition: "opacity 0.3s ease-in-out",
+                            }}
+                        />
+                        <img
+                            src={starHalf} // starHalfHovered
+                            alt="star"
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                opacity: hover >= ratingValue - 0.5 && hover < ratingValue ? 1 : 0,
+                                transition: "opacity 0.3s ease-in-out",
+                            }}
                         />
                     </span>
                 );
