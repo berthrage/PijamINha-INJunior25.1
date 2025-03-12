@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
 import PajamasPage from "./pages/PajamasPage";
-import SecondHeader from "./components/SecondHeader";
+import CartWishlistHeader from "./components/CartWishlistHeader";
 import Cart from "./pages/Cart";
 
 const router = createBrowserRouter(
@@ -35,11 +35,11 @@ const router = createBrowserRouter(
                 },
                 {
                     path:"/cart",
-                    element: <><SecondHeader></SecondHeader><Cart></Cart></>
+                    element: <><CartWishlistHeader></CartWishlistHeader><Cart></Cart></>
                 },
                 {
                     path:"/wishlist",
-                    element: <><SecondHeader></SecondHeader></>
+                    element: <><CartWishlistHeader></CartWishlistHeader></>
                 },
                 {
                     path: "/pajamas",

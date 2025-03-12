@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 
-export default function SecondHeader() {
+export default function CartWishlistHeader() {
     const location = useLocation();
     const [isCartHovered, setIsCartHovered] = useState(false);
     const [isFavoritosHovered, setIsFavoritosHovered] = useState(false);
