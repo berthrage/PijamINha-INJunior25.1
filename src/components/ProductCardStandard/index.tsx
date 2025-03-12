@@ -11,10 +11,14 @@ import ImageLinkTransition from '../ImageLinkTransition';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
-    fadeInTimeout?: number
+    fadeInTimeout?: number,
+    fadeInThreshold?: number
+    itemsPerRow?: number,
+    id?: string,
+    scale?: number,
 }
 
-export default function ProductCardStandard({ pajama, fadeInTimeout }: ProductCardStandardProps) {
+export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThreshold, itemsPerRow, id, scale, }: ProductCardStandardProps) {
     const [ favorite, setFavorite ] = useState(pajama.favorite);
     const favoriteIconRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -65,10 +69,10 @@ export default function ProductCardStandard({ pajama, fadeInTimeout }: ProductCa
                 if (entries[0].isIntersecting) {
                     setTimeout(() => {
                         setIsVisible(true);
-                    }, fadeInTimeout? fadeInTimeout : 0);
+                    }, fadeInTimeout ? fadeInTimeout : 0);
                     observer.disconnect();
                 }
-            }, { threshold: 0.2 } // Trigger when 20% of the card is visible
+            }, { threshold: fadeInThreshold? fadeInThreshold : 0.1 } // Trigger when 10% of the card is visible
         );
 
         if (cardRef.current) {
@@ -76,7 +80,7 @@ export default function ProductCardStandard({ pajama, fadeInTimeout }: ProductCa
         }
         return () => observer.disconnect();
 
-    }, []);
+    }, [fadeInTimeout, itemsPerRow]);
 
     const toggleFavorite = () => {
        setFavorite(!favorite);
@@ -94,7 +98,12 @@ export default function ProductCardStandard({ pajama, fadeInTimeout }: ProductCa
 
     return (
         <>
-            <div className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`} ref={cardRef}>
+            <div 
+                className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`} 
+                id={id} 
+                ref={cardRef}
+                style={{transform: `scale(${scale ? scale : 1})`}}>
+
                 <div className={styles.imgSection}>
                     <ImageLink
                         img={pajama.image}
