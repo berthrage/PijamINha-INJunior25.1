@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 import Button from '../../components/Button'
-import ProductButton from '../../components/ProductButton';
+import NumericStepper from '../../components/NumericStepper';
 import imagem from '../../assets/pajamas/example.jpg'
 import { IoMdClose } from "react-icons/io";
 
@@ -24,7 +24,7 @@ export default function Cart() {
                     <div className={styles.containerquantityCart}>
                         <p>Quantidade:</p>
                         
-                            <ProductButton></ProductButton>
+                            <NumericStepper></NumericStepper>
                         
                         <span>Não perca sua oportunidade!</span>
                         <span>Há apenas mais <span> {quantidade}</span> peças disponíveis</span></div>

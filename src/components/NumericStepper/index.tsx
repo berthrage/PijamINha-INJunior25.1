@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-interface ProductButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface NumericStepperProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const ProductButton: React.FC<ProductButtonProps> = () => {
+const NumericStepper: React.FC<NumericStepperProps> = () => {
   const [quantity, setQuantity] = useState(1);
   const [animate, setAnimate] = useState(false);
 
@@ -45,4 +45,4 @@ const ProductButton: React.FC<ProductButtonProps> = () => {
   );
 };
 
-export default ProductButton;
+export default NumericStepper;
