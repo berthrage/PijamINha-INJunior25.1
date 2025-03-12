@@ -20,9 +20,9 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
     set({ isFetching: true });
 
     try {
-      const response = await api.get('');
+      const response = await api.get('/pajamas/');
       console.log(response.data);
-      set({ books: response.data, errorCode: null });
+      set({ pajamas: response.data, errorCode: null });
 
     } catch (error) {
         const err : any = error; 
@@ -30,7 +30,7 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
         set({ errorCode: err.response?.status || 500 });
         setTimeout(() => {
             console.log('Tentando novamente...');
-            set({ books: [] }); // Reset books for retry
+            set({ pajamas: [] }); // Reset books for retry
             get().fetchPajamas(); // Retry 
         }, 5000);
 

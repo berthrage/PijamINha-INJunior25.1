@@ -1,3 +1,5 @@
+import Sale from "./Sale";
+
 interface Pajama {
     name: string,
     description: string,
@@ -9,7 +11,7 @@ interface Pajama {
     favorite: boolean,
     on_sale: boolean,
     sale_percent?: number,
-    sales: any,
+    sales: Sale[],
 }
 
 export default Pajama;
