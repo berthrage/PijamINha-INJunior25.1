@@ -1,0 +1,41 @@
+.secondHeader {
+  width: 100%;
+  height: 178px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+  padding-bottom: 32px;
+  gap: 2rem;
+  background-color: #f8f8f8;
+}
+
+.iconContainer {
+  display: flex;
+  margin-left: 48px;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-numans);
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.6px;
+}
+.iconContainer img {
+  width: 3.75rem;
+  height: 3.75rem;
+  aspect-ratio: 1/1;
+}
+
+.unhovered{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.hovered {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--red-300);
+    transition: background-color 0.3s ease; /* Transição suave */
+}
