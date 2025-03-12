@@ -5,7 +5,7 @@ import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
-// import ProductButton from "./components/ProductButton";
+import PajamasPage from "./pages/PajamasPage";
 import SecondHeader from "./components/SecondHeader";
 import Cart from "./pages/Cart";
 
@@ -40,6 +40,10 @@ const router = createBrowserRouter(
                 {
                     path:"/wishlist",
                     element: <><SecondHeader></SecondHeader></>
+                },
+                {
+                    path: "/pajamas",
+                    element: <PajamasPage></PajamasPage>,
                 },
                 // {
                 //     path: "/genero/:genero",

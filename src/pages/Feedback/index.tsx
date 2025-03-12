@@ -75,22 +75,23 @@ export default function Feedback() {
                                 <p className={styles.error}>{errors.descricao.message}</p>
                             )}
                         </div>
+                        
+                        <div className={styles.lowerPart}>
+                            <RatingWidget
+                                onRatingChange={(value: number) => setNota(value)}
+                            />
+                            <input
+                                type="hidden"
+                                {...register("nota", {
+                                    validate: (value) => value > 0 || "Selecione uma nota para o feedback.",
+                                })}
+                            />
+                            {errors.nota && <p className={styles.error}>{errors.nota.message}</p>}
 
-                        <RatingWidget
-                            rating={nota}
-                            onRatingChange={(value: number) => setNota(value)}
-                        />
-                        <input
-                            type="hidden"
-                            {...register("nota", {
-                                validate: (value) => value > 0 || "Selecione uma nota para o feedback.",
-                            })}
-                        />
-                        {errors.nota && <p className={styles.error}>{errors.nota.message}</p>}
-
-                        <Button type="submit">
-                            Enviar
-                        </Button>
+                            <Button type="submit">
+                                Enviar
+                            </Button>
+                        </div>
                     </div>
             </FormContainer>
         </div>

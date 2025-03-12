@@ -24,7 +24,7 @@ export default function Header() {
 
                 <div className={styles.centerSection}>
                     <ul>
-                        <li><TextLinkUnderline linkTo='/' text='PIJAMAS'></TextLinkUnderline></li>
+                        <li><TextLinkUnderline linkTo='/pajamas' text='PIJAMAS'></TextLinkUnderline></li>
                         <li><TextLinkUnderline linkTo='/' text='FEMININO'></TextLinkUnderline></li>
                         <li><TextLinkUnderline linkTo='/' text='MASCULINO' id={styles.textLink} idDiv={styles.textLinkDiv}></TextLinkUnderline></li>
                         <li><TextLinkUnderline linkTo='/' text='INFANTIL'></TextLinkUnderline></li>
