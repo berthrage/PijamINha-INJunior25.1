@@ -5,6 +5,7 @@ import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
+import PajamasPage from "./pages/PajamasPage";
 
 const router = createBrowserRouter(
     [
@@ -28,6 +29,10 @@ const router = createBrowserRouter(
                 {
                     path: "/register",
                     element: <Register></Register>,
+                },
+                {
+                    path: "/pajamas",
+                    element: <PajamasPage></PajamasPage>,
                 },
                 // {
                 //     path: "/genero/:genero",
