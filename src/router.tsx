@@ -5,8 +5,8 @@ import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
-// import ProductButton from "./components/ProductButton";
 import SecondHeader from "./components/SecondHeader";
+import WishList from "./pages/WishList";
 
 const router = createBrowserRouter(
     [
@@ -38,7 +38,8 @@ const router = createBrowserRouter(
                 },
                 {
                     path:"/favoritos",
-                    element: <><SecondHeader></SecondHeader></>
+                    element: <><SecondHeader></SecondHeader>
+                    <WishList></WishList></>
                 },
                 // {
                 //     path: "/genero/:genero",

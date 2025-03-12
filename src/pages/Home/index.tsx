@@ -1,4 +1,4 @@
-import ImageLinkTransition from '../../components/ImageLinkTransition';
+priceimport ImageLinkTransition from '../../components/ImageLinkTransition';
 import styles from './styles.module.css';
 import logoDark from '../../assets/images/logo-darkvariant.png';
 import logoDark2 from '../../assets/images/logo-darkvariant2.png';

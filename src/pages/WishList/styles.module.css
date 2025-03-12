@@ -1,0 +1,42 @@
+.wishlistSection {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100rem;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    z-index: 1;
+}
+
+.wishlistSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/images/pattern-bg-blue100.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.3; 
+    z-index: 0; 
+}
+#carouselSection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#productCardsSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+}
