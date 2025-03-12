@@ -52,6 +52,16 @@
     justify-content: flex-start;    
   }
 }
+
+.lowerPart {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .rating{
   display: flex;
   flex-direction: column;
