@@ -1,14 +1,20 @@
 .starratingSection {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 22px;
 }
 
-.star img{
-    
-
-    transition: color 0.2s;
+.animate {
+    animation: scaleUp 0.15s ease-in-out forwards;
 }
-.inputStar{
-    border: none;
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
