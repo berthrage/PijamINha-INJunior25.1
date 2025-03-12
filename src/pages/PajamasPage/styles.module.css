@@ -8,6 +8,8 @@ main {
     width: 100%;
     position: relative;
     background: white;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    justify-content: center;
     z-index: 1;
 }
 
@@ -20,8 +22,28 @@ main {
     right: 0;
     background-image: url('../../assets/images/pattern-bg-blue0.png');
     background-position: center;
-    background-size: cover;
+    /* background-size: cover; */
     background-repeat: repeat;
     opacity: 0.3; 
     z-index: 0; 
+}
+
+.pajamasList {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.pajamasList ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+    z-index: 1;
+}
+
+.pagination {
+    z-index: 1;
 }
