@@ -39,3 +39,6 @@
     color: var(--red-300);
     transition: background-color 0.3s ease; /* Transição suave */
 }
+.active{
+    color: var(--red-300);
+}

@@ -8,7 +8,7 @@ import userIcon from '../../assets/icons/user.png';
 import TextLinkUnderline from '../TextLinkUnderline';
 
 export default function Header() {
-    return(
+    return (
         <>
             <header className={styles.headerSection}>
 
@@ -21,7 +21,7 @@ export default function Header() {
                     firstAlt='logo'
                     secondAlt='logoHovered'>
                 </ImageLinkTransition>
-                
+
                 <div className={styles.centerSection}>
                     <ul>
                         <li><TextLinkUnderline linkTo='/' text='PIJAMAS'></TextLinkUnderline></li>
@@ -35,7 +35,7 @@ export default function Header() {
 
                     <div className={styles.cartHeartBox}>
                         <ImageLinkTransition
-                            linkTo='/'
+                            linkTo='/carrinho'
                             firstImg={cartIcon}
                             secondImg={cartIcon}
                             transitionOnlyIn={true}
@@ -45,7 +45,7 @@ export default function Header() {
                             secondAlt='cartIconHovered'>
                         </ImageLinkTransition>
                         <ImageLinkTransition
-                            linkTo='/'
+                            linkTo='/favoritos'
                             firstImg={heartIcon}
                             secondImg={heartIcon}
                             transitionOnlyIn={true}
@@ -68,7 +68,7 @@ export default function Header() {
                     </ImageLinkTransition>
 
                 </div>
-            
+
             </header>
         </>
     )

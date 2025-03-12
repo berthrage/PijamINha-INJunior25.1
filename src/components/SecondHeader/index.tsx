@@ -1,13 +1,8 @@
-import React, { useState } from 'react'; // Importe o useState
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { Link, useLocation } from 'react-router-dom';
-import activecart from '../../assets/icons/cart-black.png';
-import inactivecart from '../../assets/icons/cart-variant1.png';
-import activefavoritos from '../../assets/icons/heart-active.png';
-import inactivefavoritos from '../../assets/icons/heart-inactive.png';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
-
 
 export default function SecondHeader() {
     const location = useLocation();
@@ -24,10 +19,10 @@ export default function SecondHeader() {
                 >
                     <div className={isCartHovered ? styles.hovered : styles.unhovered}>
                         <MdOutlineShoppingCart
-                            id={location.pathname === '/carrinho' ? styles.active : styles.inactive}
+                            className={location.pathname === '/carrinho' ? styles.active : ''} // Aplica a classe active
                             size={50}
                         />
-                        <span>
+                        <span className={location.pathname === '/carrinho' ? styles.active : ''}> {/* Aplica a classe active */}
                             Carrinho
                         </span>
                     </div>
@@ -40,11 +35,11 @@ export default function SecondHeader() {
                     onMouseLeave={() => setIsFavoritosHovered(false)}
                 >
                     <div className={isFavoritosHovered ? styles.hovered : styles.unhovered}>
-                    <FaHeart
-                            id={location.pathname === '/favoritos' ? styles.active : styles.inactive}
+                        <FaHeart
+                            className={location.pathname === '/favoritos' ? styles.active : ''} 
                             size={50}
                         />
-                        <span className={location.pathname === '/favoritos' ? styles.active : styles.inactive}>
+                        <span className={location.pathname === '/favoritos' ? styles.active : ''}>
                             Favoritos
                         </span>
                     </div>
