@@ -83,7 +83,7 @@
   flex-direction: column;
   background: none;
   color: var(--white);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .modalOverlay {
   position: fixed;
