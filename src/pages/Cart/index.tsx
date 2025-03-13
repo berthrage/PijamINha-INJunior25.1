@@ -140,8 +140,7 @@ const Cart: React.FC = () => {
             {/* Modal de Conclusão */}
             {showConcludedModal && (
                 <div className={styles.modalOverlay}>
-                    <Concluded />
-                </div>
+                    <Concluded onClose={() => setShowConcludedModal(false)} />                </div>
             )}
         </div>
     );

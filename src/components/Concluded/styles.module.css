@@ -1,6 +1,5 @@
 .concludedSection {
   display: flex;
-  flex-direction: column;
   position: relative;
   width: 600px;
   height: 234px;
@@ -11,6 +10,15 @@
   padding: var(--height-main-padding) var(--width-main-padding)
     var(--height-main-padding) var(--width-main-padding);
   z-index: 0;
+}
+
+.buttoncloseConcluded {
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .concludedSection::before {
@@ -27,6 +35,7 @@
   opacity: 0.5;
   z-index: 1;
 }
+
 .concludedSection h1 {
   font-size: 32px;
   font-style: normal;
@@ -37,6 +46,7 @@
   position: relative;
   z-index: 2;
 }
+
 .concludedSection p {
   color: #fff;
   font-family: var(--font-nunito-sans);
