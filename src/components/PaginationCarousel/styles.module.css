@@ -1,0 +1,82 @@
+.paginationCarousel {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: scale(0.9);
+}
+
+.swiperContainer {
+    width: 60%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiperSlide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2%;
+    /* background-color: rgb(0, 155, 21); */
+}
+
+.pageNumberActive, .pageNumberInactive {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; 
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.pageNumberActive h1, .pageNumberInactive h1 {
+    font-family: var(--font-roboto);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+.pageNumberInactive {
+    color: var(--blue-400);
+}
+.pageNumberActive  {
+    background-color: var(--blue-100);
+    color: var(--white);
+}
+@media (hover: hover) {
+    .pageNumberInactive:hover {
+        background-color: var(--blue-100);
+        color: var(--white);
+    }
+}
+
+#swiperButtonNext, #swiperButtonPrev {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#swiperButtonNext {
+    right: 0px;
+}
+
+#swiperButtonPrev {
+    left: 0px;
+}
+
+@media (max-width: 414px) {
+    .paginationCarousel {
+        transform: scale(0.7);
+    }
+
+    .swiperContainer {
+        width: 70%;
+    }
+}

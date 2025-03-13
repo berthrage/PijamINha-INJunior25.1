@@ -70,7 +70,6 @@
 .productInfoHeader h1 {
     font-family: var(--font-numans);
     font-weight: 400;
-    font-size: 1.5rem;
     line-height: 1.8rem;
     letter-spacing: 5%;
     text-transform: uppercase;

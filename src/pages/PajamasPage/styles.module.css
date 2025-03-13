@@ -8,6 +8,8 @@ main {
     width: 100%;
     position: relative;
     background: white;
+    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    justify-content: center;
     z-index: 1;
 }
 
@@ -24,4 +26,32 @@ main {
     background-repeat: repeat;
     opacity: 0.3; 
     z-index: 0; 
+}
+
+.pajamasList {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.pajamasList ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+    z-index: 1;
+}
+
+.pagination {
+    z-index: 1;
+}
+
+.paginationCarouselContainer {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
