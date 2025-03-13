@@ -1,0 +1,28 @@
+#paymentForm{
+    background-color: var(--blue-200);
+    gap: 0rem;
+}
+#paymentForm h1{
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#minorinputPayment{
+    width: 130px;
+}
+#inputPayment{
+    width: 220px;
+}
+#containerbuttonPayment{
+    display: flex;
+    gap: 2.5rem;
+}
+#buttonPayment{
+    background-color: var(--blue-400);
+    border-radius: 10px;
+    box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.25);
+    width: 11rem;
+    height: 3rem;
+}
