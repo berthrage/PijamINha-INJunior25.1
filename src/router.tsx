@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import IndividualPajamaPage from "./pages/IndividualPajamaPage";
 import Data from "./components/Data";
 import Payment from "./components/Payment";
+import Concluded from "./components/Concluded";
 
 const router = createBrowserRouter(
     [
@@ -58,6 +59,10 @@ const router = createBrowserRouter(
                 {
                     path: "/pay",
                     element: <Payment></Payment>
+                },
+                {
+                    path: "/concluded",
+                    element: <Concluded></Concluded>
                 },
 
                 // {
