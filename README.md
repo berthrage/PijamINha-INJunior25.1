@@ -1,4 +1,4 @@
-# 🐺👚 Pijam{IN}ha-INJunior25.1
+# 🐺👚 Pijam{IN}ha-INJunior25.1 <img src="src/assets/images/logo-variant3.png" alt="Logo" style="width: 100px;"/>
 E-commerce de Pijamas  
 Single Page Application desenvolvida em React/Node/Typescript  
 Projeto Final em equipe do Processo Seletivo da IN Junior (2025.1)  
@@ -10,6 +10,8 @@ Projeto Final em equipe do Processo Seletivo da IN Junior (2025.1)
 - zod + @hookform/resolvers
 - zustand
 - axios
+- swiper
+- query-string
 - json-server (para testes)
 
 
