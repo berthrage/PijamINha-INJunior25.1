@@ -2,15 +2,15 @@ import Button from '../../components/Button'
 import NumericStepper from '../../components/NumericStepper'
 import styles from './styles.module.css'
 import { FaHeart } from 'react-icons/fa'
-import exampleimg from '../../assets/pajamas/example.jpg'
 import ImageLink from '../../components/ImageLink'
-import inverno from '../../assets/icons/winter.png'
-import unissex from '../../assets/icons/unisex.png'
-import adulto from '../../assets/icons/foradults.png'
+import inverno from '../../assets/icons/winter-grouped.png'
+import unissex from '../../assets/icons/unisex-grouped.png'
+import adulto from '../../assets/icons/foradults-both.png'
 import { useParams } from 'react-router-dom'
 import usePajamasStore from '../../stores/PajamasStore'
 import { useEffect, useState } from 'react'
 import Pajama from '../../types/Pajama'
+import PriceRealFormatted from '../../components/PriceRealFormatted'
 
 export default function SinglePajamaPage() {
     const { pajamaName } = useParams<{ pajamaName: string }>();
@@ -41,17 +41,17 @@ export default function SinglePajamaPage() {
                     <>
                         <div className={styles.containerIndividualPajama}>
 
-                            <img src={exampleimg} alt="" />
+                            <img src={pajama.image} alt="" />
                             <div className={styles.containerInformation}>
 
                                 <div className={styles.titleInformation}>
                                     <h1>{pajama.name}</h1>
-                                    <p>Referência</p>
+                                    <p>Ref: #123456</p>
                                 </div>
 
                                 <div className={styles.priceInformation}>
                                     <div>
-                                        <h3>Preço</h3>
+                                        <h3>{<PriceRealFormatted price={pajama.price}></PriceRealFormatted>}</h3>
                                         <p>Pix</p>
                                     </div>
                                     <p>Parcelamento</p>
@@ -83,8 +83,8 @@ export default function SinglePajamaPage() {
                                 <li>
                                     <ImageLink
                                         img={inverno}
-                                        width={100}
-                                        height={100}>
+                                        width={70}
+                                        height={70}>
                                     </ImageLink>
                                     <p>Inverno</p>
                                 </li>
@@ -92,8 +92,8 @@ export default function SinglePajamaPage() {
                                 <li>
                                     <ImageLink
                                         img={unissex}
-                                        width={100}
-                                        height={100}>
+                                        width={70}
+                                        height={70}>
                                     </ImageLink>
                                     <p>Unissex</p>
                                 </li>
@@ -101,8 +101,8 @@ export default function SinglePajamaPage() {
                                 <li>
                                     <ImageLink
                                         img={adulto}
-                                        width={100}
-                                        height={100}>
+                                        width={70}
+                                        height={70}>
                                     </ImageLink>
                                     <p>Adulto</p>
                                 </li>
@@ -113,7 +113,7 @@ export default function SinglePajamaPage() {
                         <div className={styles.aboutSection}>
                             <div className={styles.titleaboutSection}>
                                 <h1>SOBRE NOSSO PIJAMA</h1>
-                                <p>Esse pijama é perfeito para as noites mais frias do inverno, isso graças ao seu tecido que é de alta qualidade, feito com o mais puro algodão da Suécia. Além disso, sua cor sofisticada traz a sensação de fineza e conforto, o que reflete a alta costura da peça.</p>
+                                <p>{pajama.description}</p>
                             </div>
                             <div className={styles.informationaboutSection}>
                                 <h4>Contém:</h4>
