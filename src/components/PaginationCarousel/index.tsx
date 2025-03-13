@@ -48,7 +48,7 @@ export default function PaginationCarousel({ totalPages, currentPage, onClickGoT
                     breakpoints={{
                         393: { slidesPerView: 3 },
                         450: { slidesPerView: 4 },
-                        641: { slidesPerView: 5 },
+                        641: { slidesPerView: totalPages > 4 ? 5 : 4 },
                     }}
                     
                     

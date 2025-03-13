@@ -5,10 +5,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    transform: scale(0.9);
 }
 
 .swiperContainer {
-    width: 70%;
+    width: 60%;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -30,6 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto; 
     cursor: pointer;
     transition: 0.5s ease-in-out;
 }
@@ -72,5 +74,9 @@
 @media (max-width: 414px) {
     .paginationCarousel {
         transform: scale(0.7);
+    }
+
+    .swiperContainer {
+        width: 70%;
     }
 }

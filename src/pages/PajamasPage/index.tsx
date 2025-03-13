@@ -9,7 +9,7 @@ export default function PajamasPage() {
     const [itemsPerRow, setItemsPerRow] = useState(4);
     const initialPage = localStorage.getItem('pajamasCurrentPage')? parseInt(localStorage.getItem('pajamasCurrentPage')!) : 1;
     const [currentPage, setCurrentPage] = useState(initialPage);
-    const itemsPerPage = 9;
+    const itemsPerPage = 12;
     const listContainerRef = useRef<HTMLDivElement>(null);
     const cardScale = 0.9;
 
