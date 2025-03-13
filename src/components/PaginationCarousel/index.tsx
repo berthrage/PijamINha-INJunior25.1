@@ -40,15 +40,15 @@ export default function PaginationCarousel({ totalPages, currentPage, onClickGoT
                     modules={[ Navigation ]} // Enable navigation
                     spaceBetween={0} // Space between slides
                     initialSlide={0}
-                    slidesPerView={3}
+                    slidesPerView={totalPages > 1 ? 2 : totalPages} // Default slides per view
                     navigation={{
                         nextEl: `#${styles["swiperButtonNext"]}`,
                         prevEl: `#${styles["swiperButtonPrev"]}`,
                     }} // Enable custom navigation arrows
                     breakpoints={{
-                        393: { slidesPerView: 3 },
-                        450: { slidesPerView: 4 },
-                        641: { slidesPerView: totalPages > 4 ? 5 : 4 },
+                        393: { slidesPerView: totalPages > 2 ? 3 : totalPages },
+                        450: { slidesPerView: totalPages > 3 ? 4 : totalPages },
+                        641: { slidesPerView: totalPages > 4 ? 5 : totalPages },
                     }}
                     
                     
