@@ -83,16 +83,16 @@ const Data: React.FC<DataProps> = ({ onSubmit }) => {
                 if (value.trim() === '') error = 'Campo obrigatório.';
                 break;
             case 'uf':
-                if (!validateUF(value)) error = 'UF inválida. Deve conter exatamente 2 letras.';
+                if (!validateUF(value)) error = 'UF inválida.';
                 break;
             case 'cidade':
-                if (!validateCidade(value)) error = 'Cidade inválida. Apenas letras e espaços são permitidos.';
+                if (!validateCidade(value)) error = 'Cidade inválida.';
                 break;
             case 'numero':
-                if (!validateNumero(value)) error = 'Número inválido. Apenas números são permitidos.';
+                if (!validateNumero(value)) error = 'Número inválido.';
                 break;
             case 'bairro':
-                if (!validateBairro(value)) error = 'Bairro inválido. Apenas letras e espaços são permitidos.';
+                if (!validateBairro(value)) error = 'Bairro inválido.';
                 break;
             default:
                 break;
