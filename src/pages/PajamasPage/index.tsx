@@ -26,6 +26,7 @@ export default function PajamasPage() {
         fetchPajamas();
     }, [fetchPajamas]);
 
+
     useEffect(() => {
         const handleResize = () => {
             if (listContainerRef.current) {
@@ -53,6 +54,7 @@ export default function PajamasPage() {
         return matchesSearchTerm && matchesGender && matchesType && matchesSeason;
     });
 
+    // Reset currentPage when the search term changes or dropdown filters come back to default
     useEffect(() => {
         if (searchTerm === '') {
             setCurrentPage(localStorage.getItem('pajamasCurrentPage') ? parseInt(localStorage.getItem('pajamasCurrentPage')!) : 1);
@@ -83,8 +85,7 @@ export default function PajamasPage() {
         } 
     }, [selectedSeason]);
 
-
-
+    // Pagination logic
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentPajamas = filteredPajamas.slice(startIndex, endIndex);
@@ -96,6 +97,13 @@ export default function PajamasPage() {
             setCurrentPage(totalPages);
         }
     }, [fetchPajamas, totalPages]);
+
+    // Ensure currentPage is set to the last page saved when the page reloads
+    useEffect(() => {
+        if (pajamas.length > 0) {
+            setCurrentPage(localStorage.getItem('pajamasCurrentPage') ?  parseInt(localStorage.getItem('pajamasCurrentPage')!) : 1);
+        }
+    }, [pajamas]);
 
     return (
         <>
