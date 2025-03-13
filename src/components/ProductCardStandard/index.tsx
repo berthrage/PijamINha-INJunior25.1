@@ -140,7 +140,11 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
 
                 <div className={styles.productInfo} style={pajama.sale_percent ?  {gap:`15px`} : {gap:`31px`}}>
                     <div className={styles.productInfoHeader}>
-                        <h1>{pajama.name}</h1>
+                        <h1
+                            style={pajama.name.length > 38 ? {
+                                    fontSize: `1.3rem`} : {fontSize: `1.5rem`}}>
+                                    {pajama.name}
+                        </h1>
                     </div>
 
                     <div className={styles.priceSection}>
