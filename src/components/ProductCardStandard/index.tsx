@@ -8,6 +8,7 @@ import heartInactive from '../../assets/icons/heart-inactive.png';
 import discountIcon from '../../assets/icons/discount.png';
 import { useEffect, useRef, useState } from 'react';
 import ImageLinkTransition from '../ImageLinkTransition';
+import { Link } from 'react-router-dom';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
@@ -16,9 +17,10 @@ interface ProductCardStandardProps {
     itemsPerRow?: number,
     id?: string,
     scale?: number,
+    linkTo?: string,
 }
 
-export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThreshold, itemsPerRow, id, scale, }: ProductCardStandardProps) {
+export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThreshold, itemsPerRow, id, scale, linkTo }: ProductCardStandardProps) {
     const [ favorite, setFavorite ] = useState(pajama.favorite);
     const favoriteIconRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -96,75 +98,91 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
     }
     }
 
-    return (
-        <>
-            <div 
-                className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`} 
-                id={id} 
-                ref={cardRef}
-                style={{transform: `scale(${scale ? scale : 1})`}}>
+    const ProductCard = () => {
+        return (
+            <>
+                <div
+                    className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`}
+                    id={id}
+                    ref={cardRef}
+                    style={{ transform: `scale(${scale ? scale : 1})` }}>
 
-                <div className={styles.imgSection}>
-                    <ImageLink
-                        img={pajama.image}
-                        alt={pajama.name}
-                        id={styles.productImg}
-                        width={408}
-                        height={642.13}>
-                    </ImageLink>
-                    <ImageLinkTransition
-                        firstImg={favorite ? heartActive : heartInactive}
-                        secondImg={favorite ? heartActive : heartActiveHovered}
-                        transitionOnlyIn={favorite}
-                        firstAlt="Favoritar"
-                        secondAlt='Desfavoritar'
-                        id={styles.favoriteIcon}
-                        width={51}
-                        height={55}
-                        onClick={toggleFavorite}
-                        ref={favoriteIconRef}>
-                    </ImageLinkTransition>
-                    {pajama.sale_percent ? (
-                        <>
-                            <ImageLink
-                                img={discountIcon}
-                                alt="Desconto"
-                                id={styles.discountIcon}
-                                width={80}
-                                height={80}>
-                            </ImageLink>
-                        </>
-                    ) : ('')}
-                </div>
-                
-
-                <div className={styles.productInfo} style={pajama.sale_percent ?  {gap:`15px`} : {gap:`31px`}}>
-                    <div className={styles.productInfoHeader}>
-                        <h1
-                            style={pajama.name.length > 38 ? {
-                                    fontSize: `1.3rem`} : {fontSize: `1.5rem`}}>
-                                    {pajama.name}
-                        </h1>
+                    <div className={styles.imgSection}>
+                        <ImageLink
+                            img={pajama.image}
+                            alt={pajama.name}
+                            id={styles.productImg}
+                            width={408}
+                            height={642.13}>
+                        </ImageLink>
+                        <ImageLinkTransition
+                            firstImg={favorite ? heartActive : heartInactive}
+                            secondImg={favorite ? heartActive : heartActiveHovered}
+                            transitionOnlyIn={favorite}
+                            firstAlt="Favoritar"
+                            secondAlt='Desfavoritar'
+                            id={styles.favoriteIcon}
+                            width={51}
+                            height={55}
+                            onClick={toggleFavorite}
+                            ref={favoriteIconRef}>
+                        </ImageLinkTransition>
+                        {pajama.sale_percent ? (
+                            <>
+                                <ImageLink
+                                    img={discountIcon}
+                                    alt="Desconto"
+                                    id={styles.discountIcon}
+                                    width={80}
+                                    height={80}>
+                                </ImageLink>
+                            </>
+                        ) : ('')}
                     </div>
 
-                    <div className={styles.priceSection}>
 
-                        <PricePart></PricePart>
-
-                        <div className={styles.installments}>
-                            <span>6x de </span>
-                            <PriceRealFormatted 
-                                className={styles.installmentPrice}
-                                price={
-                                    pajama.sale_percent ? 
-                                    (pajama.price - (pajama.price * (pajama.sale_percent / 100))) / 6 
-                                    : pajama.price / 6}>
-                            </PriceRealFormatted>
+                    <div className={styles.productInfo} style={pajama.sale_percent ? { gap: `15px` } : { gap: `31px` }}>
+                        <div className={styles.productInfoHeader}>
+                            <h1
+                                style={pajama.name.length > 38 ? {
+                                    fontSize: `1.3rem`
+                                } : { fontSize: `1.5rem` }}>
+                                {pajama.name}
+                            </h1>
                         </div>
 
+                        <div className={styles.priceSection}>
+
+                            <PricePart></PricePart>
+
+                            <div className={styles.installments}>
+                                <span>6x de </span>
+                                <PriceRealFormatted
+                                    className={styles.installmentPrice}
+                                    price={
+                                        pajama.sale_percent ?
+                                            (pajama.price - (pajama.price * (pajama.sale_percent / 100))) / 6
+                                            : pajama.price / 6}>
+                                </PriceRealFormatted>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
+        )
+    }
+
+    return (
+        <>
+            {linkTo ? (
+                <Link to={linkTo}>
+                    <ProductCard></ProductCard>
+                </Link>
+            ) : (<>
+                <ProductCard></ProductCard>
+            </>
+            )}
         </>
     )
 }
