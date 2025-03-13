@@ -29,6 +29,7 @@ export default function PajamasPage() {
         fetchPajamas();
     }, [fetchPajamas]);
 
+    // query-string to pull value from gender filters from URL
     useEffect(() => {
         const queryParams = queryString.parse(location.search);
         if (queryParams.gender) {
@@ -216,6 +217,7 @@ export default function PajamasPage() {
                                                 itemsPerRow={itemsPerRow}
                                                 scale={cardScale}
                                                 fadeInThreshold={0.04}
+                                                linkTo={`/pajama/${encodeURIComponent(pajama.name)}`}
                                             />
                                         </li>
                                     );
@@ -236,6 +238,7 @@ export default function PajamasPage() {
                                                 itemsPerRow={itemsPerRow}
                                                 scale={cardScale}
                                                 fadeInThreshold={0.04}
+                                                linkTo={`/pajama/${encodeURIComponent(pajama.name)}`}
                                             />
                                         </li>
                                     );
