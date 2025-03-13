@@ -41,6 +41,14 @@ export default function PajamasPage() {
     const currentPajamas = pajamas.slice(startIndex, endIndex);
     const totalPages = Math.ceil(pajamas.length / itemsPerPage);
 
+    // Prevent currentPage from going out of bounds
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(totalPages);
+        }
+    }, [fetchPajamas]);
+    
+
     return (
         <>
             <div className={styles.pajamasSection}>
