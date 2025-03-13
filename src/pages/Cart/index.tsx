@@ -133,7 +133,7 @@ const Cart: React.FC = () => {
             {/* Modal de Pagamento */}
             {showPaymentModal && (
                 <div className={styles.modalOverlay}>
-                    <Payment onSubmit={handlePaymentSubmit} onBack={handleBackToData} />
+                    <Payment onSubmit={handlePaymentSubmit} onBack={handleBackToData} totalAmount={cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0)}/>
                 </div>
             )}
 

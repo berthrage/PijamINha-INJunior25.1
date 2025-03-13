@@ -8,9 +8,10 @@ import { FaLessThan } from 'react-icons/fa';
 interface PaymentProps {
     onSubmit: () => void; // Função para enviar o pagamento
     onBack: () => void; // Função para voltar ao modal de dados
+    totalAmount: number; // Valor total do carrinho
 }
 
-const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack }) => {
+const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack, totalAmount }) => {
     const [paymentMethod, setPaymentMethod] = useState<'creditCard' | 'pix'>('creditCard');
     const [cardNumber, setCardNumber] = useState('');
     const [installments, setInstallments] = useState('1');
@@ -21,6 +22,11 @@ const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack }) => {
             return;
         }
         onSubmit();
+    };
+
+    // Calcula o valor das parcelas
+    const calculateInstallmentValue = (installments: number) => {
+        return (totalAmount / installments).toFixed(2);
     };
 
     return (
@@ -40,13 +46,14 @@ const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack }) => {
                 {paymentMethod === 'creditCard' && (
                     <>
                         <div className={styles.formGroup}>
-                            <select className={styles.selectPayment}
+                            <select
+                                className={styles.selectPayment}
                                 value={installments}
                                 onChange={(e) => setInstallments(e.target.value)}
                             >
                                 {[1, 2, 3, 4, 5, 6].map((num) => (
                                     <option key={num} value={num.toString()}>
-                                        {num}x sem juros
+                                        {num}x de R$ {calculateInstallmentValue(num)} sem juros
                                     </option>
                                 ))}
                             </select>
@@ -61,6 +68,13 @@ const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack }) => {
                             />
                         </div>
                     </>
+                )}
+
+                {paymentMethod === 'pix' && (
+                    <div className={styles.formGroup}>
+                        <p>Você terá 15% de desconto ao pagar com PIX.</p>
+                        <p>Valor total com desconto: <strong>R$ {(totalAmount * 0.85).toFixed(2)}</strong></p>
+                    </div>
                 )}
 
                 <div id={styles.containerbuttonPayment}>

@@ -26,7 +26,7 @@
     width: 11rem;
     height: 3rem;
 }
-.selectPayment{
+.selectPayment {
         width: 390px;
         height: 44px;
         border-radius: 2px;
@@ -56,4 +56,16 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 1px;
+}
+.formGroup{
+    font-family: var(--font-roboto);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+.formGroup strong{
+    font-style: italic;
+    font-size: 1.1rem;
+    color: gold;
+
 }
