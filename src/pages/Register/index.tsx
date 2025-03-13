@@ -36,6 +36,8 @@ export default function Register() {
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [submitting, setSubmitting] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [confirmationMessage, setConfirmationMessage] = useState<string>("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -83,7 +85,8 @@ export default function Register() {
                     password: "",
                     confirmPassword: "",
                 });
-                alert("Registro realizado com sucesso!");
+                setConfirmationMessage("Registro realizado com sucesso!");
+                setIsModalOpen(true);
             }
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -94,11 +97,16 @@ export default function Register() {
                 setErrors(validationErrors);
             } else {
                 console.error("Erro ao registrar:", error);
-                alert("Erro ao registrar. Tente novamente.");
+                setConfirmationMessage("Erro ao registrar. Tente novamente.");
+                setIsModalOpen(true);
             }
         } finally {
             setSubmitting(false);
         }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -168,6 +176,15 @@ export default function Register() {
                     </Button>
                 </div>
             </FormContainer>
+
+            {isModalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modal}>
+                        <p>{confirmationMessage}</p>
+                        <Button onClick={closeModal}>Fechar</Button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
