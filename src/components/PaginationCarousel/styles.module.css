@@ -69,3 +69,8 @@
     left: 0px;
 }
 
+@media (max-width: 414px) {
+    .paginationCarousel {
+        transform: scale(0.7);
+    }
+}

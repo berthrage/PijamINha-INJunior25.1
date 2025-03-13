@@ -39,12 +39,17 @@ export default function PaginationCarousel({ totalPages, currentPage, onClickGoT
                 <Swiper
                     modules={[ Navigation ]} // Enable navigation
                     spaceBetween={0} // Space between slides
-                    slidesPerView={5} // Default slides per view
                     initialSlide={0}
+                    slidesPerView={3}
                     navigation={{
                         nextEl: `#${styles["swiperButtonNext"]}`,
                         prevEl: `#${styles["swiperButtonPrev"]}`,
                     }} // Enable custom navigation arrows
+                    breakpoints={{
+                        393: { slidesPerView: 3 },
+                        450: { slidesPerView: 4 },
+                        641: { slidesPerView: 5 },
+                    }}
                     
                     
                     className={styles.swiperContainer}
