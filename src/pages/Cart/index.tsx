@@ -12,27 +12,10 @@ export default function Cart() {
             name: 'Nome do Pijama',
             reference: 'Referência',
             size: 'M',
-            price: 50000,
-            quantity: 12,
-            image: imagem,
-        },
-        {
-            id: 2,
-            name: 'Pijama Infantil',
-            reference: 'Ref-1234',
-            size: 'P',
-            price: 30000,
-            quantity: 8,
-            image: imagem,
-        },
-        {
-            id: 3,
-            name: 'Pijama Luxo',
-            reference: 'Ref-5678',
-            size: 'G',
-            price: 70000,
-            quantity: 5,
-            image: imagem,
+            price: 50,
+            stockQuantity: 120,
+            selectedQuantity: 1,
+            image: imagem
         }
     ]);
 
@@ -40,7 +23,11 @@ export default function Cart() {
         setCartItems(cartItems.filter(item => item.id !== itemId));
     };
 
-    const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const updateSelectedQuantity = (itemId, newSelectedQuantity) => {
+        setCartItems(cartItems.map(item =>
+            item.id === itemId ? { ...item, selectedQuantity: newSelectedQuantity } : item
+        ));
+    };
 
     return (
         <div className={styles.cartSection}>
@@ -59,9 +46,13 @@ export default function Cart() {
                         </div>
                         <div className={styles.containerquantityCart}>
                             <p>Quantidade:</p>
-                            <NumericStepper />
+                            <NumericStepper
+                                quantity={item.selectedQuantity}
+                                onQuantityChange={(newQuantity) => updateSelectedQuantity(item.id, newQuantity)}
+                                maxQuantity={item.stockQuantity}
+                            />
                             <span>Não perca sua oportunidade!</span>
-                            <span>Há apenas mais <span>{item.quantity}</span> peças disponíveis</span>
+                            <span>Há apenas mais <span>{item.stockQuantity}</span> peças disponíveis</span>
                         </div>
                     </div>
                     <div className={styles.productpriceCart}>
@@ -76,7 +67,7 @@ export default function Cart() {
                 <div className={styles.totalCart}>
                     <p>Total</p>
                     <div>
-                        <span>R$ {totalPrice.toFixed(2)}</span>
+                        <span>R$ {cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0)}</span>
                     </div>
                 </div>
                 <Button id={styles.buttonCart}>Compre Tudo</Button>
