@@ -6,24 +6,41 @@ import imagem from '../../assets/pajamas/example.jpg';
 import { IoMdClose } from "react-icons/io";
 
 export default function Cart() {
-    // Estado para armazenar os itens no carrinho
     const [cartItems, setCartItems] = useState([
         {
-            id: 1, // ID único para cada item
+            id: 1,
             name: 'Nome do Pijama',
             reference: 'Referência',
             size: 'M',
-            price: 0,
+            price: 50000,
             quantity: 12,
-            image: imagem
+            image: imagem,
+        },
+        {
+            id: 2,
+            name: 'Pijama Infantil',
+            reference: 'Ref-1234',
+            size: 'P',
+            price: 30000,
+            quantity: 8,
+            image: imagem,
+        },
+        {
+            id: 3,
+            name: 'Pijama Luxo',
+            reference: 'Ref-5678',
+            size: 'G',
+            price: 70000,
+            quantity: 5,
+            image: imagem,
         }
-        // Adicione mais itens aqui se necessário
     ]);
 
-    // Função para remover um item do carrinho
     const removeItemFromCart = (itemId) => {
         setCartItems(cartItems.filter(item => item.id !== itemId));
     };
+
+    const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
     return (
         <div className={styles.cartSection}>
@@ -59,7 +76,7 @@ export default function Cart() {
                 <div className={styles.totalCart}>
                     <p>Total</p>
                     <div>
-                        <span>R$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+                        <span>R$ {totalPrice.toFixed(2)}</span>
                     </div>
                 </div>
                 <Button id={styles.buttonCart}>Compre Tudo</Button>
