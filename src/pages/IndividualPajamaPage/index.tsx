@@ -1,0 +1,89 @@
+import Button from '../../components/Button'
+import NumericStepper from '../../components/NumericStepper'
+import styles from './styles.module.css'
+import { FaHeart } from 'react-icons/fa'
+import exampleimg from '../../assets/pajamas/example.jpg'
+import ImageLink from '../../components/ImageLink'
+import inverno from '../../assets/icons/winter.png'
+import unissex from '../../assets/icons/unisex.png'
+import adulto from '../../assets/icons/foradults.png'
+
+export default function IndividualPajamaPage() {
+    return (
+        <><div className={styles.individualpajamaSection}>
+            <div className={styles.containerIndividualPajama}>
+                <img src={exampleimg} alt="" />
+                <div className={styles.containerInformation}>
+                    <div className={styles.titleInformation}>
+                        <h1>Titulo</h1>
+                        <p>Referência</p>
+                    </div>
+                    <div className={styles.priceInformation}>
+                        <div>
+                            <h3>Preço</h3>
+                            <p>Pix</p>
+                        </div>
+                        <p>Parcelamento</p>
+                    </div>
+                    <div className={styles.sizeInformation}>
+                        <p>Tamanhos:</p>
+                        <div className={styles.buttonInformation}>
+                            <button>PP</button><button>P</button><button>M</button><button>G</button><button>GG</button>
+                        </div>
+                        <span>Ainda temos 8 peças do tamanho escolhido em nosso estoque!</span>
+                    </div>
+                    <div className={styles.quantityInformation}>
+                        <p>Quantidade:</p>
+                        <NumericStepper></NumericStepper>
+                    </div>
+                    <div className={styles.addcartandwishlistInformation}>
+                        <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
+                        <FaHeart className={styles.iconactive} size={86}></FaHeart>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.featuresSection}>
+                <ul className={styles.featuresList}>
+                    <li>
+                        <ImageLink
+                            img={inverno}
+                            width={100}
+                            height={100}>
+                        </ImageLink>
+                        <p>Inverno</p>
+                    </li>
+
+                    <li>
+                        <ImageLink
+                            img={unissex}
+                            width={100}
+                            height={100}>
+                        </ImageLink>
+                        <p>Unissex</p>
+                    </li>
+
+                    <li>
+                        <ImageLink
+                            img={adulto}
+                            width={100}
+                            height={100}>
+                        </ImageLink>
+                        <p>Adulto</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <div className={styles.aboutSection}>
+                <div className={styles.titleaboutSection}>
+                    <h1>SOBRE NOSSO PIJAMA</h1>
+                    <p>Esse pijama é perfeito para as noites mais frias do inverno, isso graças ao seu tecido que é de alta qualidade, feito com o mais puro algodão da Suécia. Além disso, sua cor sofisticada traz a sensação de fineza e conforto, o que reflete a alta costura da peça.</p>
+                </div>
+                <div className={styles.informationaboutSection}>
+                    <h4>Contém:</h4>
+                    <ul><li>Uma blusa de mangas longas na cor azul petróleo com estampa poá branca</li><li>Uma calça na cor azul petróleo com estampa poá branca</li></ul>
+                    <h4>Composição:</h4>
+                    <ul><li>100% algodão</li></ul>
+                </div>
+            </div></>
+    )
+}
