@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Button from '../Button';
 import FormContainer from '../FormContainer';
 import Input from '../Input';
@@ -8,22 +9,95 @@ interface DataProps {
 }
 
 const Data: React.FC<DataProps> = ({ onSubmit }) => {
+    const [formData, setFormData] = useState({
+        nomeCompleto: '',
+        cpf: '',
+        cep: '',
+        logradouro: '',
+        uf: '',
+        cidade: '',
+        numero: '',
+        bairro: ''
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const isFormValid = () => {
+        return Object.values(formData).every(value => value.trim() !== '');
+    };
+
     return (
         <div className={styles.dataSection}>
             <FormContainer id={styles.dataForm} title='Dados'>
-                <Input placeholder='Nome Completo' /> {/* Esta variável 'Nome Completo' pode ser trocada para o nome que seu back-end usa. */}
-                <Input placeholder='CPF' /> {/* Esta variável 'CPF' pode ser trocada para o nome que seu back-end usa. */}
-                <Input placeholder='CEP' /> {/* Esta variável 'CEP' pode ser trocada para o nome que seu back-end usa. */}
-                <Input placeholder='Logradouro' /> {/* Esta variável 'Logradouro' pode ser trocada para o nome que seu back-end usa. */}
+                <Input 
+                    placeholder='Nome Completo' 
+                    name="nomeCompleto"
+                    value={formData.nomeCompleto}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    placeholder='CPF' 
+                    name="cpf"
+                    value={formData.cpf}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    placeholder='CEP' 
+                    name="cep"
+                    value={formData.cep}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    placeholder='Logradouro' 
+                    name="logradouro"
+                    value={formData.logradouro}
+                    onChange={handleInputChange}
+                />
                 <div className={styles.containerinputData}>
-                    <Input placeholder='UF' id={styles.minorinputData} /> {/* Esta variável 'UF' pode ser trocada para o nome que seu back-end usa. */}
-                    <Input placeholder='Cidade' id={styles.inputData} /> {/* Esta variável 'Cidade' pode ser trocada para o nome que seu back-end usa. */}
+                    <Input 
+                        placeholder='UF' 
+                        id={styles.minorinputData}
+                        name="uf"
+                        value={formData.uf}
+                        onChange={handleInputChange}
+                    />
+                    <Input 
+                        placeholder='Cidade' 
+                        id={styles.inputData}
+                        name="cidade"
+                        value={formData.cidade}
+                        onChange={handleInputChange}
+                    />
                 </div>
                 <div className={styles.containerinputData}>
-                    <Input placeholder='Número' id={styles.minorinputData} /> {/* Esta variável 'Número' pode ser trocada para o nome que seu back-end usa. */}
-                    <Input placeholder='Bairro' id={styles.inputData} /> {/* Esta variável 'Bairro' pode ser trocada para o nome que seu back-end usa. */}
+                    <Input 
+                        placeholder='Número' 
+                        id={styles.minorinputData}
+                        name="numero"
+                        value={formData.numero}
+                        onChange={handleInputChange}
+                    />
+                    <Input 
+                        placeholder='Bairro' 
+                        id={styles.inputData}
+                        name="bairro"
+                        value={formData.bairro}
+                        onChange={handleInputChange}
+                    />
                 </div>
-                <Button id={styles.buttonData} onClick={onSubmit}>Enviar</Button>
+                <Button 
+                    id={styles.buttonData} 
+                    onClick={onSubmit}
+                    disabled={!isFormValid()}
+                >
+                    Enviar
+                </Button>
             </FormContainer>
         </div>
     );
