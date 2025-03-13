@@ -4,28 +4,41 @@ import styles from './styles.module.css';
 import Button from '../../components/Button';
 import NumericStepper from '../../components/NumericStepper';
 import { IoMdClose } from "react-icons/io";
-import Data from '../../components/Data'; // Componente de dados do cliente
-import Payment from '../../components/Payment'; // Componente de pagamento
-import Concluded from '../../components/Concluded'; // Componente de conclusão
-import '../../stores/mockAPI'
+import Data, { CustomerData } from '../../components/Data';
+import Payment, { PaymentDetails } from '../../components/Payment';
+import Concluded from '../../components/Concluded';
+import '../../stores/mockAPI';
+import '../../stores/mockAPIforOrders';
 
 // Interface para representar um item do carrinho
 interface CartItem {
-    id: number; // Esta variável 'id' pode ser trocada para o nome que seu back-end usa.
-    name: string; // Esta variável 'name' pode ser trocada para o nome que seu back-end usa.
-    reference: string; // Esta variável 'reference' pode ser trocada para o nome que seu back-end usa.
-    size: string; // Esta variável 'size' pode ser trocada para o nome que seu back-end usa.
-    price: number; // Esta variável 'price' pode ser trocada para o nome que seu back-end usa.
-    stockQuantity: number; // Esta variável 'stockQuantity' pode ser trocada para o nome que seu back-end usa.
-    selectedQuantity: number; // Esta variável 'selectedQuantity' pode ser trocada para o nome que seu back-end usa.
-    image: string; // Esta variável 'image' pode ser trocada para o nome que seu back-end usa.
+    id: number;
+    name: string;
+    reference: string;
+    size: string;
+    price: number;
+    stockQuantity: number;
+    selectedQuantity: number;
+    image: string;
+}
+
+// Interface para o registro da compra
+interface PurchaseOrder {
+    customerData: CustomerData;
+    paymentDetails: PaymentDetails;
+    items: CartItem[];
+    totalAmount: number;
+    orderDate: string;
 }
 
 const Cart: React.FC = () => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [showDataModal, setShowDataModal] = useState(false); // Controla a exibição do modal de dados
-    const [showPaymentModal, setShowPaymentModal] = useState(false); // Controla a exibição do modal de pagamento
-    const [showConcludedModal, setShowConcludedModal] = useState(false); // Controla a exibição do modal de conclusão
+    const [showDataModal, setShowDataModal] = useState(false);
+    const [showPaymentModal, setShowPaymentModal] = useState(false);
+    const [showConcludedModal, setShowConcludedModal] = useState(false);
+    const [customerData, setCustomerData] = useState<CustomerData | null>(null);
+    const [paymentDetails, setPaymentDetails] = useState<PaymentDetails | null>(null);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     useEffect(() => {
         fetchCartItems();
@@ -33,7 +46,7 @@ const Cart: React.FC = () => {
 
     const fetchCartItems = async () => {
         try {
-            const response = await axios.get<CartItem[]>('/api/cart'); // Esta variável '/api/cart' pode ser trocada para o endpoint que seu back-end usa.
+            const response = await axios.get<CartItem[]>('/api/cart');
             setCartItems(response.data);
         } catch (error) {
             console.error('Error fetching cart items:', error);
@@ -42,7 +55,7 @@ const Cart: React.FC = () => {
 
     const removeItemFromCart = async (itemId: number) => {
         try {
-            await axios.delete(`/api/cart/${itemId}`); // Esta variável '/api/cart/${itemId}' pode ser trocada para o endpoint que seu back-end usa.
+            await axios.delete(`/api/cart/${itemId}`);
             setCartItems(cartItems.filter(item => item.id !== itemId));
         } catch (error) {
             console.error('Error removing item from cart:', error);
@@ -51,7 +64,7 @@ const Cart: React.FC = () => {
 
     const updateSelectedQuantity = async (itemId: number, newSelectedQuantity: number) => {
         try {
-            await axios.put(`/api/cart/${itemId}`, { quantity: newSelectedQuantity }); // Esta variável 'quantity' pode ser trocada para o nome que seu back-end usa.
+            await axios.put(`/api/cart/${itemId}`, { quantity: newSelectedQuantity });
             setCartItems(cartItems.map(item =>
                 item.id === itemId ? { ...item, selectedQuantity: newSelectedQuantity } : item
             ));
@@ -60,38 +73,75 @@ const Cart: React.FC = () => {
         }
     };
 
+    const calculateTotal = () => {
+        return cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0);
+    };
+
     const handleBuyAll = () => {
-        setShowDataModal(true); // Abre o modal de dados ao clicar em "Compre Tudo"
+        setShowDataModal(true);
     };
 
-    const handleDataSubmit = () => {
-        setShowDataModal(false); // Fecha o modal de dados
-        setShowPaymentModal(true); // Abre o modal de pagamento
+    const handleDataSubmit = (data: CustomerData) => {
+        setCustomerData(data);
+        setShowDataModal(false);
+        setShowPaymentModal(true);
     };
 
-    const handlePaymentSubmit = () => {
-        setShowPaymentModal(false); // Fecha o modal de pagamento
-        setShowConcludedModal(true); // Abre o modal de conclusão
+    const handlePaymentSubmit = async (details: PaymentDetails) => {
+        try {
+            setPaymentDetails(details);
+            setIsProcessing(true);
+            
+            // Criar objeto com todos os dados da compra
+            const purchaseOrder: PurchaseOrder = {
+                customerData: customerData!,
+                paymentDetails: details,
+                items: cartItems,
+                totalAmount: details.method === 'pix' && details.totalWithDiscount 
+                    ? details.totalWithDiscount 
+                    : calculateTotal(),
+                orderDate: new Date().toISOString()
+            };
+            
+            // Enviar dados para o backend
+            await axios.post('/api/orders', purchaseOrder);
+            
+            // Limpar o carrinho após o processamento da compra
+            await axios.delete('/api/cart/clear');
+            
+            setShowPaymentModal(false);
+            setShowConcludedModal(true);
+        } catch (error) {
+            console.error('Error processing purchase:', error);
+            alert('Ocorreu um erro ao processar sua compra. Por favor, tente novamente.');
+        } finally {
+            setIsProcessing(false);
+        }
     };
 
     const handleBackToData = () => {
-        setShowPaymentModal(false); // Fecha o modal de pagamento
-        setShowDataModal(true); // Volta para o modal de dados
+        setShowPaymentModal(false);
+        setShowDataModal(true);
+    };
+
+    const handleCompletePurchase = () => {
+        setShowConcludedModal(false);
+        setCartItems([]);  // Limpar carrinho na interface
     };
 
     return (
         <div className={styles.cartSection}>
             {cartItems.map(item => (
                 <div key={item.id} className={styles.containerCart}>
-                    <img src={item.image} alt="" /> {/* Esta variável 'image' pode ser trocada para o nome que seu back-end usa. */}
+                    <img src={item.image} alt="" />
                     <div className={styles.interncontainerCart}>
                         <div className={styles.titleCart}>
                             <div>
-                                <h1>{item.name}</h1> {/* Esta variável 'name' pode ser trocada para o nome que seu back-end usa. */}
-                                <p>{item.reference}</p> {/* Esta variável 'reference' pode ser trocada para o nome que seu back-end usa. */}
+                                <h1>{item.name}</h1>
+                                <p>{item.reference}</p>
                             </div>
                             <div className={styles.sizeCart}>
-                                <button>{item.size}</button> {/* Esta variável 'size' pode ser trocada para o nome que seu back-end usa. */}
+                                <button>{item.size}</button>
                             </div>
                         </div>
                         <div className={styles.containerquantityCart}>
@@ -102,11 +152,11 @@ const Cart: React.FC = () => {
                                 maxQuantity={item.stockQuantity}
                             />
                             <span>Não perca sua oportunidade!</span>
-                            <span>Há apenas mais <span>{item.stockQuantity}</span> peças disponíveis</span> {/* Esta variável 'stockQuantity' pode ser trocada para o nome que seu back-end usa. */}
+                            <span>Há apenas mais <span>{item.stockQuantity}</span> peças disponíveis</span>
                         </div>
                     </div>
                     <div className={styles.productpriceCart}>
-                        <p>R$ {item.price}</p> {/* Esta variável 'price' pode ser trocada para o nome que seu back-end usa. */}
+                        <p>R$ {item.price}</p>
                     </div>
                     <div className={styles.icon} onClick={() => removeItemFromCart(item.id)}>
                         <IoMdClose size={50} />
@@ -117,10 +167,16 @@ const Cart: React.FC = () => {
                 <div className={styles.totalCart}>
                     <p>Total</p>
                     <div>
-                        <span>R$ {cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0)}</span>
+                        <span>R$ {calculateTotal()}</span>
                     </div>
                 </div>
-                <Button id={styles.buttonCart} onClick={handleBuyAll}>Compre Tudo</Button>
+                <Button 
+                    id={styles.buttonCart} 
+                    onClick={handleBuyAll}
+                    disabled={cartItems.length === 0}
+                >
+                    Compre Tudo
+                </Button>
             </div>
 
             {/* Modal de Dados */}
@@ -133,14 +189,19 @@ const Cart: React.FC = () => {
             {/* Modal de Pagamento */}
             {showPaymentModal && (
                 <div className={styles.modalOverlay}>
-                    <Payment onSubmit={handlePaymentSubmit} onBack={handleBackToData} totalAmount={cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0)}/>
+                    <Payment 
+                        onSubmit={handlePaymentSubmit} 
+                        onBack={handleBackToData} 
+                        totalAmount={calculateTotal()}
+                    />
                 </div>
             )}
 
             {/* Modal de Conclusão */}
             {showConcludedModal && (
                 <div className={styles.modalOverlay}>
-                    <Concluded onClose={() => setShowConcludedModal(false)} />                </div>
+                    <Concluded onClose={handleCompletePurchase} />
+                </div>
             )}
         </div>
     );

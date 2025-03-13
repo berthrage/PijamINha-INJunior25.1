@@ -26,6 +26,8 @@ const mockCartItems: CartItem[] = [
         selectedQuantity: 2,
         image: 'https://via.placeholder.com/150'
     }
+    ,
+
 ];
 
 // Simula a resposta da API para GET /api/cart

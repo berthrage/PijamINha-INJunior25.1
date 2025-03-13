@@ -6,9 +6,17 @@ import styles from './styles.module.css';
 import { FaLessThan } from 'react-icons/fa';
 
 interface PaymentProps {
-    onSubmit: () => void; // Função para enviar o pagamento
+    onSubmit: (paymentDetails: PaymentDetails) => void; // Updated to pass payment details
     onBack: () => void; // Função para voltar ao modal de dados
     totalAmount: number; // Valor total do carrinho
+}
+
+// New interface for payment details
+export interface PaymentDetails {
+    method: 'creditCard' | 'pix';
+    cardNumber?: string;
+    installments?: string;
+    totalWithDiscount?: number;
 }
 
 const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack, totalAmount }) => {
@@ -21,7 +29,20 @@ const Payment: React.FC<PaymentProps> = ({ onSubmit, onBack, totalAmount }) => {
             alert('Por favor, preencha o número do cartão.');
             return;
         }
-        onSubmit();
+        
+        // Prepare payment details to send back to parent component
+        const paymentDetails: PaymentDetails = {
+            method: paymentMethod,
+        };
+        
+        if (paymentMethod === 'creditCard') {
+            paymentDetails.cardNumber = cardNumber;
+            paymentDetails.installments = installments;
+        } else if (paymentMethod === 'pix') {
+            paymentDetails.totalWithDiscount = parseFloat((totalAmount * 0.85).toFixed(2));
+        }
+        
+        onSubmit(paymentDetails);
     };
 
     // Calcula o valor das parcelas
