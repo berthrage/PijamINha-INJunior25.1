@@ -24,10 +24,10 @@ export default function Header() {
 
                 <div className={styles.centerSection}>
                     <ul>
-                        <li><TextLinkUnderline linkTo='/pajamas' text='PIJAMAS'></TextLinkUnderline></li>
-                        <li><TextLinkUnderline linkTo='/' text='FEMININO'></TextLinkUnderline></li>
-                        <li><TextLinkUnderline linkTo='/' text='MASCULINO' id={styles.textLink} idDiv={styles.textLinkDiv}></TextLinkUnderline></li>
-                        <li><TextLinkUnderline linkTo='/' text='INFANTIL'></TextLinkUnderline></li>
+                        <li><TextLinkUnderline linkTo='/pajamas?gender=gender-all' text='PIJAMAS'></TextLinkUnderline></li>
+                        <li><TextLinkUnderline linkTo='/pajamas?gender=feminino' text='FEMININO'></TextLinkUnderline></li>
+                        <li><TextLinkUnderline linkTo='/pajamas?gender=masculino' text='MASCULINO' id={styles.textLink} idDiv={styles.textLinkDiv}></TextLinkUnderline></li>
+                        <li><TextLinkUnderline linkTo='/pajamas?gender=infantil' text='INFANTIL'></TextLinkUnderline></li>
                     </ul>
                 </div>
 

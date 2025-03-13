@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import usePajamasStore from '../../stores/PajamasStore';
 import styles from './styles.module.css';
 import ProductCardStandard from '../../components/ProductCardStandard';
@@ -8,6 +10,7 @@ import searchIconHovered from '../../assets/icons/search-blue-hovered.png';
 import ImageLink from '../../components/ImageLink';
 
 export default function PajamasPage() {
+    const location = useLocation();
     const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
     const [itemsPerRow, setItemsPerRow] = useState(4);
     const initialPage = localStorage.getItem('pajamasCurrentPage') ? parseInt(localStorage.getItem('pajamasCurrentPage')!) : 1;
@@ -26,6 +29,12 @@ export default function PajamasPage() {
         fetchPajamas();
     }, [fetchPajamas]);
 
+    useEffect(() => {
+        const queryParams = queryString.parse(location.search);
+        if (queryParams.gender) {
+            setSelectedGender(queryParams.gender as string);
+        }
+    }, [location.search]);
 
     useEffect(() => {
         const handleResize = () => {
