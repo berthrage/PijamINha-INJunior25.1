@@ -8,6 +8,10 @@ import Register from "./pages/Register";
 import PajamasPage from "./pages/PajamasPage";
 import CartWishlistHeader from "./components/CartWishlistHeader";
 import Cart from "./pages/Cart";
+import IndividualPajamaPage from "./pages/IndividualPajamaPage";
+import Data from "./components/Data";
+import Payment from "./components/Payment";
+import Concluded from "./components/Concluded";
 
 const router = createBrowserRouter(
     [
@@ -45,6 +49,22 @@ const router = createBrowserRouter(
                     path: "/pajamas",
                     element: <PajamasPage></PajamasPage>,
                 },
+                {
+                    path: "/individualpajama",
+                    element: <IndividualPajamaPage></IndividualPajamaPage>
+                },
+                {path:"/data",
+                    element: <Data></Data>
+                },
+                {
+                    path: "/pay",
+                    element: <Payment></Payment>
+                },
+                {
+                    path: "/concluded",
+                    element: <Concluded></Concluded>
+                },
+
                 // {
                 //     path: "/genero/:genero",
                 //     element: <GenrePage></GenrePage>,

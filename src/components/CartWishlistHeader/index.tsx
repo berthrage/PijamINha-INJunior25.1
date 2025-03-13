@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './styles.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineShoppingCart } from "react-icons/md";
