@@ -5,7 +5,7 @@ import MockAdapter from 'axios-mock-adapter';
 const mock = new MockAdapter(axios);
 
 // Dados simulados para o carrinho
-const mockCartItems: CartItem[] = [
+const mockCartItems: any = [
     {
         id: 1,
         name: 'Pijama de Algodão',

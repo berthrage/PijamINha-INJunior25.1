@@ -7,8 +7,8 @@ import { IoMdClose } from "react-icons/io";
 import Data, { CustomerData } from '../../components/Data';
 import Payment, { PaymentDetails } from '../../components/Payment';
 import Concluded from '../../components/Concluded';
-import '../../stores/mockAPI';
-import '../../stores/mockAPIforOrders';
+import '../../services/mockAPI';
+import '../../services/mockAPIforOrders';
 
 // Interface para representar um item do carrinho
 interface CartItem {
