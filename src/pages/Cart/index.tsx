@@ -4,6 +4,9 @@ import styles from './styles.module.css';
 import Button from '../../components/Button';
 import NumericStepper from '../../components/NumericStepper';
 import { IoMdClose } from "react-icons/io";
+import Data from '../../components/Data'; // Componente de dados do cliente
+import Payment from '../../components/Payment'; // Componente de pagamento
+import Concluded from '../../components/Concluded'; // Componente de conclusão
 import '../../stores/mockAPI'
 
 // Interface para representar um item do carrinho
@@ -20,6 +23,9 @@ interface CartItem {
 
 const Cart: React.FC = () => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [showDataModal, setShowDataModal] = useState(false); // Controla a exibição do modal de dados
+    const [showPaymentModal, setShowPaymentModal] = useState(false); // Controla a exibição do modal de pagamento
+    const [showConcludedModal, setShowConcludedModal] = useState(false); // Controla a exibição do modal de conclusão
 
     useEffect(() => {
         fetchCartItems();
@@ -52,6 +58,25 @@ const Cart: React.FC = () => {
         } catch (error) {
             console.error('Error updating item quantity:', error);
         }
+    };
+
+    const handleBuyAll = () => {
+        setShowDataModal(true); // Abre o modal de dados ao clicar em "Compre Tudo"
+    };
+
+    const handleDataSubmit = () => {
+        setShowDataModal(false); // Fecha o modal de dados
+        setShowPaymentModal(true); // Abre o modal de pagamento
+    };
+
+    const handlePaymentSubmit = () => {
+        setShowPaymentModal(false); // Fecha o modal de pagamento
+        setShowConcludedModal(true); // Abre o modal de conclusão
+    };
+
+    const handleBackToData = () => {
+        setShowPaymentModal(false); // Fecha o modal de pagamento
+        setShowDataModal(true); // Volta para o modal de dados
     };
 
     return (
@@ -95,8 +120,29 @@ const Cart: React.FC = () => {
                         <span>R$ {cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0)}</span>
                     </div>
                 </div>
-                <Button id={styles.buttonCart}>Compre Tudo</Button>
+                <Button id={styles.buttonCart} onClick={handleBuyAll}>Compre Tudo</Button>
             </div>
+
+            {/* Modal de Dados */}
+            {showDataModal && (
+                <div className={styles.modalOverlay}>
+                    <Data onSubmit={handleDataSubmit} />
+                </div>
+            )}
+
+            {/* Modal de Pagamento */}
+            {showPaymentModal && (
+                <div className={styles.modalOverlay}>
+                    <Payment onSubmit={handlePaymentSubmit} onBack={handleBackToData} />
+                </div>
+            )}
+
+            {/* Modal de Conclusão */}
+            {showConcludedModal && (
+                <div className={styles.modalOverlay}>
+                    <Concluded />
+                </div>
+            )}
         </div>
     );
 };
