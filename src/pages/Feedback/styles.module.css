@@ -49,10 +49,19 @@
     line-height: normal;
     letter-spacing: 1px;
     display: flex;
-    justify-content: flex-start;    
+    justify-content: flex-start;
   }
 }
 
+#nomeinputFeedback{
+  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+}
 .lowerPart {
   display: flex;
   flex-direction: column;
@@ -63,16 +72,83 @@
   width: 100%;
 }
 
-.rating{
+.rating {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-.error{
+.error {
   display: flex;
   flex-direction: column;
   background: none;
   color: var(--white);
   font-size: 0.8rem;
+}
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal p {
+  margin-bottom: 20px;
+  font-family: var(--font-montserrat);
+  color: var(--black);
+}
+#inputError{
+  outline: 3px solid var(--red-100);
+  outline-offset: 1px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+#feedbackBoxError{
+  outline: 3px solid var(--red-100);
+  outline-offset: 1px;
+  border-radius: 4px;
+  width: 24.375rem;
+  height: 8.5rem;
+  padding: 0.5rem;
+  resize: none;
+  border-radius: 0.2rem;
+  background: var(--white);
+  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-roboto);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: flex-start;
+}
 }
