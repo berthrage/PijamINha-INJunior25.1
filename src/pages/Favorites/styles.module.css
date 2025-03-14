@@ -1,0 +1,34 @@
+main {
+    padding: 0;
+}
+
+.favoritesSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    background: white;
+    padding: var(--height-main-padding) var(--width-main-padding) 120px var(--width-main-padding);
+    justify-content: center;
+    z-index: 1;
+}
+
+.favoritesSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/images/pattern-bg-blue0.png');
+    background-position: center;
+    background-repeat: repeat;
+    opacity: 0.3; 
+    z-index: 0; 
+}
+
+@media (max-width: 768px) {
+    .favoritesSection {
+        padding: 0 0 0 0;
+    }
+}

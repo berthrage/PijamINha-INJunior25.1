@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 
-export default function CartWishlistHeader() {
+export default function CartFavoritesHeader() {
     const location = useLocation();
     const [isCartHovered, setIsCartHovered] = useState(false);
     const [isFavoritosHovered, setIsFavoritosHovered] = useState(false);
@@ -28,7 +28,7 @@ export default function CartWishlistHeader() {
                     </div>
                 </div>
             </Link>
-            <Link to='/wishlist'>
+            <Link to='/favorites'>
                 <div 
                     className={styles.iconContainer}
                     onMouseEnter={() => setIsFavoritosHovered(true)}
@@ -36,10 +36,10 @@ export default function CartWishlistHeader() {
                 >
                     <div className={isFavoritosHovered ? styles.hovered : styles.unhovered}>
                         <FaHeart
-                            className={location.pathname === '/wishlist' ? styles.active : ''} 
+                            className={location.pathname === '/favorites' ? styles.active : ''} 
                             size={50}
                         />
-                        <span className={location.pathname === '/wishlist' ? styles.active : ''}>
+                        <span className={location.pathname === '/favorites' ? styles.active : ''}>
                             Favoritos
                         </span>
                     </div>

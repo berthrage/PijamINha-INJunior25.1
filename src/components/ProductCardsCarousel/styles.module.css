@@ -1,0 +1,59 @@
+.productCardsCarousel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    position: relative; /* For fade effect */
+    overflow: hidden; /* For fade effect */
+}
+
+.swiperSlide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#swiperButtonNext, #swiperButtonPrev {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#swiperButtonNext {
+    right: 0px;
+}
+
+#swiperButtonPrev {
+    left: 0px;
+}
+
+/* Adding fade effect */
+.swiperContainer::before,
+.swiperContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; 
+    z-index: 5;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.swiperContainer::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.swiperContainer::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+

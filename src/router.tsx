@@ -6,9 +6,10 @@ import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Register from "./pages/Register";
 import PajamasPage from "./pages/PajamasPage";
-import CartWishlistHeader from "./components/CartWishlistHeader";
+import CartFavoritesHeader from "./components/CartFavoritesHeader";
 import Cart from "./pages/Cart";
 import SinglePajamaPage from "./pages/SinglePajamaPage";
+import Favorites from "./pages/Favorites";
 // import Data from "./components/Data";
 // import Payment from "./components/Payment";
 // import Concluded from "./components/Concluded";
@@ -39,11 +40,11 @@ const router = createBrowserRouter(
                 },
                 {
                     path:"/cart",
-                    element: <><CartWishlistHeader></CartWishlistHeader><Cart></Cart></>
+                    element: <><CartFavoritesHeader></CartFavoritesHeader><Cart></Cart></>
                 },
                 {
-                    path:"/wishlist",
-                    element: <><CartWishlistHeader></CartWishlistHeader></>
+                    path:"/favorites",
+                    element: <><CartFavoritesHeader></CartFavoritesHeader><Favorites></Favorites></>
                 },
                 {
                     path: "/pajamas",
