@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 import { z } from "zod";
 import { useState } from "react";
+import { API } from "../../utils/apiConstants";
 
 const registerSchema = z.object({
     name: z.string()
@@ -71,7 +72,7 @@ export default function Register() {
                 password: formData.password,
             };
 
-            const response = await axios.post("/api/register", userData, {
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.USERS}`, userData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
