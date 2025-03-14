@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules"; 
+import { Navigation, Mousewheel } from "swiper/modules"; 
 import styles from './styles.module.css';
 import arrowNext from '../../assets/icons/next.png';
 import arrowNextHovered from '../../assets/icons/next-hovered.png';
@@ -8,6 +8,7 @@ import arrowPrevHovered from '../../assets/icons/prev-hovered.png';
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/mousewheel";
 import ImageLinkTransition from "../ImageLinkTransition";
 import Pajama from "../../types/Pajama";
 import ProductCardStandard from "../ProductCardStandard";
@@ -35,10 +36,13 @@ export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselPr
             </ImageLinkTransition>
 
             <Swiper
-                modules={[Navigation]} // Enable navigation
+                modules={[Navigation, Mousewheel]} // Enable navigation
                 spaceBetween={40} // Space between slides
                 slidesPerView={1} // Default slides per view
+                speed={1000}
+                slidesPerGroup={2}
                 initialSlide={0}
+                mousewheel={{forceToAxis: true}}
                 navigation={{
                     nextEl: `#${styles["swiperButtonNext"]}`,
                     prevEl: `#${styles["swiperButtonPrev"]}`,
