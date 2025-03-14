@@ -1,3 +1,10 @@
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import usePajamasStore from '../../stores/PajamasStore';
+import useCartStore from '../../stores/CartStore'; 
+import Pajama from '../../types/Pajama';
+import PriceRealFormatted from '../../components/PriceRealFormatted';
+import FavoriteButton from '../../components/FavoriteButton';
 import Button from '../../components/Button';
 import NumericStepper from '../../components/NumericStepper';
 import styles from './styles.module.css';
@@ -10,12 +17,6 @@ import masculino from '../../assets/icons/male-sign-grouped.png';
 import adulto from '../../assets/icons/foradults-grouped.png';
 import infantil from '../../assets/icons/forkids-grouped.png';
 import familia from '../../assets/icons/family-grouped.png';
-import { useParams } from 'react-router-dom';
-import usePajamasStore from '../../stores/PajamasStore';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import Pajama from '../../types/Pajama';
-import PriceRealFormatted from '../../components/PriceRealFormatted';
-import FavoriteButton from '../../components/FavoriteButton';
 
 export default function SinglePajamaPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -26,12 +27,13 @@ export default function SinglePajamaPage() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const pajamaContainerRef = useRef<HTMLDivElement>(null);
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCartStore(); // Use o hook do carrinho
 
     useEffect(() => {
         fetchPajamas();
     }, [fetchPajamas]);
 
-    // Observer for Fade-in Effect
+    // Observer para o efeito de fade-in
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -59,7 +61,7 @@ export default function SinglePajamaPage() {
         }
     }, [pajamas, decodedPajamaName]);
 
-    // Scroll to the height of the containerIndividualPajama div on load
+    // Scroll para a altura do containerIndividualPajama ao carregar
     useLayoutEffect(() => {
         if (scrollRef.current) {
             setTimeout(() => {
@@ -99,6 +101,18 @@ export default function SinglePajamaPage() {
         }
     };
 
+    // Função para adicionar o pijama ao carrinho
+    const handleAddToCart = () => {
+        if (pajama) {
+            const cartProduct: Pajama = {
+                ...pajama,
+                sizes: pajama.sizes.filter(size => size.size === selectedSize), // Filtra apenas o tamanho selecionado
+            };
+            addToCart(cartProduct); // Adiciona ao carrinho
+            alert(`${pajama.name} (Tamanho: ${selectedSize}) foi adicionado ao carrinho!`);
+        }
+    };
+
     const genderImage = () => {
         if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil' || pajama?.gender === 'Família') {
             return unissex;
@@ -117,14 +131,14 @@ export default function SinglePajamaPage() {
             return familia;
         }
         return adulto;
-    }
+    };
 
     const seasonImage = () => {
         if (pajama?.season === 'Inverno' || pajama?.season === 'Outono') {
             return inverno;
         }
         return verao;
-    }
+    };
 
     // Função para calcular o valor da parcela
     const calculateInstallment = (price: number, installments: number = 6): string => {
@@ -146,32 +160,27 @@ export default function SinglePajamaPage() {
     return (
         <>
             <div className={styles.singlePajamaSection}>
-
                 {pajamas.length === 0 ? (
                     <h1>{errorCode ? `Erro ${errorCode} ao carregar pijama` : 'Carregando pijamas...'}</h1>
                 ) : pajama ? (
                     <>
                         <div className={`${styles.pajamaContainer} ${isVisible ? styles.fadeIn : ""}`} ref={pajamaContainerRef}>
-
                             <div className={styles.pajamaMainSection}>
-
                                 <ImageLink
                                     img={pajama.image}
                                     width={550}
-                                    id={styles.pajamaImage}>
-                                </ImageLink>
-
+                                    id={styles.pajamaImage}
+                                />
                                 <div className={styles.containerInformation}>
-
                                     <div className={styles.titleInformation}>
                                         <h1>{pajama.name}</h1>
                                         <p>Ref: #{pajama.id}</p>
                                     </div>
-
                                     <div className={styles.priceInformation} ref={scrollRef}>
                                         <div className={styles.descountsectionInformation}>
                                             {pajama.sale_percent && pajama.sale_percent > 0 ? (
-                                                <><p className={styles.descountInformation}>- {pajama.sale_percent}%</p>
+                                                <>
+                                                    <p className={styles.descountInformation}>- {pajama.sale_percent}%</p>
                                                     <span className={styles.originalPrice}>
                                                         <strong id={styles.originalPriceLabel}>De:</strong>
                                                         <span className={styles.strikethrough}>
@@ -179,9 +188,7 @@ export default function SinglePajamaPage() {
                                                         </span>
                                                     </span>
                                                     <h3>
-                                                        <PriceRealFormatted
-                                                            price={finalPrice}
-                                                        />
+                                                        <PriceRealFormatted price={finalPrice} />
                                                     </h3>
                                                 </>
                                             ) : (
@@ -195,7 +202,6 @@ export default function SinglePajamaPage() {
                                             Parcele em até <strong>6x</strong> de <strong>{calculateInstallment(finalPrice)}</strong>
                                         </p>
                                     </div>
-
                                     <div className={styles.sizeInformation}>
                                         <p>Tamanhos:</p>
                                         <div className={styles.buttonInformation}>
@@ -214,9 +220,9 @@ export default function SinglePajamaPage() {
                                                                 }
                                                             }}
                                                             className={`
-                            ${size.size === selectedSize ? styles.sizeButtonActive : styles.sizeButtonInactive}
-                            ${isOutOfStock ? styles.sizeButtonOutOfStock : ''}
-                        `}
+                                                                ${size.size === selectedSize ? styles.sizeButtonActive : styles.sizeButtonInactive}
+                                                                ${isOutOfStock ? styles.sizeButtonOutOfStock : ''}
+                                                            `}
                                                             disabled={isOutOfStock}
                                                         >
                                                             {size.size}
@@ -231,7 +237,6 @@ export default function SinglePajamaPage() {
                                             </span>
                                         )}
                                     </div>
-
                                     <div className={styles.quantityInformation}>
                                         <p>Quantidade:</p>
                                         {selectedSizeStockQtt > 0 && (
@@ -242,62 +247,60 @@ export default function SinglePajamaPage() {
                                             />
                                         )}
                                     </div>
-
                                     <div className={styles.addcartandwishlistInformation}>
-                                        <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
+                                        <Button id={styles.buttonIndividualPajama} onClick={handleAddToCart}>
+                                            Adicionar ao Carrinho
+                                        </Button>
                                         <FavoriteButton
                                             pajama={pajama}
-                                            id={styles.favoriteIcon}>
-                                        </FavoriteButton>
+                                            id={styles.favoriteIcon}
+                                        />
                                     </div>
-
                                 </div>
                             </div>
-
                             <div className={styles.featuresSection}>
                                 <ul className={styles.featuresList}>
                                     <li>
                                         <ImageLink
                                             img={seasonImage()}
                                             naturalDimensions={true}
-                                            id={styles.featureIcon}>
-                                        </ImageLink>
+                                            id={styles.featureIcon}
+                                        />
                                     </li>
-
                                     <li>
                                         <ImageLink
                                             img={genderImage()}
                                             naturalDimensions={true}
-                                            id={styles.featureIcon}>
-                                        </ImageLink>
+                                            id={styles.featureIcon}
+                                        />
                                     </li>
-
                                     <li>
                                         <ImageLink
                                             img={forAdultsKidsImage()}
                                             id={styles.featureIcon}
                                             naturalDimensions={true}
-                                            occupyFullWidth={true}>
-                                        </ImageLink>
+                                            occupyFullWidth={true}
+                                        />
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
-
                         <div className={styles.aboutSection}>
                             <div className={styles.titleaboutSection}>
                                 <h1>SOBRE NOSSO PIJAMA</h1>
                                 <p>{pajama.description}</p>
-
                                 <div className={styles.informationaboutSection}>
                                     <h4>Contém:</h4>
-                                    <ul><li>Uma blusa de mangas longas na cor azul petróleo com estampa poá branca</li><li>Uma calça na cor azul petróleo com estampa poá branca</li></ul>
+                                    <ul>
+                                        <li>Uma blusa de mangas longas na cor azul petróleo com estampa poá branca</li>
+                                        <li>Uma calça na cor azul petróleo com estampa poá branca</li>
+                                    </ul>
                                     <h4>Composição:</h4>
-                                    <ul><li>100% algodão</li></ul>
+                                    <ul>
+                                        <li>100% algodão</li>
+                                    </ul>
                                 </div>
                             </div>
-
                         </div>
                     </>
                 ) : (
@@ -305,5 +308,5 @@ export default function SinglePajamaPage() {
                 )}
             </div>
         </>
-    )
+    );
 }
