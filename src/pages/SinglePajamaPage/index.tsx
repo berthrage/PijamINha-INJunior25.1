@@ -90,6 +90,15 @@ export default function SinglePajamaPage() {
         setQuantity(newQuantity);
     };
 
+    // Função para lidar com mudança de tamanho
+    const handleSizeChange = (size: string | number) => {
+        if (size !== selectedSize) {
+            setSelectedSize(size);
+            setQuantity(1); // Reset da quantidade para 1 quando muda o tamanho
+            console.log(`Tamanho alterado para ${size}, quantidade resetada para 1`);
+        }
+    };
+
     const genderImage = () => {
         if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil' || pajama?.gender === 'Família') {
             return unissex;
@@ -201,8 +210,7 @@ export default function SinglePajamaPage() {
                                                             type="button"
                                                             onClick={() => {
                                                                 if (!isOutOfStock) {
-                                                                    setSelectedSize(size.size);
-                                                                    console.log(size.size);
+                                                                    handleSizeChange(size.size);
                                                                 }
                                                             }}
                                                             className={`
