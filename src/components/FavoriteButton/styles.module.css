@@ -1,0 +1,15 @@
+.animate {
+    animation: scaleUp 0.15s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
