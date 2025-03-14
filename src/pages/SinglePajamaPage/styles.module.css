@@ -7,10 +7,8 @@
   background: white;
   justify-content: center;
   align-items: center;
-  padding: var(--height-main-padding) var(--width-main-padding)
-    var(--height-main-padding) var(--width-main-padding);
   z-index: 1;
-  gap: 5rem;
+  gap: 40px;
 }
 
 .singlePajamaSection::before {
@@ -26,17 +24,22 @@
   opacity: 0.15;
   z-index: 0;
 }
+
 .containerPajama {
   position: relative;
   z-index: 1;
   display: flex;
   width: 100%;
-  height: 52rem;
+  height: 832px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  padding: var(--height-main-padding) var(--width-main-padding)
+    0 var(--width-main-padding);
+  gap: 80px;
 }
 
 #pajamaImage {
+  height: 100%;
   box-shadow: 16px 16px 16px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -45,13 +48,12 @@
 }
 
 .containerInformation {
-  margin-left: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
+  max-width: 800px;
   height: 100%;
-
 }
 
 .titleInformation {
@@ -176,11 +178,13 @@
   border-radius: 4px;
   background: var(--blue-100);
 }
+
 .featuresSection {
     display: flex;
+    width: 100%;
     align-items: center;
-    justify-content: start;
-    padding: 50px var(--width-main-padding) 5px var(--width-main-padding);
+    justify-content: center;
+    padding: 0 var(--width-main-padding) 0 var(--width-main-padding);
     z-index: 1;
 }
 
@@ -208,65 +212,64 @@
     text-align: center;
     color: var(--black);
 }
-.aboutSection{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    background-color: var(--blue-300);
-    color: var(--white);
-    padding-inline: 5rem;
-    padding-block: 2rem;
-    gap: 3rem;
 
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background-color: var(--blue-300);
+  color: var(--white);
+  padding-inline: 5rem;
+  padding-block: 2rem;
+  gap: 50px;
+  padding: var(--height-main-padding) var(--width-main-padding)
+    var(--height-main-padding) var(--width-main-padding);
 }
 .titleaboutSection{
     display: flex;
     flex-direction: column;
     gap: 3rem;
     color: var(--white);
-    
-    
 }
 .titleaboutSection h1{
-    font-family: var(--font-numans);
-font-size: 40px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 1.6px;
+  font-family: var(--font-numans);
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1rem;
 }
 .titleaboutSection p{
     font-family: var(--font-nunito-sans);
-    font-size: 24px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 0.96px;
+    letter-spacing: 0.06rem;
 }
 .informationaboutSection{
     display: flex;
     flex-direction: column;
     font-family: var(--font-nunito-sans);
-    gap: 1.5rem;
+    gap: 24px;
     color: var(--white);
 }
 .informationaboutSection h4{
-    font-size: 28px;
+    font-size: 1.25rem;
     font-style: italic;
     font-weight: 600;
     line-height: normal;
     letter-spacing: 1.12px;
 }
 .informationaboutSection li{
-    font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.96px;
-list-style-type: disc;
-margin-left: 2rem;
-
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  list-style-type: disc;
+  margin-left: 2rem;
 }

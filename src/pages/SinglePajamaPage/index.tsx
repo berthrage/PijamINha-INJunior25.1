@@ -3,9 +3,9 @@ import NumericStepper from '../../components/NumericStepper'
 import styles from './styles.module.css'
 import { FaHeart } from 'react-icons/fa'
 import ImageLink from '../../components/ImageLink'
-import inverno from '../../assets/icons/winter.png'
-import unissex from '../../assets/icons/unisex.png'
-import adulto from '../../assets/icons/foradults.png'
+import inverno from '../../assets/icons/winter-grouped.png'
+import unissex from '../../assets/icons/unisex-grouped.png'
+import adulto from '../../assets/icons/foradults-grouped.png'
 import { useParams } from 'react-router-dom'
 import usePajamasStore from '../../stores/PajamasStore'
 import { use, useEffect, useLayoutEffect, useRef, useState } from 'react'
@@ -72,8 +72,7 @@ export default function SinglePajamaPage() {
 
                             <ImageLink
                                 img={pajama.image}
-                                width={1000}
-                                height={831}
+                                width={550}
                                 id={styles.pajamaImage}>
                             </ImageLink>
                             <div className={styles.containerInformation}>
@@ -122,6 +121,7 @@ export default function SinglePajamaPage() {
                                     <NumericStepper
                                         quantity={1}></NumericStepper>
                                 </div>
+
                                 <div className={styles.addcartandwishlistInformation}>
                                     <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
                                     <FaHeart className={styles.iconactive} size={86}></FaHeart>
@@ -129,7 +129,6 @@ export default function SinglePajamaPage() {
 
                             </div>
                         </div>
-
                         <div className={styles.featuresSection}>
                             <ul className={styles.featuresList}>
                                 <li>
@@ -138,7 +137,6 @@ export default function SinglePajamaPage() {
                                         width={70}
                                         height={70}>
                                     </ImageLink>
-                                    <p>Inverno</p>
                                 </li>
 
                                 <li>
@@ -147,7 +145,6 @@ export default function SinglePajamaPage() {
                                         width={70}
                                         height={70}>
                                     </ImageLink>
-                                    <p>Unissex</p>
                                 </li>
 
                                 <li>
@@ -156,23 +153,23 @@ export default function SinglePajamaPage() {
                                         width={70}
                                         height={70}>
                                     </ImageLink>
-                                    <p>Adulto</p>
                                 </li>
                             </ul>
                         </div>
-
 
                         <div className={styles.aboutSection}>
                             <div className={styles.titleaboutSection}>
                                 <h1>SOBRE NOSSO PIJAMA</h1>
                                 <p>{pajama.description}</p>
-                            </div>
-                            <div className={styles.informationaboutSection}>
-                                <h4>Contém:</h4>
-                                <ul><li>Uma blusa de mangas longas na cor azul petróleo com estampa poá branca</li><li>Uma calça na cor azul petróleo com estampa poá branca</li></ul>
-                                <h4>Composição:</h4>
-                                <ul><li>100% algodão</li></ul>
-                            </div>
+
+                                <div className={styles.informationaboutSection}>
+                                    <h4>Contém:</h4>
+                                    <ul><li>Uma blusa de mangas longas na cor azul petróleo com estampa poá branca</li><li>Uma calça na cor azul petróleo com estampa poá branca</li></ul>
+                                    <h4>Composição:</h4>
+                                    <ul><li>100% algodão</li></ul>
+                                    </div>
+                                </div>
+
                         </div>
                     </>
                 ) : (
