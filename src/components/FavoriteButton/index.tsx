@@ -8,7 +8,7 @@ import ImageLinkTransition from '../ImageLinkTransition';
 interface FavoriteButtonProps {
     favorite: boolean;
     id?: string;
-    onToggleFavorite: () => void;
+    onToggleFavorite?: () => void;
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ favorite, onToggleFavorite, id }) => {
@@ -26,7 +26,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ favorite, onToggleFavor
     }, []);
 
     const handleClick = () => {
-        onToggleFavorite();
+        if (onToggleFavorite) {
+            onToggleFavorite();
+        }
 
         // Trigger heart animation
         if (favoriteIconRef.current) {

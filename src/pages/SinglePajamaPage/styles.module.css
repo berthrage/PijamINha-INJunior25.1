@@ -179,15 +179,18 @@
   display: flex;
   color: var(--white);
   font-family: var(--font-nunito-sans);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  gap: 1rem;
+  gap: 16px;
+  align-items: center;
 }
-.addcartandwishlistInformation .iconactive{
-    color: var(--red-300);
+
+#favoriteIcon {
+  cursor: pointer;
 }
+
 #buttonIndividualPajama {
   width: 432px;
   height: 85px;

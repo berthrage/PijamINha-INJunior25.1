@@ -16,6 +16,7 @@ import usePajamasStore from '../../stores/PajamasStore'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Pajama from '../../types/Pajama'
 import PriceRealFormatted from '../../components/PriceRealFormatted'
+import FavoriteButton from '../../components/FavoriteButton'
 // import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
@@ -113,6 +114,20 @@ export default function SinglePajamaPage() {
         return verao;
     }
 
+    const [favorite, setFavorite] = useState<boolean>(pajama?.favorite ?? false);
+
+    useEffect(() => {
+        if (pajama) {
+            setFavorite(pajama.favorite);
+        }
+    }, [pajama]);
+
+    const toggleFavorite = () => {
+        setFavorite(!favorite);
+        if (pajama) pajama.favorite = !pajama.favorite;
+        console.log(pajama);
+    };
+
     return (
         <>
             <div className={styles.singlePajamaSection}>
@@ -179,8 +194,12 @@ export default function SinglePajamaPage() {
                                     </div>
 
                                     <div className={styles.addcartandwishlistInformation}>
-                                        <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
-                                        <FaHeart className={styles.iconactive} size={86}></FaHeart>
+                                            <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
+                                            <FavoriteButton
+                                                favorite={favorite}
+                                                onToggleFavorite={toggleFavorite}
+                                                id={styles.favoriteIcon}>
+                                            </FavoriteButton>
                                     </div>
 
                                 </div>
