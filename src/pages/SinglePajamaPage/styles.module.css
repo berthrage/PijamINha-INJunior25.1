@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
-  gap: 40px;
+  gap: 20px;
 }
 
 .singlePajamaSection::before {
@@ -18,25 +18,41 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: url("../../assets/images/pattern-bg-blue100.png");
+  background-image: url('../../assets/images/pattern-bg-blue0.png');
   background-position: center;
   background-repeat: repeat;
-  opacity: 0.15;
+  opacity: 0.3;
   z-index: 0;
 }
 
-.containerPajama {
+.pajamaContainer {
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 832px;
   align-items: center;
   justify-content: center;
   padding: var(--height-main-padding) var(--width-main-padding)
     0 var(--width-main-padding);
-  gap: 80px;
+  gap: 20px;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
 }
+.pajamaContainer.fadeIn {
+  opacity: 1;
+}
+
+.pajamaMainSection {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 832px;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
 
 #pajamaImage {
   height: 100%;
@@ -199,6 +215,11 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+#featureImage img {
+  object-fit: cover;
+  overflow: visible;
 }
 
 .featuresList li p {
