@@ -3,20 +3,23 @@ import NumericStepper from '../../components/NumericStepper'
 import styles from './styles.module.css'
 import { FaHeart } from 'react-icons/fa'
 import ImageLink from '../../components/ImageLink'
-import inverno from '../../assets/icons/winter-grouped.png'
-import unissex from '../../assets/icons/unisex-grouped.png'
-import adulto from '../../assets/icons/foradults-both.png'
+import inverno from '../../assets/icons/winter.png'
+import unissex from '../../assets/icons/unisex.png'
+import adulto from '../../assets/icons/foradults.png'
 import { useParams } from 'react-router-dom'
 import usePajamasStore from '../../stores/PajamasStore'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Pajama from '../../types/Pajama'
 import PriceRealFormatted from '../../components/PriceRealFormatted'
+import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
+    const isWideEnough = useMediaQuery('(min-width: 440px)');
     const { pajamaName } = useParams<{ pajamaName: string }>();
     const decodedPajamaName = decodeURIComponent(pajamaName || '');
     const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
     const [ pajama, setPajama ] = useState<Pajama>();
+    const containerPajamaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         fetchPajamas();
@@ -31,17 +34,48 @@ export default function SinglePajamaPage() {
         }
     }, [pajamas, decodedPajamaName]);
 
+    // Scroll to the height of the containerIndividualPajama div on load
+    useLayoutEffect(() => {
+        if (containerPajamaRef.current) {
+            setTimeout(() => {
+                if (containerPajamaRef.current) {
+                    window.scrollTo(0, containerPajamaRef.current.offsetTop - 50 || 0);
+                }
+            }, 0);
+        }
+    }, [pajama]);
+
+    const [ selectedSize, setSelectedSize ] = useState<string | number>(pajama?.sizes[0]?.size || '');
+    const allSizesHaveStock = pajama?.sizes.every(size => size.stock_quantity > 0);
+
+    useEffect(() => {
+        if (pajama && pajama.sizes.length > 0) {
+            setSelectedSize(pajama.sizes[0].size);
+        }
+    } , [pajama]);
+
+    const [ selectedSizeStock, setSelectedSizeStock ] = useState<number>(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
+
+    useEffect(() => {
+        setSelectedSizeStock(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
+    } , [selectedSize, pajama]);
+
     return (
         <>
-            <div className={styles.individualpajamaSection}>
+            <div className={styles.singlePajamaSection}>
 
                 {pajamas.length === 0 ? (
                     <h1>{errorCode ? `Erro ${errorCode} ao carregar pijama` : 'Carregando pijamas...'}</h1>
                 ) : pajama ? (
                     <>
-                        <div className={styles.containerIndividualPajama}>
+                        <div className={styles.containerPajama}>
 
-                            <img src={pajama.image} alt="" />
+                            <ImageLink
+                                img={pajama.image}
+                                width={1000}
+                                height={831}
+                                id={styles.pajamaImage}>
+                            </ImageLink>
                             <div className={styles.containerInformation}>
 
                                 <div className={styles.titleInformation}>
@@ -49,7 +83,7 @@ export default function SinglePajamaPage() {
                                     <p>Ref: #123456</p>
                                 </div>
 
-                                <div className={styles.priceInformation}>
+                                <div className={styles.priceInformation}  ref={containerPajamaRef}>
                                     <div>
                                         <h3>{<PriceRealFormatted price={pajama.price}></PriceRealFormatted>}</h3>
                                         <p>Pix</p>
@@ -60,15 +94,33 @@ export default function SinglePajamaPage() {
                                 <div className={styles.sizeInformation}>
                                     <p>Tamanhos:</p>
                                     <div className={styles.buttonInformation}>
-                                        <button>PP</button><button>P</button><button>M</button><button>G</button><button>GG</button>
+                                        {pajama.sizes.length > 0 && allSizesHaveStock ? pajama.sizes.map(size => (
+                                            <button 
+                                                key={size.size}
+                                                onClick={() => {
+                                                    setSelectedSize(size.size);
+                                                    console.log(size.size);
+                                                }}
+                                                className={size.size === selectedSize ? styles.sizeButtonActive :
+                                                    styles.sizeButtonInactive
+                                                }>
+                                                    {size.size}
+                                                </button>
+                                        )) : (
+                                            <p>Estoque indisponível.</p>
+                                        )}
                                     </div>
-                                    <span>Ainda temos 8 peças do tamanho escolhido em nosso estoque!</span>
+                                    <span>
+                                        {pajama.sizes.find((size) => size.size === selectedSize)?.stock_quantity === 0 || selectedSize === '' ? 'Estoque esgotado!' : (<>
+                                            Ainda temos {selectedSizeStock} peças do tamanho escolhido em nosso estoque!
+                                        </>) }
+                                    </span>
                                 </div>
 
                                 <div className={styles.quantityInformation}>
                                     <p>Quantidade:</p>
                                     <NumericStepper
-                                        quantity={30}></NumericStepper>
+                                        quantity={1}></NumericStepper>
                                 </div>
                                 <div className={styles.addcartandwishlistInformation}>
                                     <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>

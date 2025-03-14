@@ -164,7 +164,6 @@ export default function PajamasPage() {
                             value={selectedType}
                             onChange={(e) => setSelectedType(e.target.value)}
                         >
-                            <div className={styles.dropdownFlair}></div>
                             <option value="type-all">Tipo</option>
                             <option value="curto">Curto</option>
                             <option value="longo">Longo</option>
