@@ -42,7 +42,7 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
 
   setFavorite: async (pajamaId: string, favorite: boolean) => {
     try {
-      const pajama = get().pajamas.find(p => p.id === pajamaId);
+      const pajama = get().pajamas.find((p: Pajama) => p.id === pajamaId);
       if (!pajama) throw new Error('Pajama not found');
 
       const updatedPajama = { ...pajama, favorite };

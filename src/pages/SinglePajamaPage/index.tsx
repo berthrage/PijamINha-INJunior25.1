@@ -1,23 +1,21 @@
-import Button from '../../components/Button'
-import NumericStepper from '../../components/NumericStepper'
-import styles from './styles.module.css'
-import { FaHeart } from 'react-icons/fa'
-import ImageLink from '../../components/ImageLink'
-import inverno from '../../assets/icons/winter-grouped.png'
-import verao from '../../assets/icons/summer-grouped.png'
-import unissex from '../../assets/icons/unisex-grouped.png'
+import Button from '../../components/Button';
+import NumericStepper from '../../components/NumericStepper';
+import styles from './styles.module.css';
+import ImageLink from '../../components/ImageLink';
+import inverno from '../../assets/icons/winter-grouped.png';
+import verao from '../../assets/icons/summer-grouped.png';
+import unissex from '../../assets/icons/unisex-grouped.png';
 import feminino from '../../assets/icons/female-sign-grouped.png';
 import masculino from '../../assets/icons/male-sign-grouped.png';
-import adulto from '../../assets/icons/foradults-grouped.png'
-import infantil from '../../assets/icons/forkids-grouped.png'
-import familia from '../../assets/icons/family-grouped.png'
-import { useParams } from 'react-router-dom'
-import usePajamasStore from '../../stores/PajamasStore'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import Pajama from '../../types/Pajama'
-import PriceRealFormatted from '../../components/PriceRealFormatted'
-import FavoriteButton from '../../components/FavoriteButton'
-import { set } from 'react-hook-form'
+import adulto from '../../assets/icons/foradults-grouped.png';
+import infantil from '../../assets/icons/forkids-grouped.png';
+import familia from '../../assets/icons/family-grouped.png';
+import { useParams } from 'react-router-dom';
+import usePajamasStore from '../../stores/PajamasStore';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import Pajama from '../../types/Pajama';
+import PriceRealFormatted from '../../components/PriceRealFormatted';
+import FavoriteButton from '../../components/FavoriteButton';
 // import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
@@ -115,22 +113,6 @@ export default function SinglePajamaPage() {
         return verao;
     }
 
-    const [favoriteState, setFavoriteState] = useState<boolean>(pajama?.favorite ?? false);
-
-    useEffect(() => {
-        if (pajama) {
-            setFavoriteState(pajama.favorite);
-        }
-    }, [pajama]);
-
-    const toggleFavorite = () => {
-        setFavoriteState(!favoriteState);
-        if (pajama) {
-            setFavorite(pajama.id, !favoriteState);
-        } 
-        console.log(pajama);
-    };
-
     return (
         <>
             <div className={styles.singlePajamaSection}>
@@ -199,8 +181,7 @@ export default function SinglePajamaPage() {
                                     <div className={styles.addcartandwishlistInformation}>
                                             <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
                                             <FavoriteButton
-                                                favorite={favoriteState}
-                                                onToggleFavorite={toggleFavorite}
+                                                pajama={pajama}
                                                 id={styles.favoriteIcon}>
                                             </FavoriteButton>
                                     </div>
