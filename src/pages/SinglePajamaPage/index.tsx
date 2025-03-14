@@ -191,27 +191,25 @@ export default function SinglePajamaPage() {
                                     <li>
                                         <ImageLink
                                             img={seasonImage()}
-                                            width={70}
-                                            height={70}
-                                            id={styles.featureImage}>
+                                            naturalDimensions={true}
+                                            id={styles.featureIcon}>
                                         </ImageLink>
                                     </li>
 
                                     <li>
                                         <ImageLink
                                             img={genderImage()}
-                                            width={70}
-                                            height={70}
-                                            id={styles.featureImage}>
+                                            naturalDimensions={true}
+                                            id={styles.featureIcon}>
                                         </ImageLink>
                                     </li>
 
                                     <li>
                                         <ImageLink
                                             img={forAdultsKidsImage()}
-                                            width={70}
-                                            height={70}
-                                            id={styles.featureImage}>
+                                            id={styles.featureIcon}
+                                            naturalDimensions={true}
+                                            occupyFullWidth={true}>
                                         </ImageLink>
                                     </li>
                                 </ul>

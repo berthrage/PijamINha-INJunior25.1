@@ -217,9 +217,14 @@
     gap: 20px;
 }
 
-#featureImage img {
+#featureIcon {
+  position: relative;
+}
+
+#featureIcon img {
   object-fit: cover;
-  overflow: visible;
+  position: absolute;
+  overflow: visible !important;
 }
 
 .featuresList li p {
