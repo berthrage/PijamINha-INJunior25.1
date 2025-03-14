@@ -21,10 +21,11 @@ export default function SinglePajamaPage() {
     const [isVisible, setIsVisible] = useState(false);
     const { pajamaName } = useParams<{ pajamaName: string }>();
     const decodedPajamaName = decodeURIComponent(pajamaName || '');
-    const { pajamas, fetchPajamas, errorCode, setFavorite } = usePajamasStore();
+    const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
     const [pajama, setPajama] = useState<Pajama>();
     const scrollRef = useRef<HTMLDivElement>(null);
     const pajamaContainerRef = useRef<HTMLDivElement>(null);
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         fetchPajamas();
@@ -70,7 +71,7 @@ export default function SinglePajamaPage() {
     }, [pajama]);
 
     const [selectedSize, setSelectedSize] = useState<string | number>(pajama?.sizes[0]?.size || '');
-    const allSizesHaveStock = pajama?.sizes.every(size => size.stock_quantity > 0);
+    // const allSizesHaveStock = pajama?.sizes.every(size => size.stock_quantity > 0);
 
     useEffect(() => {
         if (pajama && pajama.sizes.length > 0) {
@@ -83,6 +84,11 @@ export default function SinglePajamaPage() {
     useEffect(() => {
         setSelectedSizeStockQtt(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
     }, [selectedSize, pajama]);
+
+    // Função para atualizar a quantidade
+    const handleQuantityChange = (newQuantity: number) => {
+        setQuantity(newQuantity);
+    };
 
     const genderImage = () => {
         if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil' || pajama?.gender === 'Família') {
@@ -157,12 +163,12 @@ export default function SinglePajamaPage() {
                                         <div className={styles.descountsectionInformation}>
                                             {pajama.sale_percent && pajama.sale_percent > 0 ? (
                                                 <><p className={styles.descountInformation}>- {pajama.sale_percent}%</p>
-                                                <span className={styles.originalPrice}>
-                                                <strong id={styles.originalPriceLabel}>De:</strong>
-                                                <span className={styles.strikethrough}>
-                                                    <PriceRealFormatted price={pajama.price} />
-                                                </span>
-                                            </span>
+                                                    <span className={styles.originalPrice}>
+                                                        <strong id={styles.originalPriceLabel}>De:</strong>
+                                                        <span className={styles.strikethrough}>
+                                                            <PriceRealFormatted price={pajama.price} />
+                                                        </span>
+                                                    </span>
                                                     <h3>
                                                         <PriceRealFormatted
                                                             price={finalPrice}
@@ -184,33 +190,46 @@ export default function SinglePajamaPage() {
                                     <div className={styles.sizeInformation}>
                                         <p>Tamanhos:</p>
                                         <div className={styles.buttonInformation}>
-                                            {pajama.sizes.length > 0 && allSizesHaveStock ? pajama.sizes.map(size => (
-                                                <button
-                                                    key={size.size}
-                                                    onClick={() => {
-                                                        setSelectedSize(size.size);
-                                                        console.log(size.size);
-                                                    }}
-                                                    className={size.size === selectedSize ? styles.sizeButtonActive :
-                                                        styles.sizeButtonInactive
-                                                    }>
-                                                    {size.size}
-                                                </button>
-                                            )) : (
-                                                <p>Estoque indisponível.</p>
+                                            {pajama?.sizes?.length > 0 && pajama.sizes.every(size => size.stock_quantity === 0) ? (
+                                                <strong>Estoque indisponível.</strong>
+                                            ) : (
+                                                pajama?.sizes?.map(size => {
+                                                    const isOutOfStock = size.stock_quantity === 0;
+                                                    return (
+                                                        <button
+                                                            key={size.size}
+                                                            onClick={() => {
+                                                                if (!isOutOfStock) {
+                                                                    setSelectedSize(size.size);
+                                                                    console.log(size.size);
+                                                                }
+                                                            }}
+                                                            className={`
+                            ${size.size === selectedSize ? styles.sizeButtonActive : styles.sizeButtonInactive}
+                            ${isOutOfStock ? styles.sizeButtonOutOfStock : ''}
+                        `}
+                                                            disabled={isOutOfStock}
+                                                        >
+                                                            {size.size}
+                                                        </button>
+                                                    );
+                                                })
                                             )}
                                         </div>
-                                        <span>
-                                            {pajama.sizes.find((size) => size.size === selectedSize)?.stock_quantity === 0 || selectedSize === '' ? 'Estoque esgotado!' : (<>
-                                                Ainda temos {selectedSizeStockQtt} peças do tamanho escolhido em nosso estoque!
-                                            </>)}
-                                        </span>
+                                        {selectedSizeStockQtt > 0 && (
+                                            <span>
+                                                Ainda temos <span>{selectedSizeStockQtt} peças</span> do tamanho escolhido em nosso estoque!
+                                            </span>
+                                        )}
                                     </div>
 
                                     <div className={styles.quantityInformation}>
                                         <p>Quantidade:</p>
                                         <NumericStepper
-                                            quantity={1}></NumericStepper>
+                                            quantity={quantity}
+                                            onQuantityChange={handleQuantityChange}
+                                            maxQuantity={selectedSizeStockQtt}
+                                        />
                                     </div>
 
                                     <div className={styles.addcartandwishlistInformation}>

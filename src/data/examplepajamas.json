@@ -12,21 +12,14 @@
       "on_sale": true,
       "sale_percent": 15,
       "sales": [],
+      "id": "357604",
       "sizes": [
-        {
-          "stock_quantity": 5,
-          "size": "P"
-        },
-        {
-          "stock_quantity": 8,
-          "size": "M"
-        },
-        {
-          "stock_quantity": 3,
-          "size": "G"
-        }
-      ],
-      "id": "357604"
+        {"size": "PP", "stock_quantity": 3},
+        {"size": "P", "stock_quantity": 5},
+        {"size": "M", "stock_quantity": 8},
+        {"size": "G", "stock_quantity": 0},
+        {"size": "GG", "stock_quantity": 2}
+      ]
     },
     {
       "name": "Pijama masculino curto - listrado azul",
@@ -39,21 +32,14 @@
       "favorite": true,
       "on_sale": false,
       "sales": [],
+      "id": "140311",
       "sizes": [
-        {
-          "stock_quantity": 2,
-          "size": "M"
-        },
-        {
-          "stock_quantity": 7,
-          "size": "G"
-        },
-        {
-          "stock_quantity": 4,
-          "size": "GG"
-        }
-      ],
-      "id": "140311"
+        {"size": "PP", "stock_quantity": 0},
+        {"size": "P", "stock_quantity": 4},
+        {"size": "M", "stock_quantity": 2},
+        {"size": "G", "stock_quantity": 7},
+        {"size": "GG", "stock_quantity": 0}
+      ]
     },
     {
       "name": "Pijama feminino camisola - seda rose",
@@ -67,25 +53,14 @@
       "on_sale": true,
       "sale_percent": 20,
       "sales": [],
+      "id": "679537",
       "sizes": [
-        {
-          "stock_quantity": 6,
-          "size": "PP"
-        },
-        {
-          "stock_quantity": 10,
-          "size": "P"
-        },
-        {
-          "stock_quantity": 8,
-          "size": "M"
-        },
-        {
-          "stock_quantity": 4,
-          "size": "G"
-        }
-      ],
-      "id": "679537"
+        {"size": "PP", "stock_quantity": 0},
+        {"size": "P", "stock_quantity": 10},
+        {"size": "M", "stock_quantity": 8},
+        {"size": "G", "stock_quantity": 4},
+        {"size": "GG", "stock_quantity": 6}
+      ]
     },
     {
       "name": "Pijama infantil divertido - estampa dinossauros",
@@ -98,21 +73,14 @@
       "favorite": false,
       "on_sale": false,
       "sales": [],
+      "id": "931291",
       "sizes": [
-        {
-          "stock_quantity": 12,
-          "size": "PP"
-        },
-        {
-          "stock_quantity": 9,
-          "size": "P"
-        },
-        {
-          "stock_quantity": 7,
-          "size": "M"
-        }
-      ],
-      "id": "931291"
+        {"size": "PP", "stock_quantity": 0},
+        {"size": "P", "stock_quantity": 0},
+        {"size": "M", "stock_quantity": 0},
+        {"size": "G", "stock_quantity": 0},
+        {"size": "GG", "stock_quantity": 0}
+      ]
     },
     {
       "name": "Pijama masculino longo - xadrez vermelho",
@@ -126,22 +94,15 @@
       "on_sale": true,
       "sale_percent": 10,
       "sales": [],
+      "id": "537418",
       "sizes": [
-        {
-          "stock_quantity": 3,
-          "size": "M"
-        },
-        {
-          "stock_quantity": 6,
-          "size": "G"
-        },
-        {
-          "stock_quantity": 2,
-          "size": "GG"
-        }
-      ],
-      "id": "537418"
-    },
+        {"size": "PP", "stock_quantity": 1},
+        {"size": "P", "stock_quantity": 3},
+        {"size": "M", "stock_quantity": 6},
+        {"size": "G", "stock_quantity": 0},
+        {"size": "GG", "stock_quantity": 2}
+      ]
+  },
     {
       "name": "Pijama feminino short doll - estampa floral",
       "description": "Conjunto short doll feminino com estampa floral delicada, leve e confortável para o verão.",

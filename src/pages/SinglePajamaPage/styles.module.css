@@ -127,21 +127,34 @@
    flex-direction: column;
    font-family: var(--font-nunito-sans);
    color: var(--black);
+   gap: 0.4rem;
 }
 
-.sizeInformation p {
+.sizeInformation p{
    font-size: 24px;
    font-style: italic;
    font-weight: 300;
    line-height: normal;
 }
+.sizeInformation strong{
+   font-size: 28px;
+   font-style: italic;
+   line-height: normal;
+}
 
 .sizeInformation span {
-   font-size: 14px;
+   font-size: 16px;
    font-style: normal;
    font-weight: 300;
    line-height: normal;
 }
+.sizeInformation span:first-child{
+
+   font-style: italic;
+   font-weight: 600;
+   line-height: normal;
+}
+
 
 .buttonInformation,
 .buttonInformationActive {
@@ -185,6 +198,12 @@
    transition: 0.0s;
 }
 
+.sizeButtonOutOfStock {
+   background-color: #ccc;
+   opacity: 0.6;
+   pointer-events: none;
+   user-select: none;
+}
 .quantityInformation {
    display: flex;
    flex-direction: column;
