@@ -8,7 +8,7 @@ main {
     width: 100%;
     position: relative;
     background: white;
-    padding: var(--height-main-padding) var(--width-main-padding) 150px var(--width-main-padding);
+    padding: var(--height-main-padding) var(--width-main-padding) 120px var(--width-main-padding);
     justify-content: center;
     z-index: 1;
 }
@@ -25,4 +25,10 @@ main {
     background-repeat: repeat;
     opacity: 0.3; 
     z-index: 0; 
+}
+
+@media (max-width: 768px) {
+    .favoritesSection {
+        padding: 0 0 0 0;
+    }
 }

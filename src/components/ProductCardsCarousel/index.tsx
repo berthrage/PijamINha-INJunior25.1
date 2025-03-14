@@ -36,7 +36,7 @@ export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselPr
 
             <Swiper
                 modules={[Navigation]} // Enable navigation
-                spaceBetween={70} // Space between slides
+                spaceBetween={40} // Space between slides
                 slidesPerView={1} // Default slides per view
                 initialSlide={0}
                 navigation={{
@@ -56,7 +56,7 @@ export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselPr
                 style={{ height: 850 * cardScale }}
             >
                 {pajamas.map((pajama, index) => (
-                    <SwiperSlide key={index} className={styles.swiperSlide}>
+                    <SwiperSlide key={index} className={styles.swiperSlide} style={{ width: 408 * cardScale }}>
                         <ProductCardStandard
                             pajama={pajama}
                             id={styles.pajamaCard}
