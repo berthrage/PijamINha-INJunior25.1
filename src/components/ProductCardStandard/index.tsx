@@ -98,15 +98,29 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
     }
     }
 
-    const ProductCard = () => {
-        return (
-            <>
-                <div
-                    className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`}
-                    id={id}
-                    ref={cardRef}
-                    style={{ transform: `scale(${scale ? scale : 1})` }}>
 
+    return (
+        <>
+            <div
+                className={`${styles.productCard} ${isVisible ? styles.fadeIn : ""}`}
+                id={id}
+                ref={cardRef}
+                style={{ transform: `scale(${scale ? scale : 1})` }}>
+
+                    <ImageLinkTransition
+                        firstImg={favorite ? heartActive : heartInactive}
+                        secondImg={favorite ? heartActive : heartActiveHovered}
+                        transitionOnlyIn={favorite}
+                        firstAlt="Favoritar"
+                        secondAlt='Desfavoritar'
+                        id={styles.favoriteIcon}
+                        width={51}
+                        height={55}
+                        onClick={toggleFavorite}
+                        ref={favoriteIconRef}>
+                    </ImageLinkTransition>
+                   
+                <Link to={linkTo || '#'}>
                     <div className={styles.imgSection}>
                         <ImageLink
                             img={pajama.image}
@@ -115,18 +129,6 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
                             width={408}
                             height={642.13}>
                         </ImageLink>
-                        <ImageLinkTransition
-                            firstImg={favorite ? heartActive : heartInactive}
-                            secondImg={favorite ? heartActive : heartActiveHovered}
-                            transitionOnlyIn={favorite}
-                            firstAlt="Favoritar"
-                            secondAlt='Desfavoritar'
-                            id={styles.favoriteIcon}
-                            width={51}
-                            height={55}
-                            onClick={toggleFavorite}
-                            ref={favoriteIconRef}>
-                        </ImageLinkTransition>
                         {pajama.sale_percent ? (
                             <>
                                 <ImageLink
@@ -138,6 +140,7 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
                                 </ImageLink>
                             </>
                         ) : ('')}
+                        
                     </div>
 
 
@@ -168,21 +171,8 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
 
                         </div>
                     </div>
-                </div>
-            </>
-        )
-    }
-
-    return (
-        <>
-            {linkTo ? (
-                <Link to={linkTo}>
-                    <ProductCard></ProductCard>
                 </Link>
-            ) : (<>
-                <ProductCard></ProductCard>
-            </>
-            )}
+            </div>
         </>
     )
 }
