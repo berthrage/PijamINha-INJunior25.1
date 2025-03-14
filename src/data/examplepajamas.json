@@ -495,7 +495,7 @@
       "season": "Todas",
       "type": "Longo",
       "gender": "Infantil",
-      "favorite": true,
+      "favorite": false,
       "on_sale": true,
       "sale_percent": 20,
       "sales": [],

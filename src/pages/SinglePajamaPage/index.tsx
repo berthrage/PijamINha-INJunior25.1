@@ -80,10 +80,10 @@ export default function SinglePajamaPage() {
         }
     } , [pajama]);
 
-    const [ selectedSizeStock, setSelectedSizeStock ] = useState<number>(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
+    const [ selectedSizeStockQtt, setSelectedSizeStockQtt ] = useState<number>(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
 
     useEffect(() => {
-        setSelectedSizeStock(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
+        setSelectedSizeStockQtt(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
     } , [selectedSize, pajama]);
 
     const genderImage = () => {
@@ -167,7 +167,7 @@ export default function SinglePajamaPage() {
                                         </div>
                                         <span>
                                             {pajama.sizes.find((size) => size.size === selectedSize)?.stock_quantity === 0 || selectedSize === '' ? 'Estoque esgotado!' : (<>
-                                                Ainda temos {selectedSizeStock} peças do tamanho escolhido em nosso estoque!
+                                                Ainda temos {selectedSizeStockQtt} peças do tamanho escolhido em nosso estoque!
                                             </>)}
                                         </span>
                                     </div>
