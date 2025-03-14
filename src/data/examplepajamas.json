@@ -11,7 +11,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 5,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama masculino curto - listrado azul",
@@ -23,7 +37,21 @@
       "gender": "Masculino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 2,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino camisola - seda rose",
@@ -36,7 +64,25 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 6,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 10,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama infantil divertido - estampa dinossauros",
@@ -48,7 +94,21 @@
       "gender": "Infantil",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 12,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 9,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino longo - xadrez vermelho",
@@ -61,7 +121,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 10,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 3,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 6,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino short doll - estampa floral",
@@ -73,7 +147,25 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 0,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 9,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama unissex longo - liso cinza",
@@ -85,7 +177,25 @@
       "gender": "Unissex",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 2,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino regata e shorts - cetim preto",
@@ -98,7 +208,21 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 25,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino bermuda - estampa tropical",
@@ -110,7 +234,21 @@
       "gender": "Masculino",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 5,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino capri - estampa borboletas",
@@ -123,7 +261,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 6,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama infantil unicórnio - kigurumi",
@@ -135,7 +287,21 @@
       "gender": "Infantil",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 10,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino moletom - cinza e azul",
@@ -148,7 +314,25 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 30,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 0,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 1,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino cropped e shorts - rosa",
@@ -160,7 +344,21 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 8,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 12,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama unissex longo - estampa geométrica",
@@ -173,7 +371,25 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 10,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 3,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 6,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 9,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino gestante - longo azul",
@@ -185,7 +401,21 @@
       "gender": "Feminino",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama masculino regata e shorts - listrado",
@@ -198,7 +428,17 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 0,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 0,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama feminino seda - verde esmeralda",
@@ -210,7 +450,25 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 2,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 1,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama infantil super-heróis - longo",
@@ -223,7 +481,21 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 11,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 6,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino inverno - xadrez verde",
@@ -235,7 +507,21 @@
       "gender": "Masculino",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 3,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino veludo - bordô",
@@ -248,7 +534,25 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 25,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 1,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 6,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama unissex algodão orgânico - bege",
@@ -260,7 +564,25 @@
       "gender": "Unissex",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 5,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino short doll - rendado branco",
@@ -272,7 +594,25 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 6,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 9,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama masculino modal - cinza escuro",
@@ -285,7 +625,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 2,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino térmica - lilás",
@@ -297,7 +651,21 @@
       "gender": "Feminino",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 3,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama infantil panda - kigurumi",
@@ -310,7 +678,21 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 8,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 6,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino manga curta - estampa xícara",
@@ -322,7 +704,13 @@
       "gender": "Masculino",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 0,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama feminino longo flanela - xadrez rosa",
@@ -335,7 +723,21 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 10,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama unissex camisão - listras azuis",
@@ -347,7 +749,21 @@
       "gender": "Unissex",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 6,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 8,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama feminino gestante - short doll floral",
@@ -360,7 +776,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 3,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama masculino seda - azul marinho",
@@ -372,7 +802,21 @@
       "gender": "Masculino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 1,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 3,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 2,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama feminino algodão egípcio - liso branco",
@@ -385,7 +829,8 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": []
     },
     {
       "name": "Pijama infantil princesa - camisola",
@@ -397,7 +842,21 @@
       "gender": "Infantil",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 9,
+          "size": "PP"
+        },
+        {
+          "stock_quantity": 7,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 5,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino regata - liso verde",
@@ -410,7 +869,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        }
+      ]
     },
     {
       "name": "Pijama feminino cetim - estampa animal print",
@@ -422,7 +895,21 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama unissex algodão - estampa listrada",
@@ -435,7 +922,13 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 10,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama feminino short doll - estampa cereja",
@@ -447,7 +940,17 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino bermuda - liso preto",
@@ -460,7 +963,17 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        }
+      ]
     },
     {
       "name": "Pijama feminino plush - rosa claro",
@@ -472,7 +985,13 @@
       "gender": "Feminino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama infantil astronauta - longo",
@@ -485,7 +1004,25 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama masculino moletom - mescla",
@@ -497,7 +1034,17 @@
       "gender": "Masculino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        }
+      ]
     },
     {
       "name": "Pijama feminino cropped - estampa tropical",
@@ -510,7 +1057,25 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 15,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        }
+      ]
     },
     {
       "name": "Pijama unissex algodão - estampa estrelas",
@@ -522,7 +1087,13 @@
       "gender": "Unissex",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        }
+      ]
     },
     {
       "name": "Pijama feminino gestante - camisola azul",
@@ -535,7 +1106,21 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 10,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama masculino clássico - listra fina azul",
@@ -547,7 +1132,21 @@
       "gender": "Masculino",
       "favorite": true,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        }
+      ]
     },
     {
       "name": "Pijama feminino renda - preto",
@@ -560,7 +1159,25 @@
       "favorite": true,
       "on_sale": true,
       "sale_percent": 25,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama infantil fadas - camisola",
@@ -572,7 +1189,25 @@
       "gender": "Infantil",
       "favorite": false,
       "on_sale": false,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "M"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "G"
+        },
+        {
+          "stock_quantity": 4,
+          "size": "GG"
+        }
+      ]
     },
     {
       "name": "Pijama masculino algodão egípcio - azul claro",
@@ -585,7 +1220,13 @@
       "favorite": false,
       "on_sale": true,
       "sale_percent": 20,
-      "sales": []
+      "sales": [],
+      "sizes": [
+        {
+          "stock_quantity": 4,
+          "size": "P"
+        }
+      ]
     }
   ]
 }
