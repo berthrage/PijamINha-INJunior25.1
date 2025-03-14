@@ -2,6 +2,7 @@ import PajamaSize from "./PajamaSize";
 import Sale from "./Sale";
 
 interface Pajama {
+    id: string,
     name: string,
     description: string,
     image: string,
