@@ -14,11 +14,26 @@
       "sales": [],
       "id": "357604",
       "sizes": [
-        {"size": "PP", "stock_quantity": 3},
-        {"size": "P", "stock_quantity": 5},
-        {"size": "M", "stock_quantity": 8},
-        {"size": "G", "stock_quantity": 0},
-        {"size": "GG", "stock_quantity": 2}
+        {
+          "size": "PP",
+          "stock_quantity": 3
+        },
+        {
+          "size": "P",
+          "stock_quantity": 5
+        },
+        {
+          "size": "M",
+          "stock_quantity": 8
+        },
+        {
+          "size": "G",
+          "stock_quantity": 0
+        },
+        {
+          "size": "GG",
+          "stock_quantity": 2
+        }
       ]
     },
     {
@@ -34,11 +49,26 @@
       "sales": [],
       "id": "140311",
       "sizes": [
-        {"size": "PP", "stock_quantity": 0},
-        {"size": "P", "stock_quantity": 4},
-        {"size": "M", "stock_quantity": 2},
-        {"size": "G", "stock_quantity": 7},
-        {"size": "GG", "stock_quantity": 0}
+        {
+          "size": "PP",
+          "stock_quantity": 0
+        },
+        {
+          "size": "P",
+          "stock_quantity": 4
+        },
+        {
+          "size": "M",
+          "stock_quantity": 2
+        },
+        {
+          "size": "G",
+          "stock_quantity": 7
+        },
+        {
+          "size": "GG",
+          "stock_quantity": 0
+        }
       ]
     },
     {
@@ -55,11 +85,26 @@
       "sales": [],
       "id": "679537",
       "sizes": [
-        {"size": "PP", "stock_quantity": 0},
-        {"size": "P", "stock_quantity": 10},
-        {"size": "M", "stock_quantity": 8},
-        {"size": "G", "stock_quantity": 4},
-        {"size": "GG", "stock_quantity": 6}
+        {
+          "size": "PP",
+          "stock_quantity": 0
+        },
+        {
+          "size": "P",
+          "stock_quantity": 10
+        },
+        {
+          "size": "M",
+          "stock_quantity": 8
+        },
+        {
+          "size": "G",
+          "stock_quantity": 4
+        },
+        {
+          "size": "GG",
+          "stock_quantity": 6
+        }
       ]
     },
     {
@@ -75,11 +120,26 @@
       "sales": [],
       "id": "931291",
       "sizes": [
-        {"size": "PP", "stock_quantity": 0},
-        {"size": "P", "stock_quantity": 0},
-        {"size": "M", "stock_quantity": 0},
-        {"size": "G", "stock_quantity": 0},
-        {"size": "GG", "stock_quantity": 0}
+        {
+          "size": "PP",
+          "stock_quantity": 0
+        },
+        {
+          "size": "P",
+          "stock_quantity": 0
+        },
+        {
+          "size": "M",
+          "stock_quantity": 0
+        },
+        {
+          "size": "G",
+          "stock_quantity": 0
+        },
+        {
+          "size": "GG",
+          "stock_quantity": 0
+        }
       ]
     },
     {
@@ -96,13 +156,28 @@
       "sales": [],
       "id": "537418",
       "sizes": [
-        {"size": "PP", "stock_quantity": 1},
-        {"size": "P", "stock_quantity": 3},
-        {"size": "M", "stock_quantity": 6},
-        {"size": "G", "stock_quantity": 0},
-        {"size": "GG", "stock_quantity": 2}
+        {
+          "size": "PP",
+          "stock_quantity": 1
+        },
+        {
+          "size": "P",
+          "stock_quantity": 3
+        },
+        {
+          "size": "M",
+          "stock_quantity": 6
+        },
+        {
+          "size": "G",
+          "stock_quantity": 0
+        },
+        {
+          "size": "GG",
+          "stock_quantity": 2
+        }
       ]
-  },
+    },
     {
       "name": "Pijama feminino short doll - estampa floral",
       "description": "Conjunto short doll feminino com estampa floral delicada, leve e confortável para o verão.",
