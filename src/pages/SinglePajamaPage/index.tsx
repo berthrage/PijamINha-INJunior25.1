@@ -17,6 +17,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Pajama from '../../types/Pajama'
 import PriceRealFormatted from '../../components/PriceRealFormatted'
 import FavoriteButton from '../../components/FavoriteButton'
+import { set } from 'react-hook-form'
 // import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
@@ -24,7 +25,7 @@ export default function SinglePajamaPage() {
     const [isVisible, setIsVisible] = useState(false);
     const { pajamaName } = useParams<{ pajamaName: string }>();
     const decodedPajamaName = decodeURIComponent(pajamaName || '');
-    const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
+    const { pajamas, fetchPajamas, errorCode, setFavorite } = usePajamasStore();
     const [ pajama, setPajama ] = useState<Pajama>();
     const scrollRef = useRef<HTMLDivElement>(null);
     const pajamaContainerRef = useRef<HTMLDivElement>(null);
@@ -114,17 +115,19 @@ export default function SinglePajamaPage() {
         return verao;
     }
 
-    const [favorite, setFavorite] = useState<boolean>(pajama?.favorite ?? false);
+    const [favoriteState, setFavoriteState] = useState<boolean>(pajama?.favorite ?? false);
 
     useEffect(() => {
         if (pajama) {
-            setFavorite(pajama.favorite);
+            setFavoriteState(pajama.favorite);
         }
     }, [pajama]);
 
     const toggleFavorite = () => {
-        setFavorite(!favorite);
-        if (pajama) pajama.favorite = !pajama.favorite;
+        setFavoriteState(!favoriteState);
+        if (pajama) {
+            setFavorite(pajama.id, !favoriteState);
+        } 
         console.log(pajama);
     };
 
@@ -150,7 +153,7 @@ export default function SinglePajamaPage() {
 
                                     <div className={styles.titleInformation}>
                                         <h1>{pajama.name}</h1>
-                                        <p>Ref: #123456</p>
+                                        <p>Ref: #{pajama.id}</p>
                                     </div>
 
                                     <div className={styles.priceInformation} ref={scrollRef}>
@@ -196,7 +199,7 @@ export default function SinglePajamaPage() {
                                     <div className={styles.addcartandwishlistInformation}>
                                             <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
                                             <FavoriteButton
-                                                favorite={favorite}
+                                                favorite={favoriteState}
                                                 onToggleFavorite={toggleFavorite}
                                                 id={styles.favoriteIcon}>
                                             </FavoriteButton>

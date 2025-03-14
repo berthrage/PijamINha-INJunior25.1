@@ -6,6 +6,7 @@ import discountIcon from '../../assets/icons/discount.png';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteButton from '../FavoriteButton';
+import usePajamasStore from '../../stores/PajamasStore';
 
 interface ProductCardStandardProps {
     pajama: Pajama,
@@ -18,7 +19,8 @@ interface ProductCardStandardProps {
 }
 
 export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThreshold, itemsPerRow, id, scale, linkTo }: ProductCardStandardProps) {
-    const [favorite, setFavorite] = useState(pajama.favorite);
+    const [favoriteState, setFavoriteState] = useState(pajama.favorite);
+    const { fetchPajamas, setFavorite } = usePajamasStore();
     const cardRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -64,8 +66,10 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
     }, [fadeInTimeout, itemsPerRow]);
 
     const toggleFavorite = () => {
-        setFavorite(!favorite);
-        pajama.favorite = !pajama.favorite;
+        setFavoriteState(!favoriteState);
+        if (pajama) {
+            setFavorite(pajama.id, !favoriteState);
+        } 
         console.log(pajama);
     };
 
@@ -77,7 +81,7 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
             style={{ transform: `scale(${scale ? scale : 1})` }}
         >
             <FavoriteButton 
-                favorite={favorite} 
+                favorite={favoriteState} 
                 onToggleFavorite={toggleFavorite} 
                 id={styles.favoriteIcon}>
             </FavoriteButton>
