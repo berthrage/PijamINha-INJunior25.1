@@ -6,9 +6,8 @@ import { IoMdClose } from "react-icons/io";
 import Data, { CustomerData } from '../../components/Data';
 import Payment, { PaymentDetails } from '../../components/Payment';
 import Concluded from '../../components/Concluded';
-import useCartStore from '../../stores/CartStore'; // Importe o store do carrinho
+import useCartStore from '../../stores/CartStore';
 
-// Interface para representar um item do carrinho
 interface CartItem {
     id: number;
     name: string;
@@ -20,7 +19,7 @@ interface CartItem {
     image: string;
 }
 
-// Interface para o registro da compra
+
 interface PurchaseOrder {
     customerData: CustomerData;
     paymentDetails: PaymentDetails;
@@ -39,15 +38,15 @@ const Cart: React.FC = () => {
     const [isProcessing, setIsProcessing] = useState(false);
 
     useEffect(() => {
-        calculateTotalPrice(); // Calcular o preço total ao carregar o carrinho
+        calculateTotalPrice();
     }, [cart, calculateTotalPrice]);
 
     const removeItemFromCart = (itemId: number) => {
-        removeFromCart(itemId); // Remove o item do carrinho usando Zustand
+        removeFromCart(itemId);
     };
 
     const updateSelectedQuantity = (itemId: number, newSelectedQuantity: number) => {
-        updateQuantity(itemId, newSelectedQuantity); // Atualiza a quantidade no carrinho
+        updateQuantity(itemId, newSelectedQuantity);
     };
 
     const calculateTotal = () => {
@@ -69,14 +68,13 @@ const Cart: React.FC = () => {
             setPaymentDetails(details);
             setIsProcessing(true);
             
-            // Criar objeto com todos os dados da compra
             const purchaseOrder: PurchaseOrder = {
                 customerData: customerData!,
                 paymentDetails: details,
                 items: cart.map(item => ({
                     id: item.productId,
                     name: item.pajama.name,
-                    reference: item.pajama.id, // Usando o ID como referência
+                    reference: item.pajama.id,
                     size: item.pajama.selectedSize,
                     price: item.pajama.price,
                     stockQuantity: item.pajama.sizes.find(size => size.size === item.pajama.selectedSize)?.stock_quantity || 0,
@@ -89,10 +87,8 @@ const Cart: React.FC = () => {
                 orderDate: new Date().toISOString()
             };
             
-            // Enviar dados para o backend (simulado)
             console.log('Purchase Order:', purchaseOrder);
             
-            // Limpar o carrinho após o processamento da compra
             clearCart();
             
             setShowPaymentModal(false);
@@ -112,7 +108,7 @@ const Cart: React.FC = () => {
 
     const handleCompletePurchase = () => {
         setShowConcludedModal(false);
-        clearCart(); // Limpar carrinho na interface
+        clearCart();
     };
 
     return (
@@ -165,14 +161,12 @@ const Cart: React.FC = () => {
                 </Button>
             </div>
 
-            {/* Modal de Dados */}
             {showDataModal && (
                 <div className={styles.modalOverlay}>
                     <Data onSubmit={handleDataSubmit} />
                 </div>
             )}
 
-            {/* Modal de Pagamento */}
             {showPaymentModal && (
                 <div className={styles.modalOverlay}>
                     <Payment 
@@ -183,7 +177,6 @@ const Cart: React.FC = () => {
                 </div>
             )}
 
-            {/* Modal de Conclusão */}
             {showConcludedModal && (
                 <div className={styles.modalOverlay}>
                     <Concluded onClose={handleCompletePurchase} />

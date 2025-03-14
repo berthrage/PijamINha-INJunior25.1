@@ -5,6 +5,8 @@ import Button from "../../components/Button";
 import axios from "axios";
 import { z } from "zod";
 import { useState } from "react";
+import { API } from '../../utils/apiConstants';
+
 
 const registerSchema = z.object({
     name: z.string()
@@ -42,10 +44,10 @@ export default function Register() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        // Atualiza o valor do input
+
         setFormData({ ...formData, [name]: value });
 
-        // Limpa o erro do campo específico enquanto o usuário digita
+
         if (errors[name]) {
             setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
@@ -70,8 +72,7 @@ export default function Register() {
                 username: formData.username,
                 password: formData.password,
             };
-
-            const response = await axios.post("/api/register", userData, {
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.REGISTER}`, userData, {
                 headers: {
                     "Content-Type": "application/json",
                 },

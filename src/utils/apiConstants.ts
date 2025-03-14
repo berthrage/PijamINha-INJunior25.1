@@ -3,6 +3,7 @@ export const API = {
     BASE_URL: 'http://localhost:3333',
     ENDPOINTS: {
         AUTHENTICATE: '/authenticate',
+        REGISTER:'/register',
         PRODUCTS: '/products', 
         USERS: '/users',
         ORDERS: '/orders',
