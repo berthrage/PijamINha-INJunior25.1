@@ -6,11 +6,12 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import FormContainer from "../../components/FormContainer";
 import RatingWidget from "../../components/RatingWidget";
+import { API } from "../../utils/apiConstants";
 
 type FormData = {
-    nome: string;
-    descricao: string;
-    nota: number;
+    name: string;
+    description: string;
+    rating: number;
 };
 
 export default function Feedback() {
@@ -27,8 +28,8 @@ export default function Feedback() {
     const [confirmationMessage, setConfirmationMessage] = useState<string>("");
 
     useEffect(() => {
-        setValue("nota", nota);
-        trigger("nota");
+        setValue("rating", nota);
+        trigger("rating");
     }, [nota, setValue, trigger]);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -38,7 +39,7 @@ export default function Feedback() {
         }
 
         try {
-            const response = await axios.post("/api/feedback", data);
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.FEEDBAKCS}`, data);
             console.log("Resposta do servidor:", response.data);
             setConfirmationMessage("Feedback enviado com sucesso!");
             setIsModalOpen(true);
@@ -63,9 +64,9 @@ export default function Feedback() {
                 <div className={styles.rating}>
                     <div>
                         <Input
-                            id={errors.nome ? styles.inputError : styles.nomeinputFeedback}
+                            id={errors.name ? styles.inputError : styles.nomeinputFeedback}
                             placeholder="Nome Completo"
-                            {...register("nome", {
+                            {...register("name", {
                                 required: "Nome é obrigatório",
                                 validate: {
                                     noNumbers: (value) =>
@@ -74,18 +75,18 @@ export default function Feedback() {
                                 },
                             })}
                         />
-                        {errors.nome && <p className={styles.error}>{errors.nome.message}</p>}
+                        {errors.name && <p className={styles.error}>{errors.name.message}</p>}
                     </div>
 
                     <div>
                         <textarea
-                            id={errors.descricao ? styles.feedbackBoxError : styles.feedbackBox}
+                            id={errors.description ? styles.feedbackBoxError : styles.feedbackBox}
                             placeholder="Descrição Detalhada"
                             aria-label="Descrição do feedback"
-                            {...register("descricao", { required: "Descrição é obrigatória" })}
+                            {...register("description", { required: "Descrição é obrigatória" })}
                         />
-                        {errors.descricao && (
-                            <p className={styles.error}>{errors.descricao.message}</p>
+                        {errors.description && (
+                            <p className={styles.error}>{errors.description.message}</p>
                         )}
                     </div>
 
@@ -95,11 +96,11 @@ export default function Feedback() {
                         />
                         <input
                             type="hidden"
-                            {...register("nota", {
+                            {...register("rating", {
                                 validate: (value) => value > 0 || "Selecione uma nota para o feedback.",
                             })}
                         />
-                        {errors.nota && <p className={styles.error}>{errors.nota.message}</p>}
+                        {errors.rating && <p className={styles.error}>{errors.rating.message}</p>}
 
                         <Button type="submit">
                             Enviar
