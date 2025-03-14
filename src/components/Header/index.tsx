@@ -45,7 +45,7 @@ export default function Header() {
                             secondAlt='cartIconHovered'>
                         </ImageLinkTransition>
                         <ImageLinkTransition
-                            linkTo='/wishlist'
+                            linkTo='/favorites'
                             firstImg={heartIcon}
                             secondImg={heartIcon}
                             transitionOnlyIn={true}

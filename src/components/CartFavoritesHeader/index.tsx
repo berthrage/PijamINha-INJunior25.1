@@ -28,7 +28,7 @@ export default function CartFavoritesHeader() {
                     </div>
                 </div>
             </Link>
-            <Link to='/wishlist'>
+            <Link to='/favorites'>
                 <div 
                     className={styles.iconContainer}
                     onMouseEnter={() => setIsFavoritosHovered(true)}
@@ -36,10 +36,10 @@ export default function CartFavoritesHeader() {
                 >
                     <div className={isFavoritosHovered ? styles.hovered : styles.unhovered}>
                         <FaHeart
-                            className={location.pathname === '/wishlist' ? styles.active : ''} 
+                            className={location.pathname === '/favorites' ? styles.active : ''} 
                             size={50}
                         />
-                        <span className={location.pathname === '/wishlist' ? styles.active : ''}>
+                        <span className={location.pathname === '/favorites' ? styles.active : ''}>
                             Favoritos
                         </span>
                     </div>

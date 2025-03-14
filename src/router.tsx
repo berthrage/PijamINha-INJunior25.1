@@ -9,6 +9,7 @@ import PajamasPage from "./pages/PajamasPage";
 import CartFavoritesHeader from "./components/CartFavoritesHeader";
 import Cart from "./pages/Cart";
 import SinglePajamaPage from "./pages/SinglePajamaPage";
+import Favorites from "./pages/Favorites";
 // import Data from "./components/Data";
 // import Payment from "./components/Payment";
 // import Concluded from "./components/Concluded";
@@ -43,7 +44,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path:"/favorites",
-                    element: <><CartFavoritesHeader></CartFavoritesHeader></>
+                    element: <><CartFavoritesHeader></CartFavoritesHeader><Favorites></Favorites></>
                 },
                 {
                     path: "/pajamas",

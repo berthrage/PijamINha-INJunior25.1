@@ -1,0 +1,9 @@
+main {
+    padding: 0;
+}
+
+.favoritesSection {
+    display: flex;
+    flex-direction: column;
+
+}
