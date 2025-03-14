@@ -1,12 +1,13 @@
 import { create } from 'zustand';
 import api from '../services/api';
-import Pajama from '../types/Pajama'
+import Pajama from '../types/Pajama';
 
 interface PajamasStore {
     pajamas: Pajama[];
     errorCode: number | null;
     isFetching: boolean;
     fetchPajamas: () => Promise<void>;
+    setFavorite: (pajamaId: string, favorite: boolean) => Promise<void>;
 }
 
 const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
@@ -36,6 +37,23 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
 
     } finally {
       set({ isFetching: false });
+    }
+  },
+
+  setFavorite: async (pajamaId: string, favorite: boolean) => {
+    try {
+      const pajama = get().pajamas.find((p: Pajama) => p.id === pajamaId);
+      if (!pajama) throw new Error('Pajama not found');
+
+      const updatedPajama = { ...pajama, favorite };
+      await api.put(`/pajamas/${pajamaId}`, updatedPajama);
+      set((state: PajamasStore) => ({
+        pajamas: state.pajamas.map(p =>
+          p.id === pajamaId ? updatedPajama : p
+        ),
+      }));
+    } catch (error) {
+      console.error('Failed to update favorite status:', error);
     }
   },
 }));

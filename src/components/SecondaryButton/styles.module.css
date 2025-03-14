@@ -16,14 +16,14 @@
 }
 @media (hover: hover) {
     .button:hover {
-        background-color: var(--black);
-        color: white;
+        background: var(--blue-0);
+        color: var(--blue-300);
     }
 }
 @media (hover: none) {
     .button:active {
-        background-color: var(--black);
-        color: white;
+        background: var(--blue-0);
+        color: var(--blue-300);
     }
 }
 

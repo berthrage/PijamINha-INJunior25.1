@@ -29,6 +29,7 @@ export default function PajamasPage() {
         fetchPajamas();
     }, [fetchPajamas]);
 
+    // query-string to pull value from gender filters from URL
     useEffect(() => {
         const queryParams = queryString.parse(location.search);
         if (queryParams.gender) {
@@ -150,6 +151,7 @@ export default function PajamasPage() {
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                             <option value="família">Família</option>
+                            <option value="infantil">Infantil</option>
                             <option value="unissex">Unissex</option>
                         </select>
                     </div>
@@ -163,7 +165,6 @@ export default function PajamasPage() {
                             value={selectedType}
                             onChange={(e) => setSelectedType(e.target.value)}
                         >
-                            <div className={styles.dropdownFlair}></div>
                             <option value="type-all">Tipo</option>
                             <option value="curto">Curto</option>
                             <option value="longo">Longo</option>
@@ -216,6 +217,7 @@ export default function PajamasPage() {
                                                 itemsPerRow={itemsPerRow}
                                                 scale={cardScale}
                                                 fadeInThreshold={0.04}
+                                                linkTo={`/pajama/${encodeURIComponent(pajama.name)}`}
                                             />
                                         </li>
                                     );
@@ -236,6 +238,7 @@ export default function PajamasPage() {
                                                 itemsPerRow={itemsPerRow}
                                                 scale={cardScale}
                                                 fadeInThreshold={0.04}
+                                                linkTo={`/pajama/${encodeURIComponent(pajama.name)}`}
                                             />
                                         </li>
                                     );

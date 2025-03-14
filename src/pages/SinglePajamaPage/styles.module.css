@@ -1,0 +1,377 @@
+.singlePajamaSection {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   background: white;
+   justify-content: center;
+   align-items: center;
+   z-index: 1;
+   gap: 20px;
+}
+
+.singlePajamaSection::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background-image: url('../../assets/images/pattern-bg-blue0.png');
+   background-position: center;
+   background-repeat: repeat;
+   opacity: 0.3;
+   z-index: 0;
+}
+
+.pajamaContainer {
+   position: relative;
+   z-index: 1;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+   padding: var(--height-main-padding) var(--width-main-padding) 0 var(--width-main-padding);
+   gap: 20px;
+   opacity: 0;
+   transition: 0.3s ease-in-out;
+}
+
+.pajamaContainer.fadeIn {
+   opacity: 1;
+}
+
+.pajamaMainSection {
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   height: 832px;
+   gap: 80px;
+   justify-content: center;
+   align-items: center;
+}
+
+
+#pajamaImage {
+   height: 100%;
+   box-shadow: 16px 16px 16px 0px rgba(0, 0, 0, 0.25);
+}
+
+#pajamaImage img {
+   object-fit: cover;
+}
+
+.containerInformation {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 100%;
+   max-width: 800px;
+   height: 100%;
+}
+
+.titleInformation {
+   display: flex;
+   flex-direction: column;
+   font-family: var(--font-numans);
+}
+
+.titleInformation h1 {
+   color: var(--blue-400);
+   font-size: 48px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 1.92px;
+}
+
+.titleInformation p {
+   color: var(--blue-200);
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 0.56px;
+}
+
+.priceInformation {
+   display: flex;
+   align-items: center;
+   gap: 5rem;
+   font-family: var(--font-nunito-sans);
+   font-size: 1.3rem;
+}
+
+.priceInformation strong{
+   color: var(--gray-400);
+   font-style: italic;
+}
+
+.priceInformation h3 {
+   color: var(--black);
+   font-size: 64px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+}
+.descountsectionInformation{
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.sizeInformation {
+   display: flex;
+   flex-direction: column;
+   font-family: var(--font-nunito-sans);
+   color: var(--black);
+   gap: 0.4rem;
+}
+
+.sizeInformation p{
+   font-size: 24px;
+   font-style: italic;
+   font-weight: 300;
+   line-height: normal;
+}
+.sizeInformation strong{
+   font-size: 28px;
+   font-style: italic;
+   line-height: normal;
+}
+
+.sizeInformation span {
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 300;
+   line-height: normal;
+}
+.sizeInformation span:first-child{
+
+   font-style: italic;
+   font-weight: 600;
+   line-height: normal;
+}
+
+
+.buttonInformation,
+.buttonInformationActive {
+   display: flex;
+   gap: 0.5rem;
+}
+
+.sizeButtonInactive,
+.sizeButtonActive {
+   width: 50px;
+   height: 50px;
+   border: none;
+   border-radius: 1.473px;
+   background: var(--blue-200);
+   color: var(--white);
+   font-family: var(--font-numans);
+   font-size: 1.25rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   transition: 0.5s ease-in-out;
+   cursor: pointer;
+}
+
+.sizeButtonActive {
+   background: var(--blue-0);
+   color: var(--blue-300);
+}
+
+@media (hover:hover) {
+   .sizeButtonInactive:hover {
+      background: var(--blue-0);
+      color: var(--blue-300);
+   }
+}
+
+.sizeButtonActive:active,
+.sizeButtonInactive:active {
+   background: var(--blue-200);
+   color: var(--white);
+   transition: 0.0s;
+}
+
+.sizeButtonOutOfStock {
+   background-color: #ccc;
+   opacity: 0.6;
+   pointer-events: none;
+   user-select: none;
+}
+.quantityInformation {
+   display: flex;
+   position: relative;
+   z-index: 3;
+   flex-direction: column;
+   gap: 1rem;
+   font-family: var(--font-nunito-sans);
+   color: var(--black);
+   font-size: 24px;
+   font-style: italic;
+   font-weight: 300;
+   line-height: normal;
+}
+
+.addcartandwishlistInformation {
+   display: flex;
+   color: var(--white);
+   font-family: var(--font-nunito-sans);
+   font-size: 1.5rem;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   gap: 16px;
+   align-items: center;
+}
+
+#favoriteIcon {
+   cursor: pointer;
+}
+
+#buttonIndividualPajama {
+   width: 432px;
+   height: 85px;
+   border-radius: 4px;
+   background: var(--blue-100);
+}
+
+.featuresSection {
+   display: flex;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+   padding: 0 var(--width-main-padding) 0 var(--width-main-padding);
+   z-index: 1;
+}
+
+.featuresList {
+   display: flex;
+   flex-direction: row;
+   gap: 20rem;
+}
+
+.featuresList li {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+#featureIcon {
+   position: relative;
+}
+
+#featureIcon img {
+   object-fit: cover;
+   position: absolute;
+   overflow: visible !important;
+}
+
+.featuresList li p {
+   max-width: 315px;
+   font-family: var(--font-nunito-sans);
+   font-weight: 600;
+   font-style: italic;
+   font-size: 1.5rem;
+   line-height: 2.4rem;
+   letter-spacing: 0%;
+   text-align: center;
+   color: var(--black);
+}
+
+.aboutSection {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   position: relative;
+   z-index: 1;
+   height: 100%;
+   background-color: var(--blue-300);
+   color: var(--white);
+   padding-inline: 5rem;
+   padding-block: 2rem;
+   gap: 50px;
+   padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+}
+
+.titleaboutSection {
+   display: flex;
+   flex-direction: column;
+   gap: 3rem;
+   color: var(--white);
+}
+
+.titleaboutSection h1 {
+   font-family: var(--font-numans);
+   font-size: 2.2rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 0.1rem;
+}
+
+.titleaboutSection p {
+   font-family: var(--font-nunito-sans);
+   font-size: 1.2rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 0.06rem;
+}
+
+.informationaboutSection {
+   display: flex;
+   flex-direction: column;
+   font-family: var(--font-nunito-sans);
+   gap: 24px;
+   color: var(--white);
+}
+
+.informationaboutSection h4 {
+   font-size: 1.25rem;
+   font-style: italic;
+   font-weight: 600;
+   line-height: normal;
+   letter-spacing: 1.12px;
+}
+
+.informationaboutSection li {
+   font-size: 1.2rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 0.96px;
+   list-style-type: disc;
+   margin-left: 2rem;
+}
+.originalPrice {
+   display: flex; /* Alinha "De:" e o preço na mesma linha */
+   align-items: center; /* Centraliza verticalmente */
+   gap: 4px; /* Espaçamento entre "De:" e o preço */
+}
+
+#originalPriceLabel {
+   font-weight: bold; /* Mantém o "De:" em negrito */
+   text-decoration: none; /* Remove a linha cortada do "De:" */
+}
+
+.strikethrough {
+   text-decoration: line-through;
+   color: var(--red-200);
+}
+.descountInformation{
+   width: 6rem;
+   height: auto;
+   background-color: var(--red-200);
+   font-size: 2rem;
+   text-align: center;
+   color: var(--white);
+   border-radius: 0.5rem;
+
+}
