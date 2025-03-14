@@ -112,7 +112,8 @@
   display: flex;
   gap: 0.5rem;
 }
-.sizeButtonInactive {
+
+.sizeButtonInactive, .sizeButtonActive {
   width: 50px;
   height: 50px;
   border: none;
@@ -120,24 +121,29 @@
   background: var(--blue-200);
   color: var(--white);
   font-family: var(--font-numans);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
 }
+
 .sizeButtonActive {
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 1.473px;
+  background: var(--blue-0);
+  color: var(--blue-300);
+}
+@media (hover:hover) {
+  .sizeButtonInactive:hover {
     background: var(--blue-0);
     color: var(--blue-300);
-    font-family: var(--font-numans);
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   }
+}
+.sizeButtonActive:active, .sizeButtonInactive:active {
+  background: var(--blue-200);
+  color: var(--white);
+  transition: 0.0s;
+}
 
 .quantityInformation {
   display: flex;
