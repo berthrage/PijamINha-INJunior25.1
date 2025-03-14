@@ -71,7 +71,6 @@ export default function SinglePajamaPage() {
     }, [pajama]);
 
     const [selectedSize, setSelectedSize] = useState<string | number>(pajama?.sizes[0]?.size || '');
-    // const allSizesHaveStock = pajama?.sizes.every(size => size.stock_quantity > 0);
 
     useEffect(() => {
         if (pajama && pajama.sizes.length > 0) {
@@ -85,8 +84,9 @@ export default function SinglePajamaPage() {
         setSelectedSizeStockQtt(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
     }, [selectedSize, pajama]);
 
-    // Função para atualizar a quantidade
-    const handleQuantityChange = (newQuantity: number) => {
+    // Função de callback para atualizar a quantidade
+    const updateQuantity = (newQuantity: number) => {
+        console.log("Quantidade atualizada:", newQuantity);
         setQuantity(newQuantity);
     };
 
@@ -198,6 +198,7 @@ export default function SinglePajamaPage() {
                                                     return (
                                                         <button
                                                             key={size.size}
+                                                            type="button"
                                                             onClick={() => {
                                                                 if (!isOutOfStock) {
                                                                     setSelectedSize(size.size);
@@ -225,11 +226,13 @@ export default function SinglePajamaPage() {
 
                                     <div className={styles.quantityInformation}>
                                         <p>Quantidade:</p>
-                                        <NumericStepper
-                                            quantity={quantity}
-                                            onQuantityChange={handleQuantityChange}
-                                            maxQuantity={selectedSizeStockQtt}
-                                        />
+                                        {selectedSizeStockQtt > 0 && (
+                                            <NumericStepper
+                                                quantity={quantity}
+                                                onQuantityChange={updateQuantity}
+                                                maxQuantity={selectedSizeStockQtt}
+                                            />
+                                        )}
                                     </div>
 
                                     <div className={styles.addcartandwishlistInformation}>

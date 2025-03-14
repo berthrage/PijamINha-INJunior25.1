@@ -1,3 +1,4 @@
+// NumericStepper.tsx (Versão corrigida)
 import React from "react";
 import styles from "./styles.module.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
@@ -23,11 +24,21 @@ const NumericStepper: React.FC<NumericStepperProps> = ({ quantity, onQuantityCha
 
     return (
         <div className={styles.container}>
-            <button onClick={handleRemove} className={styles.iconButton} disabled={quantity === 1}>
+            <button 
+                onClick={handleRemove} 
+                className={styles.iconButton} 
+                disabled={quantity === 1}
+                type="button"
+            >
                 <FaMinus className={styles.icon} />
             </button>
             <span className={styles.quantity}>{quantity}</span>
-            <button onClick={handleAdd} className={styles.iconButton} disabled={quantity === maxQuantity}>
+            <button 
+                onClick={handleAdd} 
+                className={styles.iconButton} 
+                disabled={quantity === maxQuantity}
+                type="button"
+            >
                 <FaPlus className={styles.icon} />
             </button>
         </div>
