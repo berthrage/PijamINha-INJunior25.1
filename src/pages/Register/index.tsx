@@ -43,10 +43,10 @@ export default function Register() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        // Atualiza o valor do input
+
         setFormData({ ...formData, [name]: value });
 
-        // Limpa o erro do campo específico enquanto o usuário digita
+
         if (errors[name]) {
             setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
