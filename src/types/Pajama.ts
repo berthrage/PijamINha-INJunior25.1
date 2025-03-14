@@ -1,3 +1,4 @@
+import PajamaSize from "./PajamaSize";
 import Sale from "./Sale";
 
 interface Pajama {
@@ -8,6 +9,7 @@ interface Pajama {
     season: string,
     type: string | number,
     gender: string | number,
+    sizes: PajamaSize[],
     favorite: boolean,
     on_sale: boolean,
     sale_percent?: number,
