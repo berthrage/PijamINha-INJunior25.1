@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styles from './styles.module.css';
 import heartActive from '../../assets/icons/heart-active.png';
 import heartActiveHovered from '../../assets/icons/heart-active-hovered.png';
