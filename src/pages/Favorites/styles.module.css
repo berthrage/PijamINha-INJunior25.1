@@ -8,7 +8,7 @@ main {
     width: 100%;
     position: relative;
     background: white;
-    padding: var(--height-main-padding) var(--width-main-padding) var(--height-main-padding) var(--width-main-padding);
+    padding: var(--height-main-padding) var(--width-main-padding) 150px var(--width-main-padding);
     justify-content: center;
     z-index: 1;
 }

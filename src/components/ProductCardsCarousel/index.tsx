@@ -17,7 +17,7 @@ interface ProductCardsCarouselProps {
 }
 
 export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselProps) {
-    const cardScale = 0.7;
+    const cardScale = 0.6;
 
     return (
         <div className={styles.productCardsCarousel}>
@@ -36,7 +36,7 @@ export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselPr
 
             <Swiper
                 modules={[Navigation]} // Enable navigation
-                spaceBetween={0} // Space between slides
+                spaceBetween={70} // Space between slides
                 slidesPerView={1} // Default slides per view
                 initialSlide={0}
                 navigation={{
@@ -44,20 +44,22 @@ export default function ProductCardsCarousel({ pajamas }: ProductCardsCarouselPr
                     prevEl: `#${styles["swiperButtonPrev"]}`,
                 }} // Enable custom navigation arrows
                 breakpoints={{
-                    640: { slidesPerView: 1 },
-                    945: { slidesPerView: 2 },
-                    1413: { slidesPerView: 3 },
+                    672: { slidesPerView: 2 },
+                    880: { slidesPerView: 3 },
+                    1220: { slidesPerView: 4 },
+                    1660: { slidesPerView: 5 },
+                    1713: { slidesPerView: 6 },
                 }}
                 
                 className={styles.swiperContainer}
+
+                style={{ height: 850 * cardScale }}
             >
                 {pajamas.map((pajama, index) => (
                     <SwiperSlide key={index} className={styles.swiperSlide}>
                         <ProductCardStandard
                             pajama={pajama}
                             id={styles.pajamaCard}
-                            fadeInTimeout={0}
-                            itemsPerRow={5}
                             scale={cardScale}
                             fadeInThreshold={0.04}
                             linkTo={`/pajama/${encodeURIComponent(pajama.name)}`}
