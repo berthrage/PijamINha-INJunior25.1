@@ -16,15 +16,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Pajama from '../../types/Pajama';
 import PriceRealFormatted from '../../components/PriceRealFormatted';
 import FavoriteButton from '../../components/FavoriteButton';
-// import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
-    // const isWideEnough = useMediaQuery('(min-width: 440px)');
     const [isVisible, setIsVisible] = useState(false);
     const { pajamaName } = useParams<{ pajamaName: string }>();
     const decodedPajamaName = decodeURIComponent(pajamaName || '');
     const { pajamas, fetchPajamas, errorCode, setFavorite } = usePajamasStore();
-    const [ pajama, setPajama ] = useState<Pajama>();
+    const [pajama, setPajama] = useState<Pajama>();
     const scrollRef = useRef<HTMLDivElement>(null);
     const pajamaContainerRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +40,7 @@ export default function SinglePajamaPage() {
                     }, 50);
                     observer.disconnect();
                 }
-            }, { threshold: 0.1 } 
+            }, { threshold: 0.1 }
         );
 
         if (pajamaContainerRef.current) {
@@ -56,7 +54,7 @@ export default function SinglePajamaPage() {
             const foundPajama = pajamas.find(pajama => pajama.name === decodedPajamaName);
             if (foundPajama) {
                 setPajama(foundPajama);
-            } 
+            }
         }
     }, [pajamas, decodedPajamaName]);
 
@@ -71,30 +69,30 @@ export default function SinglePajamaPage() {
         }
     }, [pajama]);
 
-    const [ selectedSize, setSelectedSize ] = useState<string | number>(pajama?.sizes[0]?.size || '');
+    const [selectedSize, setSelectedSize] = useState<string | number>(pajama?.sizes[0]?.size || '');
     const allSizesHaveStock = pajama?.sizes.every(size => size.stock_quantity > 0);
 
     useEffect(() => {
         if (pajama && pajama.sizes.length > 0) {
             setSelectedSize(pajama.sizes[0].size);
         }
-    } , [pajama]);
+    }, [pajama]);
 
-    const [ selectedSizeStockQtt, setSelectedSizeStockQtt ] = useState<number>(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
+    const [selectedSizeStockQtt, setSelectedSizeStockQtt] = useState<number>(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
 
     useEffect(() => {
         setSelectedSizeStockQtt(pajama?.sizes.find((size) => size.size === selectedSize)?.stock_quantity || 0);
-    } , [selectedSize, pajama]);
+    }, [selectedSize, pajama]);
 
     const genderImage = () => {
         if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil' || pajama?.gender === 'Família') {
             return unissex;
         } else if (pajama?.gender === 'Feminino') {
             return feminino;
-        } else if (pajama?.gender === 'Masculino') {    
+        } else if (pajama?.gender === 'Masculino') {
             return masculino;
         }
-        return ''; 
+        return '';
     };
 
     const forAdultsKidsImage = () => {
@@ -112,6 +110,23 @@ export default function SinglePajamaPage() {
         }
         return verao;
     }
+
+    // Função para calcular o valor da parcela
+    const calculateInstallment = (price: number, installments: number = 6): string => {
+        const installmentValue = price / installments;
+        return installmentValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    };
+
+    // Função para calcular o preço com desconto PIX
+    const calculatePixPrice = (price: number): string => {
+        const pixPrice = price * 0.85; // Aplica 15% de desconto
+        return pixPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    };
+
+    // Calcula o preço final (com desconto, se houver)
+    const finalPrice = pajama?.sale_percent && pajama.sale_percent > 0
+        ? pajama.price - (pajama.price * (pajama.sale_percent / 100))
+        : pajama?.price || 0;
 
     return (
         <>
@@ -139,11 +154,31 @@ export default function SinglePajamaPage() {
                                     </div>
 
                                     <div className={styles.priceInformation} ref={scrollRef}>
-                                        <div>
-                                            <h3>{<PriceRealFormatted price={pajama.price}></PriceRealFormatted>}</h3>
-                                            <p>Pix</p>
+                                        <div className={styles.descountsectionInformation}>
+                                            {pajama.sale_percent && pajama.sale_percent > 0 ? (
+                                                <><p className={styles.descountInformation}>- {pajama.sale_percent}%</p>
+                                                <span className={styles.originalPrice}>
+                                                <strong id={styles.originalPriceLabel}>De:</strong>
+                                                <span className={styles.strikethrough}>
+                                                    <PriceRealFormatted price={pajama.price} />
+                                                </span>
+                                            </span>
+                                                    <h3>
+                                                        <PriceRealFormatted
+                                                            price={finalPrice}
+                                                        />
+                                                    </h3>
+                                                </>
+                                            ) : (
+                                                <h3>
+                                                    <PriceRealFormatted price={pajama.price} />
+                                                </h3>
+                                            )}
+                                            <p>Ou por apenas <strong>{calculatePixPrice(finalPrice)}</strong> no PIX!</p>
                                         </div>
-                                        <p>Parcelamento</p>
+                                        <p>
+                                            Parcele em até <strong>6x</strong> de <strong>{calculateInstallment(finalPrice)}</strong>
+                                        </p>
                                     </div>
 
                                     <div className={styles.sizeInformation}>
@@ -179,11 +214,11 @@ export default function SinglePajamaPage() {
                                     </div>
 
                                     <div className={styles.addcartandwishlistInformation}>
-                                            <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
-                                            <FavoriteButton
-                                                pajama={pajama}
-                                                id={styles.favoriteIcon}>
-                                            </FavoriteButton>
+                                        <Button id={styles.buttonIndividualPajama}>Adicionar ao Carrinho</Button>
+                                        <FavoriteButton
+                                            pajama={pajama}
+                                            id={styles.favoriteIcon}>
+                                        </FavoriteButton>
                                     </div>
 
                                 </div>
@@ -236,7 +271,7 @@ export default function SinglePajamaPage() {
                         </div>
                     </>
                 ) : (
-                    <h1>404 Livro não encontrado</h1>
+                    <h1>404 Pijama não encontrado</h1>
                 )}
             </div>
         </>

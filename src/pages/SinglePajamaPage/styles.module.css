@@ -101,6 +101,12 @@
    align-items: center;
    gap: 5rem;
    font-family: var(--font-nunito-sans);
+   font-size: 1.3rem;
+}
+
+.priceInformation strong{
+   color: var(--gray-400);
+   font-style: italic;
 }
 
 .priceInformation h3 {
@@ -109,6 +115,11 @@
    font-style: normal;
    font-weight: 700;
    line-height: normal;
+}
+.descountsectionInformation{
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
 }
 
 .sizeInformation {
@@ -317,4 +328,29 @@
    letter-spacing: 0.96px;
    list-style-type: disc;
    margin-left: 2rem;
+}
+.originalPrice {
+   display: flex; /* Alinha "De:" e o preço na mesma linha */
+   align-items: center; /* Centraliza verticalmente */
+   gap: 4px; /* Espaçamento entre "De:" e o preço */
+}
+
+#originalPriceLabel {
+   font-weight: bold; /* Mantém o "De:" em negrito */
+   text-decoration: none; /* Remove a linha cortada do "De:" */
+}
+
+.strikethrough {
+   text-decoration: line-through;
+   color: var(--red-200);
+}
+.descountInformation{
+   width: 6rem;
+   height: auto;
+   background-color: var(--red-200);
+   font-size: 2rem;
+   text-align: center;
+   color: var(--white);
+   border-radius: 0.5rem;
+
 }
