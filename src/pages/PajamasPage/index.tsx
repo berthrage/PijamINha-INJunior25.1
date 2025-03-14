@@ -151,6 +151,7 @@ export default function PajamasPage() {
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                             <option value="família">Família</option>
+                            <option value="infantil">Infantil</option>
                             <option value="unissex">Unissex</option>
                         </select>
                     </div>

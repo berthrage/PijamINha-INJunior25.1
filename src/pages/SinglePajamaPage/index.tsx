@@ -10,12 +10,13 @@ import feminino from '../../assets/icons/female-sign-grouped.png';
 import masculino from '../../assets/icons/male-sign-grouped.png';
 import adulto from '../../assets/icons/foradults-grouped.png'
 import infantil from '../../assets/icons/forkids-grouped.png'
+import familia from '../../assets/icons/family-grouped.png'
 import { useParams } from 'react-router-dom'
 import usePajamasStore from '../../stores/PajamasStore'
-import { use, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Pajama from '../../types/Pajama'
 import PriceRealFormatted from '../../components/PriceRealFormatted'
-import useMediaQuery from '../../hooks/useMediaQueries'
+// import useMediaQuery from '../../hooks/useMediaQueries'
 
 export default function SinglePajamaPage() {
     // const isWideEnough = useMediaQuery('(min-width: 440px)');
@@ -86,7 +87,7 @@ export default function SinglePajamaPage() {
     } , [selectedSize, pajama]);
 
     const genderImage = () => {
-        if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil') {
+        if (pajama?.gender === 'Unissex' || pajama?.gender === 'Infantil' || pajama?.gender === 'Família') {
             return unissex;
         } else if (pajama?.gender === 'Feminino') {
             return feminino;
@@ -99,6 +100,8 @@ export default function SinglePajamaPage() {
     const forAdultsKidsImage = () => {
         if (pajama?.gender === 'Infantil') {
             return infantil;
+        } else if (pajama?.gender === 'Família') {
+            return familia;
         }
         return adulto;
     }

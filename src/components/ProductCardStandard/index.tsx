@@ -91,11 +91,11 @@ export default function ProductCardStandard({ pajama, fadeInTimeout, fadeInThres
 
        // Trigger heart animation
        if (favoriteIconRef.current) {
-        favoriteIconRef.current.classList.add(styles.animate);
-        setTimeout(() => {
-            favoriteIconRef.current?.classList.remove(styles.animate);
-        }, 150); 
-    }
+            favoriteIconRef.current.classList.add(styles.animate);
+            setTimeout(() => {
+                favoriteIconRef.current?.classList.remove(styles.animate);
+            }, 150); 
+        }
     }
 
 
