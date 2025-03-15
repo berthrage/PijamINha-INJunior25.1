@@ -13,20 +13,8 @@ import Feedback from '../../types/Feedback';
 import SecondaryButton from '../../components/SecondaryButton';
 import RatingCardsCarousel from '../../components/RatingCardsCarousel';
 import HomeCarousel from '../../components/HomeCarousel';
-
-const examplePajama: Pajama = {
-    name: 'Pijama feminino longo - estampa poá',
-    description: '',
-    image: examplePajamaImg,
-    price: 78.90,
-    season: 'Inverno',
-    type: 'Longo',
-    gender: 'Feminino',
-    favorite: false,
-    on_sale: true,
-    sale_percent: 15,
-    sales: [],
-}
+import usePajamasStore from '../../stores/PajamasStore';
+import { useEffect } from 'react';
 
 const exampleFeedbacks: Feedback[] = [
     { 
@@ -52,6 +40,13 @@ const exampleFeedbacks: Feedback[] = [
 ];	
 
 export default function Home() {
+    const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
+
+    useEffect(() => {
+            fetchPajamas();
+    }, [fetchPajamas]);
+    
+
     return(
         <>
             <section className={styles.homeSection}>
@@ -106,9 +101,12 @@ export default function Home() {
                 <div className={styles.salesSection}>
                     <h1>Nossas últimas promoções!</h1>
                     <div className={styles.productCardsSection}>
-                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={0}></ProductCardStandard>
+                        {pajamas.filter(pajama => pajama.sale_percent).slice(0, 3).map((pajama: Pajama) => (
+                            <ProductCardStandard pajama={pajama} key={pajama.id}></ProductCardStandard>
+                        ))}
+                        {/* <ProductCardStandard pajama={examplePajama} fadeInTimeout={0}></ProductCardStandard>
                         <ProductCardStandard pajama={examplePajama} fadeInTimeout={150}></ProductCardStandard>
-                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={300}></ProductCardStandard>
+                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={300}></ProductCardStandard> */}
                     </div>
                 </div>
 
