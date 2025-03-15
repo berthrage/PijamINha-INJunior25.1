@@ -27,7 +27,7 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
 
     } catch (error) {
         const err : any = error; 
-        console.error('Requisição da API falhou:', err.response);
+        console.error('Requisição da API falhou:', err);
         set({ errorCode: err.response?.status || 500 });
         setTimeout(() => {
             console.log('Tentando novamente...');
