@@ -54,8 +54,14 @@ export default function Login() {
             password: data.password
         };
 
-        validateUser(userData);
-        navigate('/home');
+        const isValid = await validateUser(userData);
+        setIsSubmitting(false);
+
+        if (isValid) {
+            navigate('/home');
+        } else {
+            setBackendError("Falha na autenticação. Verifique suas credenciais e tente novamente.");
+        }
     };
 
     const closeModal = () => {
