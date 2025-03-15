@@ -10,6 +10,8 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import FormContainer from "../../components/FormContainer";
 import { API } from '../../utils/apiConstants'; // Importe as constantes da API
+import useUsersStore from "../../stores/UsersStore";
+import UserValidation from "../../types/UserValidation";
 
 const loginSchema = z.object({
     identifier: z.string()
@@ -30,6 +32,9 @@ export default function Login() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [backendError, setBackendError] = useState<string | null>(null);
     const [showPassword, setShowPassword] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [confirmationMessage, setConfirmationMessage] = useState<string>("");
+    const { validateUser } = useUsersStore();   
     const navigate = useNavigate();
 
     const {
@@ -44,23 +49,17 @@ export default function Login() {
         setIsSubmitting(true);
         setBackendError(null);
 
-        try {
-            // Usando as constantes da API
-            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.AUTHENTICATE}`, data);
-            if (response.status === 201 || response.status === 200) {
-                navigate("/homepage");
-            }
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                setBackendError(
-                    error.response?.data.message || "Usuário/email inválido ou senha inválida"
-                );
-            } else {
-                setBackendError("Um erro ocorreu. Por favor, tente novamente.");
-            }
-        } finally {
-            setIsSubmitting(false);
-        }
+        const userData : UserValidation = {
+            identifier: data.identifier,
+            password: data.password
+        };
+
+        validateUser(userData);
+        navigate('/home');
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -130,6 +129,15 @@ export default function Login() {
                     </Link>
                 </div>
             </FormContainer>
+
+            {isModalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modal}>
+                        <p>{confirmationMessage}</p>
+                        <Button onClick={closeModal}>Fechar</Button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

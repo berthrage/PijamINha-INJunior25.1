@@ -39,7 +39,6 @@ export default function Register() {
     const [submitting, setSubmitting] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [confirmationMessage, setConfirmationMessage] = useState<string>("");
-    const [ newUser, setNewUser ] = useState<User>();
     const { createUser } = useUsersStore();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

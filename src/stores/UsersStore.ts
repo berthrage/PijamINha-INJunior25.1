@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import api from '../services/api';
 import User from '../types/User';
+import { useNavigate } from 'react-router-dom';
+import UserValidation from '../types/UserValidation';
 
 interface UsersStore {
     users: User[];
@@ -8,6 +10,7 @@ interface UsersStore {
     isFetching: boolean;
     fetchUsers: () => Promise<void>;
     createUser: (user: User) => Promise<void>;
+    validateUser:  (user: UserValidation) => Promise<void>;
 }
 
 const useUsersStore = create<UsersStore>((set: any, get: any) => ({
@@ -49,6 +52,15 @@ const useUsersStore = create<UsersStore>((set: any, get: any) => ({
       }));
     } catch (error) {
       console.error('Failed to create user status:', error);
+    }
+  },
+
+  validateUser: async (user: UserValidation) => {
+    try {
+      await api.post(`/authenticate`, user);
+      console.log('Usuário validado com sucesso!');
+    } catch (error) {
+      console.error('Falha na autenticação do usuário.', error);
     }
   },
 }));
