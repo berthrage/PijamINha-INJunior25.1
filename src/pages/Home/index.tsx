@@ -7,44 +7,26 @@ import featurePeople from '../../assets/images/feature-people.png';
 import featureDelivery from '../../assets/images/feature-delivery.png';
 import ImageLink from '../../components/ImageLink';
 import Pajama from '../../types/Pajama';
-import examplePajamaImg from '../../assets/pajamas/example.jpg';
 import ProductCardStandard from '../../components/ProductCardStandard';
-import Feedback from '../../types/Feedback';
 import SecondaryButton from '../../components/SecondaryButton';
 import RatingCardsCarousel from '../../components/RatingCardsCarousel';
 import HomeCarousel from '../../components/HomeCarousel';
 import usePajamasStore from '../../stores/PajamasStore';
 import { useEffect } from 'react';
-
-const exampleFeedbacks: Feedback[] = [
-    { 
-        name: 'Fulano da Silva',
-        rating: 4.5,
-        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
-    },
-    {
-        name: "Beltrano Souza",
-        rating: 4.0,
-        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
-      },
-      {
-        name: "Ciclano Mendes",
-        rating: 5.0,
-        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
-      },
-      {
-        name: "Victória ",
-        rating: 5.0,
-        description: 'Lorem ipsum dolor sit amet. Et voluptatem officia ad sint voluptate qui  voluptas sunt non fugiat labore et consequatur voluptatem sed optio  veniam aut perferendis delectus! Aut Quis impedit a quas animi 33 alias  provident et ipsum deleniti eos pariatur quibusdam.',
-      },
-];	
+import useFeedbacksStore from '../../stores/FeedbacksStore';
 
 export default function Home() {
-    const { pajamas, fetchPajamas, errorCode } = usePajamasStore();
+    const { pajamas, fetchPajamas } = usePajamasStore();
+    const { feedbacks, fetchFeedbacks } = useFeedbacksStore();
 
     useEffect(() => {
             fetchPajamas();
     }, [fetchPajamas]);
+
+    useEffect(() => {
+        fetchFeedbacks();
+        console.log(feedbacks);
+}, [fetchFeedbacks]);
     
 
     return(
@@ -104,16 +86,13 @@ export default function Home() {
                         {pajamas.filter(pajama => pajama.sale_percent).slice(0, 3).map((pajama: Pajama) => (
                             <ProductCardStandard pajama={pajama} key={pajama.id}></ProductCardStandard>
                         ))}
-                        {/* <ProductCardStandard pajama={examplePajama} fadeInTimeout={0}></ProductCardStandard>
-                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={150}></ProductCardStandard>
-                        <ProductCardStandard pajama={examplePajama} fadeInTimeout={300}></ProductCardStandard> */}
                     </div>
                 </div>
 
                 <div className={styles.feedbacksSection}>
                     <h1>Feedbacks</h1>
                     <div className={styles.ratingsSection}>
-                        <RatingCardsCarousel feedbacks={exampleFeedbacks}></RatingCardsCarousel>
+                        <RatingCardsCarousel feedbacks={feedbacks}></RatingCardsCarousel>
                         
                         <SecondaryButton
                             linkTo='/feedback'
