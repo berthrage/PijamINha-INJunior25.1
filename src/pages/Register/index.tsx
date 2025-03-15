@@ -6,6 +6,8 @@ import axios from "axios";
 import { z } from "zod";
 import { useState } from "react";
 import { API } from "../../utils/apiConstants";
+import useUsersStore from "../../stores/UsersStore";
+import User from "../../types/User";
 
 const registerSchema = z.object({
     name: z.string()
@@ -39,6 +41,8 @@ export default function Register() {
     const [submitting, setSubmitting] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [confirmationMessage, setConfirmationMessage] = useState<string>("");
+    const [ newUser, setNewUser ] = useState<User>();
+    const { createUser } = useUsersStore();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -59,51 +63,30 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            registerSchema.parse(formData);
-            setErrors({});
-
-            setSubmitting(true);
-
-            const userData = {
-                name: formData.name,
-                email: formData.email,
-                username: formData.username,
-                password: formData.password,
-            };
-
-            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.USERS}`, userData, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            if (response.status === 200) {
-                setFormData({
-                    name: "",
-                    username: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                });
-                setConfirmationMessage("Registro realizado com sucesso!");
-                setIsModalOpen(true);
-            }
-        } catch (error) {
-            if (error instanceof z.ZodError) {
-                const validationErrors: { [key: string]: string } = {};
-                error.errors.forEach((err) => {
-                    validationErrors[err.path[0]] = err.message;
-                });
-                setErrors(validationErrors);
-            } else {
-                console.error("Erro ao registrar:", error);
-                setConfirmationMessage("Erro ao registrar. Tente novamente.");
-                setIsModalOpen(true);
-            }
-        } finally {
-            setSubmitting(false);
+        if (formData.password !== formData.confirmPassword) {
+            setConfirmationMessage("Senhas não coincidem");
+            setIsModalOpen(true);
+            throw new Error("As senhas não coincidem");
         }
+
+        const userData : User = {
+            name: formData.name,
+            username: formData.username,
+            email: formData.email,
+            password: formData.password
+        };
+
+        setFormData({
+            name: "",
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        });
+
+        createUser(userData);
+        setConfirmationMessage("Usuário registrado com sucesso!");
+        setIsModalOpen(true);
     };
 
     const closeModal = () => {
