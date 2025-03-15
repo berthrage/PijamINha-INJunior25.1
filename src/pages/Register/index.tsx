@@ -2,10 +2,8 @@ import styles from "./styles.module.css";
 import FormContainer from "../../components/FormContainer";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import axios from "axios";
 import { z } from "zod";
 import { useState } from "react";
-import { API } from "../../utils/apiConstants";
 import useUsersStore from "../../stores/UsersStore";
 import User from "../../types/User";
 
