@@ -194,7 +194,8 @@ main {
 .forgotpassButton {
     max-width: 130px;
     display: flex;
-    color: var(--red-0);
+    color: var(--red-100);
+    opacity: 0.8;
     border: none;
     background: transparent;
     text-decoration: underline;

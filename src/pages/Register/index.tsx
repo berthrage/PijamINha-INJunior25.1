@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 import { z } from "zod";
 import { useState } from "react";
+import { API } from "../../utils/apiConstants";
 
 const registerSchema = z.object({
     name: z.string()
@@ -36,14 +37,16 @@ export default function Register() {
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [submitting, setSubmitting] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [confirmationMessage, setConfirmationMessage] = useState<string>("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        // Atualiza o valor do input
+
         setFormData({ ...formData, [name]: value });
 
-        // Limpa o erro do campo específico enquanto o usuário digita
+
         if (errors[name]) {
             setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
@@ -69,7 +72,7 @@ export default function Register() {
                 password: formData.password,
             };
 
-            const response = await axios.post("/api/register", userData, {
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.USERS}`, userData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -83,7 +86,8 @@ export default function Register() {
                     password: "",
                     confirmPassword: "",
                 });
-                alert("Registro realizado com sucesso!");
+                setConfirmationMessage("Registro realizado com sucesso!");
+                setIsModalOpen(true);
             }
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -94,11 +98,16 @@ export default function Register() {
                 setErrors(validationErrors);
             } else {
                 console.error("Erro ao registrar:", error);
-                alert("Erro ao registrar. Tente novamente.");
+                setConfirmationMessage("Erro ao registrar. Tente novamente.");
+                setIsModalOpen(true);
             }
         } finally {
             setSubmitting(false);
         }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -168,6 +177,15 @@ export default function Register() {
                     </Button>
                 </div>
             </FormContainer>
+
+            {isModalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modal}>
+                        <p>{confirmationMessage}</p>
+                        <Button onClick={closeModal}>Fechar</Button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styles from './styles.module.css';
 import Button from '../../components/Button';
 import NumericStepper from '../../components/NumericStepper';
@@ -7,10 +6,8 @@ import { IoMdClose } from "react-icons/io";
 import Data, { CustomerData } from '../../components/Data';
 import Payment, { PaymentDetails } from '../../components/Payment';
 import Concluded from '../../components/Concluded';
-import '../../services/mockAPI';
-import '../../services/mockAPIforOrders';
+import useCartStore from '../../stores/CartStore';
 
-// Interface para representar um item do carrinho
 interface CartItem {
     id: number;
     name: string;
@@ -22,7 +19,7 @@ interface CartItem {
     image: string;
 }
 
-// Interface para o registro da compra
+
 interface PurchaseOrder {
     customerData: CustomerData;
     paymentDetails: PaymentDetails;
@@ -32,7 +29,7 @@ interface PurchaseOrder {
 }
 
 const Cart: React.FC = () => {
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const { cart, removeFromCart, calculateTotalPrice, clearCart, updateQuantity } = useCartStore(); // Use o Zustand
     const [showDataModal, setShowDataModal] = useState(false);
     const [showPaymentModal, setShowPaymentModal] = useState(false);
     const [showConcludedModal, setShowConcludedModal] = useState(false);
@@ -41,40 +38,19 @@ const Cart: React.FC = () => {
     const [isProcessing, setIsProcessing] = useState(false);
 
     useEffect(() => {
-        fetchCartItems();
-    }, []);
+        calculateTotalPrice();
+    }, [cart, calculateTotalPrice]);
 
-    const fetchCartItems = async () => {
-        try {
-            const response = await axios.get<CartItem[]>('/api/cart');
-            setCartItems(response.data);
-        } catch (error) {
-            console.error('Error fetching cart items:', error);
-        }
+    const removeItemFromCart = (itemId: number) => {
+        removeFromCart(itemId);
     };
 
-    const removeItemFromCart = async (itemId: number) => {
-        try {
-            await axios.delete(`/api/cart/${itemId}`);
-            setCartItems(cartItems.filter(item => item.id !== itemId));
-        } catch (error) {
-            console.error('Error removing item from cart:', error);
-        }
-    };
-
-    const updateSelectedQuantity = async (itemId: number, newSelectedQuantity: number) => {
-        try {
-            await axios.put(`/api/cart/${itemId}`, { quantity: newSelectedQuantity });
-            setCartItems(cartItems.map(item =>
-                item.id === itemId ? { ...item, selectedQuantity: newSelectedQuantity } : item
-            ));
-        } catch (error) {
-            console.error('Error updating item quantity:', error);
-        }
+    const updateSelectedQuantity = (itemId: number, newSelectedQuantity: number) => {
+        updateQuantity(itemId, newSelectedQuantity);
     };
 
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0);
+        return cart.reduce((total, item) => total + item.pajama.price * item.pajama.selectedQuantity, 0);
     };
 
     const handleBuyAll = () => {
@@ -92,22 +68,28 @@ const Cart: React.FC = () => {
             setPaymentDetails(details);
             setIsProcessing(true);
             
-            // Criar objeto com todos os dados da compra
             const purchaseOrder: PurchaseOrder = {
                 customerData: customerData!,
                 paymentDetails: details,
-                items: cartItems,
+                items: cart.map(item => ({
+                    id: item.productId,
+                    name: item.pajama.name,
+                    reference: item.pajama.id,
+                    size: item.pajama.selectedSize,
+                    price: item.pajama.price,
+                    stockQuantity: item.pajama.sizes.find(size => size.size === item.pajama.selectedSize)?.stock_quantity || 0,
+                    selectedQuantity: item.pajama.selectedQuantity,
+                    image: item.pajama.image,
+                })),
                 totalAmount: details.method === 'pix' && details.totalWithDiscount 
                     ? details.totalWithDiscount 
                     : calculateTotal(),
                 orderDate: new Date().toISOString()
             };
             
-            // Enviar dados para o backend
-            await axios.post('/api/orders', purchaseOrder);
+            console.log('Purchase Order:', purchaseOrder);
             
-            // Limpar o carrinho após o processamento da compra
-            await axios.delete('/api/cart/clear');
+            clearCart();
             
             setShowPaymentModal(false);
             setShowConcludedModal(true);
@@ -126,39 +108,39 @@ const Cart: React.FC = () => {
 
     const handleCompletePurchase = () => {
         setShowConcludedModal(false);
-        setCartItems([]);  // Limpar carrinho na interface
+        clearCart();
     };
 
     return (
         <div className={styles.cartSection}>
-            {cartItems.map(item => (
-                <div key={item.id} className={styles.containerCart}>
-                    <img src={item.image} alt="" />
+            {cart.map(item => (
+                <div key={item.productId} className={styles.containerCart}>
+                    <img src={item.pajama.image} alt="" />
                     <div className={styles.interncontainerCart}>
                         <div className={styles.titleCart}>
                             <div>
-                                <h1>{item.name}</h1>
-                                <p>{item.reference}</p>
+                                <h1>{item.pajama.name}</h1>
+                                <p>Ref: #{item.pajama.id}</p>
                             </div>
                             <div className={styles.sizeCart}>
-                                <button>{item.size}</button>
+                                <button>{item.pajama.selectedSize}</button>
                             </div>
                         </div>
                         <div className={styles.containerquantityCart}>
                             <p>Quantidade:</p>
                             <NumericStepper
-                                quantity={item.selectedQuantity}
-                                onQuantityChange={(newQuantity) => updateSelectedQuantity(item.id, newQuantity)}
-                                maxQuantity={item.stockQuantity}
+                                quantity={item.pajama.selectedQuantity}
+                                onQuantityChange={(newQuantity) => updateSelectedQuantity(item.productId, newQuantity)}
+                                maxQuantity={item.pajama.sizes.find(size => size.size === item.pajama.selectedSize)?.stock_quantity || 0}
                             />
                             <span>Não perca sua oportunidade!</span>
-                            <span>Há apenas mais <span>{item.stockQuantity}</span> peças disponíveis</span>
+                            <span>Há apenas mais <span>{item.pajama.sizes.find(size => size.size === item.pajama.selectedSize)?.stock_quantity || 0}</span> peças disponíveis</span>
                         </div>
                     </div>
                     <div className={styles.productpriceCart}>
-                        <p>R$ {item.price}</p>
+                        <p>R$ {item.pajama.price}</p>
                     </div>
-                    <div className={styles.icon} onClick={() => removeItemFromCart(item.id)}>
+                    <div className={styles.icon} onClick={() => removeItemFromCart(item.productId)}>
                         <IoMdClose size={50} />
                     </div>
                 </div>
@@ -173,20 +155,18 @@ const Cart: React.FC = () => {
                 <Button 
                     id={styles.buttonCart} 
                     onClick={handleBuyAll}
-                    disabled={cartItems.length === 0}
+                    disabled={cart.length === 0}
                 >
                     Compre Tudo
                 </Button>
             </div>
 
-            {/* Modal de Dados */}
             {showDataModal && (
                 <div className={styles.modalOverlay}>
                     <Data onSubmit={handleDataSubmit} />
                 </div>
             )}
 
-            {/* Modal de Pagamento */}
             {showPaymentModal && (
                 <div className={styles.modalOverlay}>
                     <Payment 
@@ -197,7 +177,6 @@ const Cart: React.FC = () => {
                 </div>
             )}
 
-            {/* Modal de Conclusão */}
             {showConcludedModal && (
                 <div className={styles.modalOverlay}>
                     <Concluded onClose={handleCompletePurchase} />

@@ -8,7 +8,8 @@ import styles from "./styles.module.css";
 import passwordEyeIcon from "../../assets/icons/password-eye.png";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import FormContainer from "../../components/FormContainer"
+import FormContainer from "../../components/FormContainer";
+import { API } from '../../utils/apiConstants'; // Importe as constantes da API
 
 const loginSchema = z.object({
     identifier: z.string()
@@ -18,7 +19,7 @@ const loginSchema = z.object({
             const isUsername = /^[a-zA-Z0-9_]+$/.test(value);
             return isEmail || isUsername;
         }, "Usuário ou E-mail inválido."),
-        password: z.string()
+    password: z.string()
         .min(6, "A senha precisa ter no mínimo 6 dígitos.")
         .refine((value) => !/\s/.test(value), "A senha não pode conter espaços em branco."),
 });
@@ -44,7 +45,8 @@ export default function Login() {
         setBackendError(null);
 
         try {
-            const response = await axios.post("http://localhost:3333/authenticate", data);
+            // Usando as constantes da API
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.AUTHENTICATE}`, data);
             if (response.status === 201 || response.status === 200) {
                 navigate("/homepage");
             }

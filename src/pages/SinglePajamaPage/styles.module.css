@@ -206,6 +206,8 @@
 }
 .quantityInformation {
    display: flex;
+   position: relative;
+   z-index: 3;
    flex-direction: column;
    gap: 1rem;
    font-family: var(--font-nunito-sans);
