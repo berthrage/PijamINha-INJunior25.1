@@ -21,7 +21,7 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
     set({ isFetching: true });
 
     try {
-      const response = await api.get('/pajamas/');
+      const response = await api.get('/pajamas');
       console.log(response.data);
       set({ pajamas: response.data, errorCode: null });
 
@@ -42,11 +42,12 @@ const usePajamasStore = create<PajamasStore>((set: any, get: any) => ({
 
   setFavorite: async (pajamaId: string, favorite: boolean) => {
     try {
+      console.log(pajamaId);
       const pajama = get().pajamas.find((p: Pajama) => p.id === pajamaId);
       if (!pajama) throw new Error('Pajama not found');
 
       const updatedPajama = { ...pajama, favorite };
-      await api.put(`/pajamas/${pajamaId}`, updatedPajama);
+      await api.patch(`/pajamas/${pajamaId}`, updatedPajama);
       set((state: PajamasStore) => ({
         pajamas: state.pajamas.map(p =>
           p.id === pajamaId ? updatedPajama : p
