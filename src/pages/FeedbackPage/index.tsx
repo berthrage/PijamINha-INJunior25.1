@@ -1,53 +1,42 @@
 import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
 import styles from "./styles.module.css";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import FormContainer from "../../components/FormContainer";
 import RatingWidget from "../../components/RatingWidget";
-import { API } from "../../utils/apiConstants";
+import useFeedbacksStore from "../../stores/FeedbacksStore";
+import Feedback from "../../types/Feedback";
 
-type FormData = {
-    name: string;
-    description: string;
-    rating: number;
-};
 
-export default function Feedback() {
+export default function FeedbackPage() {
     const {
         register,
         handleSubmit,
         formState: { errors },
         setValue,
         trigger,
-    } = useForm<FormData>();
+    } = useForm<Feedback>();
 
     const [nota, setNota] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [confirmationMessage, setConfirmationMessage] = useState<string>("");
+    const { createFeedback } = useFeedbacksStore();
 
     useEffect(() => {
         setValue("rating", nota);
         trigger("rating");
     }, [nota, setValue, trigger]);
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit: SubmitHandler<Feedback> = async (data) => {
         if (Object.keys(errors).length > 0) {
             console.warn("Erros encontrados:", errors);
             return;
         }
 
-        try {
-            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.FEEDBAKCS}`, data);
-            console.log("Resposta do servidor:", response.data);
-            setConfirmationMessage("Feedback enviado com sucesso!");
-            setIsModalOpen(true);
-        } catch (error) {
-            console.error("Erro ao enviar feedback:", error);
-            setConfirmationMessage("Ocorreu um erro ao enviar o feedback. Tente novamente.");
-            setIsModalOpen(true);
-        }
+        createFeedback(data);
+        setConfirmationMessage("Feedback enviado com sucesso!");
+        setIsModalOpen(true);   
     };
 
     const closeModal = () => {

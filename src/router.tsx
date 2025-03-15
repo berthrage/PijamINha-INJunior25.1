@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import RootLayout from "./RootLayout";
 import PageErrorBoundary from "./error-boundary/PageErrorBoundary";
 import Login from "./pages/Login";
-import Feedback from "./pages/Feedback";
+import FeedbackPage from "./pages/FeedbackPage";
 import Register from "./pages/Register";
 import PajamasPage from "./pages/PajamasPage";
 import CartFavoritesHeader from "./components/CartFavoritesHeader";
@@ -31,7 +31,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/feedback',
-                    element: <Feedback></Feedback>
+                    element: <FeedbackPage></FeedbackPage>
                 },
                 {
                     path: "/register",
